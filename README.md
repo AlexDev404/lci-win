@@ -1,4 +1,18 @@
+# LOLCODE for Windows
+
+```python
                     # lci - a LOLCODE interpreter written in C
+```
+# USAGE
+
+```\
+lci.exe [OPTIONS] FILE
+Interpret FILE(s) as LOLCODE. Use '-' in place of filename for stdin.
+  -h, --help            output this help
+  -v, --version         program version
+
+
+```
 
 # LICENSE
 
@@ -42,87 +56,20 @@ Created and maintained by Justin J. Meza <justin.meza@gmail.com>.
 # PREREQUISITES
 
 1. You must have CMake installed (www.cmake.org). 
-  a) If you're using a Linux distro with package managment CMake should be in 
-    your repositories.
 
-2. Python 2.7+ or Python 2.x with the argparse module installed.
-
-# INSTALLATION: THE EASY WAY ON LINUX OR MAC OSX
-
-1. run the script install.py. Note that
-
-  $ ./install.py -h
-
-  will display a list of relavent install options. For
-  example, if I wanted to install lci to the directory
-  "/home/kurtis/opt" I would run:
-
-  $ ./install.py --prefix="/home/kurtis/opt"
-  
-
-# INSTALLATION: THE MORE INVOLVED WAY ON LINUX OR MAC OSX
-
-1. Configure lci using CMake. This can be as simple as opening up the terminal, 
-  navigating to the directory containing lci and typing:
-
-  $ cmake .
-
-  You can also provide any other argument to the CMake configuration process
-  you'd like. To enable Memory testing turn the PERFORM_MEM_TESTS option on
-  like so:
-
-  $ cmake -DPERFORM_MEM_TESTS:BOOL=ON .
-
-  You can also use the "ccmake" command or the CMake GUI if you prefer.
-  See the cmake documentation for more details.
-
-2. Build the project:
-
-  $ make
-
-3. Install
-   
-  $ make install
-
-4. (Optional) Build documentation:
-
-  $ make docs
-
-5. (Optional) Run tests:
-
-  $ ctest
+2. Visual Studio 2019 With MSVC Build Tools
 
 # INSTALLATION ON WINDOWS
 
-(Note that the instructions were written from the point of view of Windows 7,
-but in practice, any modern version will work.)
+Go over to releases and download the latest x64 binary.
 
-1. Add MinGW and Python to your PATH.
+# BUILD ON WINDOWS
 
-  - Start > right-click Computer > Properties > Advanced system settings
-    > Environment Variables....
-    
-  - Select the "PATH" variable and click "Edit...".
-  
-  - Add ";C:\MinGW\bin;C:\Python32" to the end.
-  
-3. Open an Administrator shell
+1. Open up [CMake for Windows](https://cmake.org/download/) and locate the directory of the downloaded source code.
+  - Configure and set platform to **x64** and generator to **Visual Studio 16 2019**
+  - Now Generate the project
 
-  - Start > All Programs > Accessories > right-click Command Prompt
-    > Run as administrator.
- 
-4. Navigate to the project directory using the "cd" command, for example,
-
-  > cd C:\Users\%user%\Documents\lci
- 
-5. run the script install.py. Note that
-
-  > install.py -h
-
-  will display a list of relavent install options. For
-  example, if I wanted to install lci to the directory
-  "C:\Program Files\lci" I would run:
-
-  > install.py --prefix="C:/Program Files/lci"
-  
-  (notice that forward slashes are used to separate directories.)
+2. Once generated, open up the LCI solution file using Visual Studio Code 2019
+3. Go to `Project > lci properties > C/C++ > General` and set the Include directory to the base directory of the project
+5. Right click on the solution and Build it
+6. The compiled LCI Interpretor for Windows should be in either the Debug or Release folder in the project directory (depending on how you built it)
