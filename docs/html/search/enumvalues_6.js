@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['pr_5fcannot_5fuse_5fstr_5fas_5fliteral',['PR_CANNOT_USE_STR_AS_LITERAL',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aa061b6a8a9a3e0f0c8e84795589a80949',1,'error.h']]],
+  ['pr_5fexpected_5fboolean',['PR_EXPECTED_BOOLEAN',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aab1668d83e7134f668b63c7406cce48b3',1,'error.h']]],
+  ['pr_5fexpected_5fconstant',['PR_EXPECTED_CONSTANT',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aacecc57e97887be0d4ff8118a08e3fd71',1,'error.h']]],
+  ['pr_5fexpected_5feither_5ftoken',['PR_EXPECTED_EITHER_TOKEN',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aa3d6704a06f0f23f670bdca8eaae288fc',1,'error.h']]],
+  ['pr_5fexpected_5fend_5fof_5fexpression',['PR_EXPECTED_END_OF_EXPRESSION',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aa488a1894617c8ba786b5d83ada92a515',1,'error.h']]],
+  ['pr_5fexpected_5fend_5fof_5fstatement',['PR_EXPECTED_END_OF_STATEMENT',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aaf55836b21c5644b195bc020e171f35db',1,'error.h']]],
+  ['pr_5fexpected_5fexpression',['PR_EXPECTED_EXPRESSION',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aaeb75ae2766e3db6753547f8409249365',1,'error.h']]],
+  ['pr_5fexpected_5ffloat',['PR_EXPECTED_FLOAT',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aa8ffaab52a987b2574f3dd671b74fb35e',1,'error.h']]],
+  ['pr_5fexpected_5fidentifier',['PR_EXPECTED_IDENTIFIER',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aa9af0a98b04f56943bf8f670ab60a39c2',1,'error.h']]],
+  ['pr_5fexpected_5finteger',['PR_EXPECTED_INTEGER',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aa7467fcd5eb29604a418bd67e20568d3c',1,'error.h']]],
+  ['pr_5fexpected_5floop_5fname',['PR_EXPECTED_LOOP_NAME',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aa54c2a6e0a0090b1f79402c1abe7fbd30',1,'error.h']]],
+  ['pr_5fexpected_5fmatching_5floop_5fname',['PR_EXPECTED_MATCHING_LOOP_NAME',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aab88435ca5abaf1851acaff765504e5cc',1,'error.h']]],
+  ['pr_5fexpected_5fstatement',['PR_EXPECTED_STATEMENT',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aa5965261f36d28bf1bf205a3428f62801',1,'error.h']]],
+  ['pr_5fexpected_5fstring',['PR_EXPECTED_STRING',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aa3a5c19a553926a7cac8d1ed843b3ec0c',1,'error.h']]],
+  ['pr_5fexpected_5ftoken',['PR_EXPECTED_TOKEN',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aa88c352a1f7fd232d2657a0c11853cc09',1,'error.h']]],
+  ['pr_5fexpected_5ftype',['PR_EXPECTED_TYPE',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aa88c64b54f7c6d39ea1e48f991a7b4ea0',1,'error.h']]],
+  ['pr_5fexpected_5funary_5ffunction',['PR_EXPECTED_UNARY_FUNCTION',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aa81f4773309367d2546114cdda3f30c3f',1,'error.h']]],
+  ['pr_5finvalid_5foperator',['PR_INVALID_OPERATOR',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aa9b4473b2f56345931ad16f4f1d4d0f0f',1,'error.h']]],
+  ['pr_5fliteral_5fmust_5fbe_5funique',['PR_LITERAL_MUST_BE_UNIQUE',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aaddd4e502bbf954d93156ef4ca404d293',1,'error.h']]],
+  ['pr_5funhandled_5fstring',['PR_UNHANDLED_STRING',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aaad90921e4822010f450522a44051cd76',1,'error.h']]],
+  ['pr_5funknown_5fexpression_5ftype',['PR_UNKNOWN_EXPRESSION_TYPE',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aa9d22d9a6e45639b4266eb584477e7141',1,'error.h']]],
+  ['pr_5funknown_5fidentifier_5ftype',['PR_UNKNOWN_IDENTIFIER_TYPE',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aa2ccd2f726e4f20f6c5af80c6dbf6eba8',1,'error.h']]],
+  ['pr_5funknown_5fstatement_5ftype',['PR_UNKNOWN_STATEMENT_TYPE',['../error_8h.html#ab0df38968e4f03a3f1f6d6df0f31f45aabe64baa62a4b8770b0e44d66c32e4ef6',1,'error.h']]]
+];

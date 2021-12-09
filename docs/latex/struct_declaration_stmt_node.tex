@@ -1,0 +1,65 @@
+\hypertarget{struct_declaration_stmt_node}{}\section{Declaration\+Stmt\+Node Struct Reference}
+\label{struct_declaration_stmt_node}\index{Declaration\+Stmt\+Node@{Declaration\+Stmt\+Node}}
+
+
+{\ttfamily \#include $<$parser.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$ \hyperlink{struct_declaration_stmt_node_ab52e3859c15ef8b651f330bcd963c56c}{scope}
+\item 
+\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$ \hyperlink{struct_declaration_stmt_node_a6fed156d07803ffd41487e873bcef98f}{target}
+\item 
+\hyperlink{struct_expr_node}{Expr\+Node} $\ast$ \hyperlink{struct_declaration_stmt_node_aba3f89fdd66c4b0264490aa639a6bd6f}{expr}
+\item 
+\hyperlink{struct_type_node}{Type\+Node} $\ast$ \hyperlink{struct_declaration_stmt_node_ac3e465107333db72e1f87a6cc0f41a68}{type}
+\item 
+\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$ \hyperlink{struct_declaration_stmt_node_aae96000b3961b3d34a1eac8034ae16bc}{parent}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Stores a declaration statement. This statement creates a new variable in a given scope and optionally initializes it to an expression.
+
+\begin{DoxyNote}{Note}
+Either provide {\itshape expr} OR {\itshape type}. If both are provided, the result is undefined. 
+\end{DoxyNote}
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{struct_declaration_stmt_node_ab52e3859c15ef8b651f330bcd963c56c}\label{struct_declaration_stmt_node_ab52e3859c15ef8b651f330bcd963c56c}} 
+\index{Declaration\+Stmt\+Node@{Declaration\+Stmt\+Node}!scope@{scope}}
+\index{scope@{scope}!Declaration\+Stmt\+Node@{Declaration\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{scope}{scope}}
+{\footnotesize\ttfamily \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node}$\ast$ Declaration\+Stmt\+Node\+::scope}
+
+The scope to create the variable in. \mbox{\Hypertarget{struct_declaration_stmt_node_a6fed156d07803ffd41487e873bcef98f}\label{struct_declaration_stmt_node_a6fed156d07803ffd41487e873bcef98f}} 
+\index{Declaration\+Stmt\+Node@{Declaration\+Stmt\+Node}!target@{target}}
+\index{target@{target}!Declaration\+Stmt\+Node@{Declaration\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node}$\ast$ Declaration\+Stmt\+Node\+::target}
+
+The name of the variable to create. \mbox{\Hypertarget{struct_declaration_stmt_node_aba3f89fdd66c4b0264490aa639a6bd6f}\label{struct_declaration_stmt_node_aba3f89fdd66c4b0264490aa639a6bd6f}} 
+\index{Declaration\+Stmt\+Node@{Declaration\+Stmt\+Node}!expr@{expr}}
+\index{expr@{expr}!Declaration\+Stmt\+Node@{Declaration\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{expr}{expr}}
+{\footnotesize\ttfamily \hyperlink{struct_expr_node}{Expr\+Node}$\ast$ Declaration\+Stmt\+Node\+::expr}
+
+An optional initialization expression. \mbox{\Hypertarget{struct_declaration_stmt_node_ac3e465107333db72e1f87a6cc0f41a68}\label{struct_declaration_stmt_node_ac3e465107333db72e1f87a6cc0f41a68}} 
+\index{Declaration\+Stmt\+Node@{Declaration\+Stmt\+Node}!type@{type}}
+\index{type@{type}!Declaration\+Stmt\+Node@{Declaration\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \hyperlink{struct_type_node}{Type\+Node}$\ast$ Declaration\+Stmt\+Node\+::type}
+
+An optional initialization type. \mbox{\Hypertarget{struct_declaration_stmt_node_aae96000b3961b3d34a1eac8034ae16bc}\label{struct_declaration_stmt_node_aae96000b3961b3d34a1eac8034ae16bc}} 
+\index{Declaration\+Stmt\+Node@{Declaration\+Stmt\+Node}!parent@{parent}}
+\index{parent@{parent}!Declaration\+Stmt\+Node@{Declaration\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{parent}{parent}}
+{\footnotesize\ttfamily \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node}$\ast$ Declaration\+Stmt\+Node\+::parent}
+
+An optional inherited array. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{parser_8h}{parser.\+h}\end{DoxyCompactItemize}

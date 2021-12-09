@@ -1,0 +1,267 @@
+\hypertarget{tokenizer_8c}{}\section{tokenizer.\+c File Reference}
+\label{tokenizer_8c}\index{tokenizer.\+c@{tokenizer.\+c}}
+{\ttfamily \#include \char`\"{}tokenizer.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{tokenizer_8c_ae8ebc7c8df5b63cfd24923bd1f53d09a}{is\+Integer} (const char $\ast$image)
+\item 
+int \hyperlink{tokenizer_8c_ab50a1a7dab25bf8688cdab8b08514f41}{is\+Float} (const char $\ast$image)
+\item 
+int \hyperlink{tokenizer_8c_a60f8ddb097a3fead863c5f304b80af3a}{is\+String} (const char $\ast$image)
+\item 
+int \hyperlink{tokenizer_8c_ad449d5493099cf4512da47600ddd125e}{is\+Identifier} (const char $\ast$image)
+\item 
+\hyperlink{struct_token}{Token} $\ast$ \hyperlink{tokenizer_8c_aea14b6864357b9fa9c69e279cc406e3e}{create\+Token} (\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type} type, const char $\ast$image, const char $\ast$fname, unsigned int line)
+\item 
+void \hyperlink{tokenizer_8c_af6434ae3eb996ef40d61785eb9404b36}{delete\+Token} (\hyperlink{struct_token}{Token} $\ast$token)
+\item 
+int \hyperlink{tokenizer_8c_a819dbb5a0006a1d610ca9ab4844483c0}{add\+Token} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$list, unsigned int $\ast$num, \hyperlink{struct_token}{Token} $\ast$token)
+\item 
+void \hyperlink{tokenizer_8c_a9ce4310acac172ab33183ace5ad136c7}{delete\+Tokens} (\hyperlink{struct_token}{Token} $\ast$$\ast$list)
+\item 
+unsigned int \hyperlink{tokenizer_8c_a0a1185343417f03788642648490b7979}{accept\+Lexemes} (\hyperlink{struct_lexeme_list}{Lexeme\+List} $\ast$lexemes, unsigned int start, const char $\ast$match)
+\item 
+\hyperlink{struct_token}{Token} $\ast$ \hyperlink{tokenizer_8c_a2b5a7050c43203430c749621b391ddbe}{is\+Keyword} (\hyperlink{struct_lexeme_list}{Lexeme\+List} $\ast$lexemes, unsigned int $\ast$start)
+\item 
+\hyperlink{struct_token}{Token} $\ast$$\ast$ \hyperlink{tokenizer_8c_aead3390101d0f591066c4a5e8b383663}{tokenize\+Lexemes} (\hyperlink{struct_lexeme_list}{Lexeme\+List} $\ast$list)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{tokenizer_8c_ae8ebc7c8df5b63cfd24923bd1f53d09a}\label{tokenizer_8c_ae8ebc7c8df5b63cfd24923bd1f53d09a}} 
+\index{tokenizer.\+c@{tokenizer.\+c}!is\+Integer@{is\+Integer}}
+\index{is\+Integer@{is\+Integer}!tokenizer.\+c@{tokenizer.\+c}}
+\subsubsection{\texorpdfstring{is\+Integer()}{isInteger()}}
+{\footnotesize\ttfamily int is\+Integer (\begin{DoxyParamCaption}\item[{const char $\ast$}]{image }\end{DoxyParamCaption})}
+
+Checks if a string follows the format for an integer. Specifically, it checks if the string matches the regular expression\+: (-\/?\mbox{[}1-\/9\mbox{]}\mbox{[}0-\/9\mbox{]}$\ast$$\vert$0).
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em image} & The string to check.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & {\itshape image} does not match the pattern for an integer.\\
+\hline
+{\em 1} & {\itshape image} matches the pattern for an integer. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{tokenizer_8c_ab50a1a7dab25bf8688cdab8b08514f41}\label{tokenizer_8c_ab50a1a7dab25bf8688cdab8b08514f41}} 
+\index{tokenizer.\+c@{tokenizer.\+c}!is\+Float@{is\+Float}}
+\index{is\+Float@{is\+Float}!tokenizer.\+c@{tokenizer.\+c}}
+\subsubsection{\texorpdfstring{is\+Float()}{isFloat()}}
+{\footnotesize\ttfamily int is\+Float (\begin{DoxyParamCaption}\item[{const char $\ast$}]{image }\end{DoxyParamCaption})}
+
+Checks if a string follows the format for a decimal. Specifically, it checks if the string matches the regular expression\+: (-\/?\mbox{[}0-\/9\mbox{]}.\mbox{[}0-\/9\mbox{]}$\ast$).
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em image} & The string to check.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & {\itshape image} does not match the pattern for a decimal.\\
+\hline
+{\em 1} & {\itshape image} matches the pattern for a decimal. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{tokenizer_8c_a60f8ddb097a3fead863c5f304b80af3a}\label{tokenizer_8c_a60f8ddb097a3fead863c5f304b80af3a}} 
+\index{tokenizer.\+c@{tokenizer.\+c}!is\+String@{is\+String}}
+\index{is\+String@{is\+String}!tokenizer.\+c@{tokenizer.\+c}}
+\subsubsection{\texorpdfstring{is\+String()}{isString()}}
+{\footnotesize\ttfamily int is\+String (\begin{DoxyParamCaption}\item[{const char $\ast$}]{image }\end{DoxyParamCaption})}
+
+Checks if a string follows the format for a string literal. Specifically, it checks if the string matches the regular expression\+: (\char`\"{}.$\ast$\char`\"{}).
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em image} & The string to check.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & {\itshape image} does not match the pattern for a string.\\
+\hline
+{\em 1} & {\itshape image} matches the pattern for a string. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{tokenizer_8c_ad449d5493099cf4512da47600ddd125e}\label{tokenizer_8c_ad449d5493099cf4512da47600ddd125e}} 
+\index{tokenizer.\+c@{tokenizer.\+c}!is\+Identifier@{is\+Identifier}}
+\index{is\+Identifier@{is\+Identifier}!tokenizer.\+c@{tokenizer.\+c}}
+\subsubsection{\texorpdfstring{is\+Identifier()}{isIdentifier()}}
+{\footnotesize\ttfamily int is\+Identifier (\begin{DoxyParamCaption}\item[{const char $\ast$}]{image }\end{DoxyParamCaption})}
+
+Checks if a string follows the format for an identifier. Specifically, it checks if the string matches the regular expression\+: (\mbox{[}a-\/z\+A-\/Z\mbox{]}\mbox{[}a-\/z\+A-\/\+Z0-\/9\+\_\+\mbox{]}$\ast$).
+
+
+\begin{DoxyParams}{Parameters}
+{\em image} & \mbox{[}in\mbox{]} The string to check.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & {\itshape image} does not match the pattern for an identifier.\\
+\hline
+{\em 1} & {\itshape image} matches the pattern for an identifier. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{tokenizer_8c_aea14b6864357b9fa9c69e279cc406e3e}\label{tokenizer_8c_aea14b6864357b9fa9c69e279cc406e3e}} 
+\index{tokenizer.\+c@{tokenizer.\+c}!create\+Token@{create\+Token}}
+\index{create\+Token@{create\+Token}!tokenizer.\+c@{tokenizer.\+c}}
+\subsubsection{\texorpdfstring{create\+Token()}{createToken()}}
+{\footnotesize\ttfamily \hyperlink{struct_token}{Token}$\ast$ create\+Token (\begin{DoxyParamCaption}\item[{\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}]{type,  }\item[{const char $\ast$}]{image,  }\item[{const char $\ast$}]{fname,  }\item[{unsigned int}]{line }\end{DoxyParamCaption})}
+
+Creates a token.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em type} & The type of token to create.\\
+\hline
+\mbox{\tt in}  & {\em image} & The string that represents the token.\\
+\hline
+\mbox{\tt in}  & {\em fname} & The name of the file containing the token.\\
+\hline
+\mbox{\tt in}  & {\em line} & The number of the line containing the token.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a new token with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+fname is not copied because only one copy is stored for all Token structures that share it.
+\end{DoxyNote}
+\mbox{\Hypertarget{tokenizer_8c_af6434ae3eb996ef40d61785eb9404b36}\label{tokenizer_8c_af6434ae3eb996ef40d61785eb9404b36}} 
+\index{tokenizer.\+c@{tokenizer.\+c}!delete\+Token@{delete\+Token}}
+\index{delete\+Token@{delete\+Token}!tokenizer.\+c@{tokenizer.\+c}}
+\subsubsection{\texorpdfstring{delete\+Token()}{deleteToken()}}
+{\footnotesize\ttfamily void delete\+Token (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$}]{token }\end{DoxyParamCaption})}
+
+Deletes a token.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em token} & The token to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape token} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{tokenizer_8c_a819dbb5a0006a1d610ca9ab4844483c0}\label{tokenizer_8c_a819dbb5a0006a1d610ca9ab4844483c0}} 
+\index{tokenizer.\+c@{tokenizer.\+c}!add\+Token@{add\+Token}}
+\index{add\+Token@{add\+Token}!tokenizer.\+c@{tokenizer.\+c}}
+\subsubsection{\texorpdfstring{add\+Token()}{addToken()}}
+{\footnotesize\ttfamily int add\+Token (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{list,  }\item[{unsigned int $\ast$}]{num,  }\item[{\hyperlink{struct_token}{Token} $\ast$}]{token }\end{DoxyParamCaption})}
+
+Adds a token to a list.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em list} & The list of tokens to add {\itshape token} to.\\
+\hline
+\mbox{\tt in,out}  & {\em num} & The number of tokens in {\itshape list}.\\
+\hline
+\mbox{\tt in}  & {\em token} & The token to add to {\itshape list}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape token} will be added to the end of {\itshape list} and the size of {\itshape list} will be updated.
+\end{DoxyPostcond}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Memory allocation failed.\\
+\hline
+{\em 1} & {\itshape token} was added to {\itshape list}. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{tokenizer_8c_a9ce4310acac172ab33183ace5ad136c7}\label{tokenizer_8c_a9ce4310acac172ab33183ace5ad136c7}} 
+\index{tokenizer.\+c@{tokenizer.\+c}!delete\+Tokens@{delete\+Tokens}}
+\index{delete\+Tokens@{delete\+Tokens}!tokenizer.\+c@{tokenizer.\+c}}
+\subsubsection{\texorpdfstring{delete\+Tokens()}{deleteTokens()}}
+{\footnotesize\ttfamily void delete\+Tokens (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$}]{list }\end{DoxyParamCaption})}
+
+Deletes a list of tokens.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \mbox{[}in,out\mbox{]} The list of tokens to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape list} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{tokenizer_8c_a0a1185343417f03788642648490b7979}\label{tokenizer_8c_a0a1185343417f03788642648490b7979}} 
+\index{tokenizer.\+c@{tokenizer.\+c}!accept\+Lexemes@{accept\+Lexemes}}
+\index{accept\+Lexemes@{accept\+Lexemes}!tokenizer.\+c@{tokenizer.\+c}}
+\subsubsection{\texorpdfstring{accept\+Lexemes()}{acceptLexemes()}}
+{\footnotesize\ttfamily unsigned int accept\+Lexemes (\begin{DoxyParamCaption}\item[{\hyperlink{struct_lexeme_list}{Lexeme\+List} $\ast$}]{lexemes,  }\item[{unsigned int}]{start,  }\item[{const char $\ast$}]{match }\end{DoxyParamCaption})}
+
+Matches lexemes against a string. Traverses {\itshape lexemes} starting at {\itshape start} and compares lexeme images to space-\/delimited substrings from {\itshape match}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lexemes} & \mbox{[}in\mbox{]} The list of lexemes to match from.\\
+\hline
+{\em start} & \mbox{[}in\mbox{]} The index within {\itshape lexemes} to start matching at.\\
+\hline
+{\em match} & \mbox{[}in\mbox{]} A string of space-\/delimited substrings to match.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of lexemes matched. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{tokenizer_8c_a2b5a7050c43203430c749621b391ddbe}\label{tokenizer_8c_a2b5a7050c43203430c749621b391ddbe}} 
+\index{tokenizer.\+c@{tokenizer.\+c}!is\+Keyword@{is\+Keyword}}
+\index{is\+Keyword@{is\+Keyword}!tokenizer.\+c@{tokenizer.\+c}}
+\subsubsection{\texorpdfstring{is\+Keyword()}{isKeyword()}}
+{\footnotesize\ttfamily \hyperlink{struct_token}{Token}$\ast$ is\+Keyword (\begin{DoxyParamCaption}\item[{\hyperlink{struct_lexeme_list}{Lexeme\+List} $\ast$}]{lexemes,  }\item[{unsigned int $\ast$}]{start }\end{DoxyParamCaption})}
+
+Checks if the next lexemes in a list comprise a keyword and, if so, generates a new token representing that keyword. Specifically, {\itshape lexemes} is searched, starting at {\itshape start} for keywords. If one is found, an appropriate token is created and returned and {\itshape start} is incremented by the number of lexemes matched minus one.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lexemes} & \mbox{[}in\mbox{]} A list of lexemes to search for keywords in.\\
+\hline
+{\em start} & \mbox{[}in,out\mbox{]} The position within {\itshape lexemes} to begin searching for keywords.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+If a keyword is not found, {\itshape start} will not be modified. Otherwise, {\itshape start} will be incremented by the number of lexemes matched minus one.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to the token containing the matched keyword.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & No keywords were found or there was an error allocating memory. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{tokenizer_8c_aead3390101d0f591066c4a5e8b383663}\label{tokenizer_8c_aead3390101d0f591066c4a5e8b383663}} 
+\index{tokenizer.\+c@{tokenizer.\+c}!tokenize\+Lexemes@{tokenize\+Lexemes}}
+\index{tokenize\+Lexemes@{tokenize\+Lexemes}!tokenizer.\+c@{tokenizer.\+c}}
+\subsubsection{\texorpdfstring{tokenize\+Lexemes()}{tokenizeLexemes()}}
+{\footnotesize\ttfamily \hyperlink{struct_token}{Token}$\ast$$\ast$ tokenize\+Lexemes (\begin{DoxyParamCaption}\item[{\hyperlink{struct_lexeme_list}{Lexeme\+List} $\ast$}]{list }\end{DoxyParamCaption})}
+
+Converts a list of lexemes into tokens. Also parses integers, floats, and strings into tokens with semantic meaning.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \mbox{[}in\mbox{]} A list of lexemes to tokenize.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of tokens generated from {\itshape list}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An unrecognized token was encounteres or memory allocation failed. \\
+\hline
+\end{DoxyRetVals}

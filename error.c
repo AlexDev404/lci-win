@@ -65,7 +65,7 @@ static const char *err_msgs[] = {
 	/* PR_EXPECTED_STATEMENT */
 	"%s:%u: expected statement at: %s\n",
 	/* PR_UNHANDLED_STRING */
-	"unhandled string detected\n",
+	"%s:%u: Unhandled string detected\n",
 
 	/* IN_INVALID_IDENTIFIER_TYPE */
 	"%s:%u invalid identifier type at: %s\n",
@@ -74,75 +74,75 @@ static const char *err_msgs[] = {
 	/* IN_VARIABLE_DOES_NOT_EXIST */
 	"%s:%u variable does not exist: %s\n",
 	/* IN_CANNOT_IMPLICITLY_CAST_NIL */
-	"Cannot implicitly cast nil\n",
+	"%s:%u: Cannot implicitly cast nil\n",
 	/* IN_CANNOT_CAST_FUNCTION_TO_BOOLEAN */
-	"Cannot cast function to boolean value\n",
+	"%s:%u: Cannot cast function to boolean value\n",
 	/* IN_CANNOT_CAST_ARRAY_TO_BOOLEAN */
-	"Cannot cast array to boolean value\n",
+	"%s:%u: Cannot cast array to boolean value\n",
 	/* IN_UNKNOWN_VALUE_DURING_BOOLEAN_CAST */
-	"Unknown value type encountered during boolean cast\n",
+	"%s:%u: Unknown value type encountered during boolean cast\n",
 	/* IN_UNABLE_TO_CAST_VALUE */
-	"Unable to cast value\n",
+	"%s:%u: Unable to cast value\n",
 	/* IN_EXPECTED_INTEGER_VALUE */
-	"Expected integer value\n",
+	"%s:%u: Expected integer value\n",
 	/* IN_CANNOT_CAST_FUNCTION_TO_INTEGER */
-	"Cannot cast function to integer value\n",
+	"%s:%u: Cannot cast function to integer value\n",
 	/* IN_CANNOT_CAST_ARRAY_TO_INTEGER */
-	"Cannot cast array to integer value\n",
+	"%s:%u: Cannot cast array to integer value\n",
 	/* IN_UNKNOWN_VALUE_DURING_INTEGER_CAST */
-	"Unknown value type encountered during integer cast\n",
+	"%s:%u: Unknown value type encountered during integer cast\n",
 	/* IN_EXPECTED_DECIMAL */
-	"Expected floating point decimal value\n",
+	"%s:%u: Expected floating point decimal value\n",
 	/* IN_CANNOT_CAST_FUNCTION_TO_DECIMAL */
-	"Cannot cast function to floating point decimal value\n",
+	"%s:%u: Cannot cast function to floating point decimal value\n",
 	/* IN_CANNOT_CAST_ARRAY_TO_DECIMAL */
-	"Cannot cast array to floating point decimal value\n",
+	"%s:%u: Cannot cast array to floating point decimal value\n",
 	/* IN_UNKNOWN_VALUE_DURING_DECIMAL_CAST */
-	"Unknown value type encountered during floating point decimal cast\n",
+	"%s:%u: Unknown value type encountered during floating point decimal cast\n",
 	/* IN_CANNOT_CAST_BOOLEAN_TO_STRING */
-	"Cannot cast boolean to string value\n",
+	"%s:%u: Cannot cast boolean to string value\n",
 	/* IN_EXPECTED_CLOSING_PAREN */
-	"Expected closing parenthesis after :(\n",
+	"%s:%u: Expected closing parenthesis after :(\n",
 	/* IN_INVALID_HEX_NUMBER */
-	"Please supply a valid hexadecimal number\n",
+	"%s:%u: Please supply a valid hexadecimal number\n",
 	/* IN_CODE_POINT_MUST_BE_POSITIVE */
-	"Code point is supposed to be positive\n",
+	"%s:%u: Code point is supposed to be positive\n",
 	/* IN_EXPECTED_CLOSING_SQUARE_BRACKET */
-	"Expected closing square bracket after :[\n",
+	"%s:%u: Expected closing square bracket after :[\n",
 	/* IN_EXPECTED_CLOSING_CURLY_BRACE */
-	"Expected closing curly brace after :{\n",
+	"%s:%u: Expected closing curly brace after :{\n",
 	/* IN_VARIABLE_NOT_AN_ARRAY */
 	"%s:%u variable is not an array: %s\n",
 	/* IN_CANNOT_CAST_FUNCTION_TO_STRING */
-	"Cannot cast function to string value\n",
+	"%s:%u: Cannot cast function to string value\n",
 	/* IN_CANNOT_CAST_ARRAY_TO_STRING */
-	"Cannot cast array to string value\n",
+	"%s:%u: Cannot cast array to string value\n",
 	/* IN_UNKNOWN_VALUE_DURING_STRING_CAST */
-	"Unknown value type encountered during string cast\n",
+	"%s:%u: Unknown value type encountered during string cast\n",
 	/* IN_UNKNOWN_CAST_TYPE */
-	"Unknown cast type\n",
+	"%s:%u: Unknown cast type\n",
 	/* IN_UNDEFINED_FUNCTION */
 	"%s:%u: undefined function at: %s\n",
 	/* IN_INCORRECT_NUMBER_OF_ARGUMENTS */
 	"%s:%u: incorrect number of arguments supplied to: %s\n",
 	/* IN_INVALID_RETURN_TYPE */
-	"Invalid return type\n",
+	"%s:%u: Invalid return type\n",
 	/* IN_UNKNOWN_CONSTANT_TYPE */
-	"Unknown constant type\n",
+	"%s:%u: Unknown constant type\n",
 	/* IN_DIVISION_BY_ZERO */
-	"Division by zero undefined\n",
+	"%s:%u: Division by zero undefined\n",
 	/* IN_INVALID_OPERAND_TYPE */
-	"Invalid operand type\n",
+	"%s:%u: Invalid operand type\n",
 	/* IN_INVALID_BOOLEAN_OPERATION_TYPE */
-	"Invalid boolean operation type\n",
+	"%s:%u: Invalid boolean operation type\n",
 	/* IN_INVALID_EQUALITY_OPERATION_TYPE */
-	"Invalid equality operation type\n",
+	"%s:%u: Invalid equality operation type\n",
 	/* IN_REDEFINITION_OF_VARIABLE */
 	"%s:%u: redefinition of existing variable at: %s\n",
 	/* IN_INVALID_DECLARATION_TYPE */
-	"Unknown declaration type\n",
+	"%s:%u: Unknown declaration type\n",
 	/* IN_INVALID_TYPE */
-	"Invalid type\n",
+	"%s:%u: Invalid type\n",
 	/* IN_FUNCTION_NAME_USED_BY_VARIABLE */
 	"%s:%u: function name already used by existing variable at: %s\n",
 	/* IN_CANNOT_CAST_VALUE_TO_ARRAY */

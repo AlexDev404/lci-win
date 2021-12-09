@@ -1,0 +1,44 @@
+\hypertarget{struct_print_stmt_node}{}\section{Print\+Stmt\+Node Struct Reference}
+\label{struct_print_stmt_node}\index{Print\+Stmt\+Node@{Print\+Stmt\+Node}}
+
+
+{\ttfamily \#include $<$parser.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_expr_node_list}{Expr\+Node\+List} $\ast$ \hyperlink{struct_print_stmt_node_a9ee87b79d331dc05b6a4bb27462a5f69}{args}
+\item 
+F\+I\+LE $\ast$ \hyperlink{struct_print_stmt_node_a258c6f732a1c196ba01cd3f87ac4d6ac}{file}
+\item 
+int \hyperlink{struct_print_stmt_node_a147ba34eeda7bcfb39f2846a678d091c}{nonl}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Stores a print statement. This statement prints a list of expressions with an optional newline. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{struct_print_stmt_node_a9ee87b79d331dc05b6a4bb27462a5f69}\label{struct_print_stmt_node_a9ee87b79d331dc05b6a4bb27462a5f69}} 
+\index{Print\+Stmt\+Node@{Print\+Stmt\+Node}!args@{args}}
+\index{args@{args}!Print\+Stmt\+Node@{Print\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{args}{args}}
+{\footnotesize\ttfamily \hyperlink{struct_expr_node_list}{Expr\+Node\+List}$\ast$ Print\+Stmt\+Node\+::args}
+
+The expressions to print. \mbox{\Hypertarget{struct_print_stmt_node_a258c6f732a1c196ba01cd3f87ac4d6ac}\label{struct_print_stmt_node_a258c6f732a1c196ba01cd3f87ac4d6ac}} 
+\index{Print\+Stmt\+Node@{Print\+Stmt\+Node}!file@{file}}
+\index{file@{file}!Print\+Stmt\+Node@{Print\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{file}{file}}
+{\footnotesize\ttfamily F\+I\+LE$\ast$ Print\+Stmt\+Node\+::file}
+
+Where to print ({\ttfamily stdout} or {\ttfamily stderr}). \mbox{\Hypertarget{struct_print_stmt_node_a147ba34eeda7bcfb39f2846a678d091c}\label{struct_print_stmt_node_a147ba34eeda7bcfb39f2846a678d091c}} 
+\index{Print\+Stmt\+Node@{Print\+Stmt\+Node}!nonl@{nonl}}
+\index{nonl@{nonl}!Print\+Stmt\+Node@{Print\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{nonl}{nonl}}
+{\footnotesize\ttfamily int Print\+Stmt\+Node\+::nonl}
+
+Whether to print an ending newline. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{parser_8h}{parser.\+h}\end{DoxyCompactItemize}

@@ -1,0 +1,52 @@
+\hypertarget{struct_if_then_else_stmt_node}{}\section{If\+Then\+Else\+Stmt\+Node Struct Reference}
+\label{struct_if_then_else_stmt_node}\index{If\+Then\+Else\+Stmt\+Node@{If\+Then\+Else\+Stmt\+Node}}
+
+
+{\ttfamily \#include $<$parser.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_block_node}{Block\+Node} $\ast$ \hyperlink{struct_if_then_else_stmt_node_ae28470757cf61cab67dd9096114f4710}{yes}
+\item 
+\hyperlink{struct_block_node}{Block\+Node} $\ast$ \hyperlink{struct_if_then_else_stmt_node_aeb7d6e0fb8dad0d6e894bcdc887306fe}{no}
+\item 
+\hyperlink{struct_expr_node_list}{Expr\+Node\+List} $\ast$ \hyperlink{struct_if_then_else_stmt_node_ad94295fb6d16e9815a85e0d8e930f079}{guards}
+\item 
+\hyperlink{struct_block_node_list}{Block\+Node\+List} $\ast$ \hyperlink{struct_if_then_else_stmt_node_ab4b9831a1e7db13c206997a45ee84a95}{blocks}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Stores an if/then/else statement. This statement checks the value of the \hyperlink{impvar}{implicit variable} and executes the {\ttfamily yes} block if it can be cast to true. Else, the {\ttfamily guards} are evaluated and the corresponding code in one of the {\ttfamily blocks} is executed. Finally, if none of these things occur, the {\ttfamily no} block is executed. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{struct_if_then_else_stmt_node_ae28470757cf61cab67dd9096114f4710}\label{struct_if_then_else_stmt_node_ae28470757cf61cab67dd9096114f4710}} 
+\index{If\+Then\+Else\+Stmt\+Node@{If\+Then\+Else\+Stmt\+Node}!yes@{yes}}
+\index{yes@{yes}!If\+Then\+Else\+Stmt\+Node@{If\+Then\+Else\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{yes}{yes}}
+{\footnotesize\ttfamily \hyperlink{struct_block_node}{Block\+Node}$\ast$ If\+Then\+Else\+Stmt\+Node\+::yes}
+
+The code to execute if {\ttfamily IT} is true. \mbox{\Hypertarget{struct_if_then_else_stmt_node_aeb7d6e0fb8dad0d6e894bcdc887306fe}\label{struct_if_then_else_stmt_node_aeb7d6e0fb8dad0d6e894bcdc887306fe}} 
+\index{If\+Then\+Else\+Stmt\+Node@{If\+Then\+Else\+Stmt\+Node}!no@{no}}
+\index{no@{no}!If\+Then\+Else\+Stmt\+Node@{If\+Then\+Else\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{no}{no}}
+{\footnotesize\ttfamily \hyperlink{struct_block_node}{Block\+Node}$\ast$ If\+Then\+Else\+Stmt\+Node\+::no}
+
+The code to execute if nothing else does. \mbox{\Hypertarget{struct_if_then_else_stmt_node_ad94295fb6d16e9815a85e0d8e930f079}\label{struct_if_then_else_stmt_node_ad94295fb6d16e9815a85e0d8e930f079}} 
+\index{If\+Then\+Else\+Stmt\+Node@{If\+Then\+Else\+Stmt\+Node}!guards@{guards}}
+\index{guards@{guards}!If\+Then\+Else\+Stmt\+Node@{If\+Then\+Else\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{guards}{guards}}
+{\footnotesize\ttfamily \hyperlink{struct_expr_node_list}{Expr\+Node\+List}$\ast$ If\+Then\+Else\+Stmt\+Node\+::guards}
+
+The guards for the {\ttfamily blocks}. \mbox{\Hypertarget{struct_if_then_else_stmt_node_ab4b9831a1e7db13c206997a45ee84a95}\label{struct_if_then_else_stmt_node_ab4b9831a1e7db13c206997a45ee84a95}} 
+\index{If\+Then\+Else\+Stmt\+Node@{If\+Then\+Else\+Stmt\+Node}!blocks@{blocks}}
+\index{blocks@{blocks}!If\+Then\+Else\+Stmt\+Node@{If\+Then\+Else\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{blocks}{blocks}}
+{\footnotesize\ttfamily \hyperlink{struct_block_node_list}{Block\+Node\+List}$\ast$ If\+Then\+Else\+Stmt\+Node\+::blocks}
+
+The code to execute if a guard is true. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{parser_8h}{parser.\+h}\end{DoxyCompactItemize}

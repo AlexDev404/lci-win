@@ -1,0 +1,100 @@
+\hypertarget{unicode_8c}{}\section{unicode.\+c File Reference}
+\label{unicode_8c}\index{unicode.\+c@{unicode.\+c}}
+{\ttfamily \#include \char`\"{}unicode.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{unicode_8c_a825a80b113cd846c34e12e40fcb39cff}{N\+U\+M\+\_\+\+U\+N\+I\+C\+O\+DE}~21747
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{unicode_8c_a15fca65af34d3ed8efdb918100eab777}{binary\+Search} (const char $\ast$$\ast$strings, int start, int end, const char $\ast$find)
+\item 
+long \hyperlink{unicode_8c_a11236bd6feed76f3e073bb0ed368584c}{convert\+Normative\+Name\+To\+Code\+Point} (const char $\ast$name)
+\item 
+size\+\_\+t \hyperlink{unicode_8c_a7f4d4f1367f9361a8811ccc505b90270}{convert\+Code\+Point\+To\+U\+T\+F8} (unsigned long codepoint, char $\ast$out)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{unicode_8c_a825a80b113cd846c34e12e40fcb39cff}\label{unicode_8c_a825a80b113cd846c34e12e40fcb39cff}} 
+\index{unicode.\+c@{unicode.\+c}!N\+U\+M\+\_\+\+U\+N\+I\+C\+O\+DE@{N\+U\+M\+\_\+\+U\+N\+I\+C\+O\+DE}}
+\index{N\+U\+M\+\_\+\+U\+N\+I\+C\+O\+DE@{N\+U\+M\+\_\+\+U\+N\+I\+C\+O\+DE}!unicode.\+c@{unicode.\+c}}
+\subsubsection{\texorpdfstring{N\+U\+M\+\_\+\+U\+N\+I\+C\+O\+DE}{NUM\_UNICODE}}
+{\footnotesize\ttfamily \#define N\+U\+M\+\_\+\+U\+N\+I\+C\+O\+DE~21747}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{unicode_8c_a15fca65af34d3ed8efdb918100eab777}\label{unicode_8c_a15fca65af34d3ed8efdb918100eab777}} 
+\index{unicode.\+c@{unicode.\+c}!binary\+Search@{binary\+Search}}
+\index{binary\+Search@{binary\+Search}!unicode.\+c@{unicode.\+c}}
+\subsubsection{\texorpdfstring{binary\+Search()}{binarySearch()}}
+{\footnotesize\ttfamily int binary\+Search (\begin{DoxyParamCaption}\item[{const char $\ast$$\ast$}]{strings,  }\item[{int}]{start,  }\item[{int}]{end,  }\item[{const char $\ast$}]{find }\end{DoxyParamCaption})}
+
+Performs a binary search on an array of strings.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em strings} & The array of string to search. \\
+\hline
+\mbox{\tt in}  & {\em start} & The index to start searching at. \\
+\hline
+\mbox{\tt in}  & {\em end} & The index to end searching at. \\
+\hline
+\mbox{\tt in}  & {\em find} & The string to search for.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of the matching string, if found.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em -\/1} & The string was not found in the array. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{unicode_8c_a11236bd6feed76f3e073bb0ed368584c}\label{unicode_8c_a11236bd6feed76f3e073bb0ed368584c}} 
+\index{unicode.\+c@{unicode.\+c}!convert\+Normative\+Name\+To\+Code\+Point@{convert\+Normative\+Name\+To\+Code\+Point}}
+\index{convert\+Normative\+Name\+To\+Code\+Point@{convert\+Normative\+Name\+To\+Code\+Point}!unicode.\+c@{unicode.\+c}}
+\subsubsection{\texorpdfstring{convert\+Normative\+Name\+To\+Code\+Point()}{convertNormativeNameToCodePoint()}}
+{\footnotesize\ttfamily long convert\+Normative\+Name\+To\+Code\+Point (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name }\end{DoxyParamCaption})}
+
+Converts a Unicode normative name to a Unicode code point.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & The Unicode normative name to convert.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Unicode code point corresponding to {\itshape name}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em -\/1} & An invalid Unicode normative name was supplied. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{unicode_8c_a7f4d4f1367f9361a8811ccc505b90270}\label{unicode_8c_a7f4d4f1367f9361a8811ccc505b90270}} 
+\index{unicode.\+c@{unicode.\+c}!convert\+Code\+Point\+To\+U\+T\+F8@{convert\+Code\+Point\+To\+U\+T\+F8}}
+\index{convert\+Code\+Point\+To\+U\+T\+F8@{convert\+Code\+Point\+To\+U\+T\+F8}!unicode.\+c@{unicode.\+c}}
+\subsubsection{\texorpdfstring{convert\+Code\+Point\+To\+U\+T\+F8()}{convertCodePointToUTF8()}}
+{\footnotesize\ttfamily size\+\_\+t convert\+Code\+Point\+To\+U\+T\+F8 (\begin{DoxyParamCaption}\item[{unsigned long}]{codepoint,  }\item[{char $\ast$}]{out }\end{DoxyParamCaption})}
+
+Converts a Unicode code point to a U\+T\+F-\/8 character.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em codepoint} & The Unicode code point to convert to U\+T\+F-\/8. \\
+\hline
+\mbox{\tt out}  & {\em out} & A pointer to the location to store the U\+T\+F-\/8 character.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The length of the converted multi-\/byte U\+T\+F-\/8 character.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & An invalid Unicode code point was supplied. \\
+\hline
+\end{DoxyRetVals}

@@ -1,0 +1,2793 @@
+\hypertarget{interpreter_8h}{}\section{interpreter.\+h File Reference}
+\label{interpreter_8h}\index{interpreter.\+h@{interpreter.\+h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}parser.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}unicode.\+h\char`\"{}}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+union \hyperlink{union_value_data}{Value\+Data}
+\item 
+struct \hyperlink{struct_value_object}{Value\+Object}
+\item 
+struct \hyperlink{struct_return_object}{Return\+Object}
+\item 
+struct \hyperlink{structscopeobject}{scopeobject}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{interpreter_8h_ab09c63bb17c41b5d1c56f89c2a7c0306}{get\+Integer}(value)~(value-\/$>$data.\+i)
+\item 
+\#define \hyperlink{interpreter_8h_a476129305e12675fd848537c7a23be7e}{get\+Float}(value)~(value-\/$>$data.\+f)
+\item 
+\#define \hyperlink{interpreter_8h_a2267d4f53f5d3d35446667cc2b26f392}{get\+String}(value)~(value-\/$>$data.\+s)
+\item 
+\#define \hyperlink{interpreter_8h_a36ed74c060905cc2dbe11d7fc17d1418}{get\+Function}(value)~(value-\/$>$data.\+fn)
+\item 
+\#define \hyperlink{interpreter_8h_a144d61454440bdf7bcb4b3e2fa5d13a9}{get\+Array}(value)~(value-\/$>$data.\+a)
+\item 
+\#define \hyperlink{interpreter_8h_acdac0b055f8acfc246c8d1f6cc249012}{V}(value)~(value-\/$>$semaphore++)
+\item 
+\#define \hyperlink{interpreter_8h_add157945a6056e97010b859dd7b32c2c}{P}(value)~(value-\/$>$semaphore-\/-\/)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structscopeobject}{scopeobject} \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1}{Value\+Type} \{ \newline
+\hyperlink{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1a656b93fb21c4267dae17573f6129fe93}{V\+T\+\_\+\+I\+N\+T\+E\+G\+ER}, 
+\hyperlink{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1a361c0d0ff5ba71f4ddd9633d3f79635f}{V\+T\+\_\+\+F\+L\+O\+AT}, 
+\hyperlink{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1aa7db6a14e86242b201db0d4993d61862}{V\+T\+\_\+\+B\+O\+O\+L\+E\+AN}, 
+\hyperlink{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1a7d0ada66d85d8eb695f3bdd2e48b5976}{V\+T\+\_\+\+S\+T\+R\+I\+NG}, 
+\newline
+\hyperlink{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1a523067b7870725372ce9aa1399a8abba}{V\+T\+\_\+\+N\+IL}, 
+\hyperlink{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1affe2313f341864dd7b00dc48341cf69a}{V\+T\+\_\+\+F\+U\+NC}, 
+\hyperlink{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1a64c88cc545e7f47bb579477c9a9d02f3}{V\+T\+\_\+\+A\+R\+R\+AY}
+ \}
+\item 
+enum \hyperlink{interpreter_8h_a36a419f0b50a0c1d2d4cf712e0ba64cc}{Return\+Type} \{ \hyperlink{interpreter_8h_a36a419f0b50a0c1d2d4cf712e0ba64cca5799e236aeee53b6fe285dc67cb42f00}{R\+T\+\_\+\+D\+E\+F\+A\+U\+LT}, 
+\hyperlink{interpreter_8h_a36a419f0b50a0c1d2d4cf712e0ba64ccaa22f8c8892450d4ee8806a80a7e12b64}{R\+T\+\_\+\+B\+R\+E\+AK}, 
+\hyperlink{interpreter_8h_a36a419f0b50a0c1d2d4cf712e0ba64ccae089a7a50c323705d8c848d0308ca41b}{R\+T\+\_\+\+R\+E\+T\+U\+RN}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{Indent}\textbf{ Utilities}\par
+{\em Functions for performing helper tasks. }\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interpreter_8h_a1661856b86c8663a14033f1587007ebb}{print\+Interpreter\+Error} (const char $\ast$, \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+char $\ast$ \hyperlink{interpreter_8h_ae8f0bacd507d9507e2e2fb4435da52e4}{copy\+String} (char $\ast$)
+\item 
+unsigned int \hyperlink{interpreter_8h_a3bcb2030a3649910e8c2f5e073acf436}{is\+Hex\+String} (const char $\ast$)
+\item 
+char $\ast$ \hyperlink{interpreter_8h_a0a7a60fd2c08ec4d7fc71b5f752c0bca}{resolve\+Identifier\+Name} (\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+int \hyperlink{interpreter_8h_a7dcb8461a42853a5a7251631f714aad4}{resolve\+Terminal\+Slot} (\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$, \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$$\ast$, \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$$\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Value object modifiers}\par
+{\em Functions for creating, copying, and deleting value objects. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a494ae7c921c6e7994e07d927f1dd619b}{create\+Nil\+Value\+Object} (void)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a83170df5413454d013a2624ffde40134}{create\+Boolean\+Value\+Object} (int)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a18641bbdeb32fc2f4eb565a8b2a6a62d}{create\+Integer\+Value\+Object} (long long)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_aea96b6d2469b6f3d4531987c644c2d63}{create\+Float\+Value\+Object} (float)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a9c7124b50cb92fb20edc6c2963a5f2b8}{create\+String\+Value\+Object} (char $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a60e7bc7adc8e47af218b9e74a8253cd6}{create\+Function\+Value\+Object} (\hyperlink{struct_func_def_stmt_node}{Func\+Def\+Stmt\+Node} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a0cf184e4423d5d0a6b02262445504996}{create\+Array\+Value\+Object} (\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a030b889cd6487c903b7e12e69268cdc4}{copy\+Value\+Object} (\hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+void \hyperlink{interpreter_8h_a47864225786b36609969a3fea1658a98}{delete\+Value\+Object} (\hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Scope object modifiers}\par
+{\em Functions for manipulating scope objects and their data. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$ \hyperlink{interpreter_8h_a00f475c904bf21ba3d14fa47177948ff}{create\+Scope\+Object} (\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$ \hyperlink{interpreter_8h_a0c196681d6ad8035fc76695fa9b25bf9}{create\+Scope\+Object\+Caller} (\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+void \hyperlink{interpreter_8h_a2d477a01d56c2e2aed64ad096c6d5417}{delete\+Scope\+Object} (\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_ac03d42338acbb486c0aa4f2953c5de9c}{create\+Scope\+Value} (\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$, \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_ac36baca67d1e736477a451a920c37cd6}{update\+Scope\+Value} (\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$, \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a4fe0368a3dd14b3eb531b76a9f782e6d}{get\+Scope\+Value} (\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$, \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a64076fc6b8b7d7dbe28d1246f1ae925e}{get\+Scope\+Value\+Local} (\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$, \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$)
+\item 
+\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$ \hyperlink{interpreter_8h_a099d931e309ce244f9ba48b2dec202ea}{get\+Scope\+Object} (\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$, \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$)
+\item 
+\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$ \hyperlink{interpreter_8h_a6aa337979889b2d265b73d815adba49c}{get\+Scope\+Object\+Local} (\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$, \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$)
+\item 
+void \hyperlink{interpreter_8h_a65ea781de2f02ab047b9905e19b6d2e8}{delete\+Scope\+Value} (\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$, \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Return object modifiers}\par
+{\em Functions for creating and deleting return objects. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_return_object}{Return\+Object} $\ast$ \hyperlink{interpreter_8h_ae981d9226d812c444fc16aa82755a483}{create\+Return\+Object} (\hyperlink{interpreter_8h_a36a419f0b50a0c1d2d4cf712e0ba64cc}{Return\+Type}, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+void \hyperlink{interpreter_8h_a573290ef3b6c111b59ad34136dd52d56}{delete\+Return\+Object} (\hyperlink{struct_return_object}{Return\+Object} $\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Casts}\par
+{\em Functions for performing casts between different types of values. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a17aa2b55578f49903859a41bb1d2dcba}{cast\+Boolean\+Implicit} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_abbf91182fe9db4f0e2e3c4472f0ad431}{cast\+Integer\+Implicit} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a4132ca66d51545ce6ae5b3287070a50a}{cast\+Float\+Implicit} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a58e25c56eb8e00ea5b5a2eaca71733b0}{cast\+String\+Implicit} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a9da4535836163318aac4d7d2eb03a2d2}{cast\+Boolean\+Explicit} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_aa211d313e27c2f081edc2309a4acb020}{cast\+Integer\+Explicit} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_ab8aff5e3c1456ad85bf55cc816a84a87}{cast\+Float\+Explicit} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a392cb43c47522cc46d70df0f673b73f6}{cast\+String\+Explicit} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Node interpreters}\par
+{\em Functions for interpreting basic parse tree nodes. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a88e238ecbd85b9cfce3d34ad7025774d}{interpret\+Expr\+Node} (\hyperlink{struct_expr_node}{Expr\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_return_object}{Return\+Object} $\ast$ \hyperlink{interpreter_8h_a8243b0f033288a08ae06a1fc17c46303}{interpret\+Stmt\+Node} (\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_return_object}{Return\+Object} $\ast$ \hyperlink{interpreter_8h_a7bb6c3c2339270c356e1aaaf44c52cf7}{interpret\+Stmt\+Node\+List} (\hyperlink{struct_stmt_node_list}{Stmt\+Node\+List} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_return_object}{Return\+Object} $\ast$ \hyperlink{interpreter_8h_a35a65f719caa550f2d615abeb26a2200}{interpret\+Block\+Node} (\hyperlink{struct_block_node}{Block\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+int \hyperlink{interpreter_8h_a30be2c4c505c03683a6a3bdc4f7164aa}{interpret\+Main\+Node} (\hyperlink{struct_main_node}{Main\+Node} $\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Expression interpreters}\par
+{\em Functions for interpreting expression parse tree nodes. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a27cedbf17b05209dea5559a175309a14}{interpret\+Imp\+Var\+Expr\+Node} (\hyperlink{struct_expr_node}{Expr\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a8836d5dd711beb5cd96336fe51cdc185}{interpret\+Cast\+Expr\+Node} (\hyperlink{struct_expr_node}{Expr\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_aeacd50079f0ce4daf99a11f922182c08}{interpret\+Func\+Call\+Expr\+Node} (\hyperlink{struct_expr_node}{Expr\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a0f42bf997323efdae806c0bcf1c554d8}{interpret\+Identifier\+Expr\+Node} (\hyperlink{struct_expr_node}{Expr\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_ad561e8b2aa21983e94b838f30337f099}{interpret\+Constant\+Expr\+Node} (\hyperlink{struct_expr_node}{Expr\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Operation interpreters}\par
+{\em Functions for interpreting operation parse tree nodes. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a7795828f9fd573ff3670ade6f6955b07}{interpret\+Not\+Op\+Expr\+Node} (\hyperlink{struct_op_expr_node}{Op\+Expr\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_ac43fd9e88414ff9960db8a442ae9a0e8}{interpret\+Arith\+Op\+Expr\+Node} (\hyperlink{struct_op_expr_node}{Op\+Expr\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_ad0dc393a1a5f2ef0eb59742fe70f07d1}{interpret\+Bool\+Op\+Expr\+Node} (\hyperlink{struct_op_expr_node}{Op\+Expr\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_ab84fa97762a03da8689f763fc3165b41}{interpret\+Equality\+Op\+Expr\+Node} (\hyperlink{struct_op_expr_node}{Op\+Expr\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a4f45d788f390ee7a01a9f7a13f512d03}{interpret\+Concat\+Op\+Expr\+Node} (\hyperlink{struct_op_expr_node}{Op\+Expr\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a14b3a72f8c575160185d3e1ddd9721c3}{interpret\+Op\+Expr\+Node} (\hyperlink{struct_expr_node}{Expr\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Statement interpreters}\par
+{\em Functions for interpreting statement parse tree nodes. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_return_object}{Return\+Object} $\ast$ \hyperlink{interpreter_8h_a5742a88c672e9e224aecef05663d41ea}{interpret\+Cast\+Stmt\+Node} (\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_return_object}{Return\+Object} $\ast$ \hyperlink{interpreter_8h_a3099ebd9282870922a92b1b59f675458}{interpret\+Print\+Stmt\+Node} (\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_return_object}{Return\+Object} $\ast$ \hyperlink{interpreter_8h_ababafcbe6b8e86ed3284bb6643baafa4}{interpret\+Input\+Stmt\+Node} (\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_return_object}{Return\+Object} $\ast$ \hyperlink{interpreter_8h_a644bee21f70eaa27dd40ae1a9ea07145}{interpret\+Assignment\+Stmt\+Node} (\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_return_object}{Return\+Object} $\ast$ \hyperlink{interpreter_8h_a8f688271f7f3ad36ce62428e55940c03}{interpret\+Declaration\+Stmt\+Node} (\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_return_object}{Return\+Object} $\ast$ \hyperlink{interpreter_8h_a0214f5c76bcb63a1fbb9a242f9341763}{interpret\+If\+Then\+Else\+Stmt\+Node} (\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_return_object}{Return\+Object} $\ast$ \hyperlink{interpreter_8h_acbbc71ff8da84a69bea6a533c73c02ff}{interpret\+Switch\+Stmt\+Node} (\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_return_object}{Return\+Object} $\ast$ \hyperlink{interpreter_8h_af8856c962dbaeb39b8a2570c3939bebf}{interpret\+Break\+Stmt\+Node} (\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_return_object}{Return\+Object} $\ast$ \hyperlink{interpreter_8h_a83339941f601e7cbbecb09c7501b49fd}{interpret\+Return\+Stmt\+Node} (\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_return_object}{Return\+Object} $\ast$ \hyperlink{interpreter_8h_a3907f4b04d219b06c4967b92af485ff8}{interpret\+Loop\+Stmt\+Node} (\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_return_object}{Return\+Object} $\ast$ \hyperlink{interpreter_8h_a8c223fb36e021e72d06c4da6bc198080}{interpret\+Deallocation\+Stmt\+Node} (\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_return_object}{Return\+Object} $\ast$ \hyperlink{interpreter_8h_a8760ad4152e9a2dfeb2ed661c3ef04df}{interpret\+Func\+Def\+Stmt\+Node} (\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_return_object}{Return\+Object} $\ast$ \hyperlink{interpreter_8h_ab8680118602f725af9bbb28f2a33ba93}{interpret\+Expr\+Stmt\+Node} (\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\item 
+\hyperlink{struct_return_object}{Return\+Object} $\ast$ \hyperlink{interpreter_8h_a682accc2207d4f55386446d4d63f1b2e}{interpret\+Alt\+Array\+Def\+Stmt\+Node} (\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$, \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Arithmetic operations (integer-\/integer)}\par
+{\em Functions for performing integer-\/integer operations on values. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a60442c44a3ac32b0a98e89294e785c7a}{op\+Add\+Integer\+Integer} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a40c15754c7035023570c2f6706aa1bce}{op\+Sub\+Integer\+Integer} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a49439f8122d53198698d46dc8e355dec}{op\+Mult\+Integer\+Integer} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a1c2bad8d59cc55d1de2e90818552b727}{op\+Div\+Integer\+Integer} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a60d738376880221327c82bb0bf2de141}{op\+Max\+Integer\+Integer} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_af3f2a6f50fdd068834ab1b58d4928ec8}{op\+Min\+Integer\+Integer} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a87b62a374250d0fbe4e9e95497c10b15}{op\+Mod\+Integer\+Integer} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Arithmetic operations (integer-\/float)}\par
+{\em Functions for performing integer-\/float operations on values. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_afd694eb2626213010cbc38830a462fde}{op\+Add\+Integer\+Float} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a305d078f6079ca2938e21409816000be}{op\+Sub\+Integer\+Float} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a5393045000bf05070b764eebe2012627}{op\+Mult\+Integer\+Float} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a0df5be521bfc67b35aca6ab1e30c2a32}{op\+Div\+Integer\+Float} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a5d68c3dc91195706810b6db725e62eaa}{op\+Max\+Integer\+Float} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a5693ec134e9b9090f8cfe51d9906e38e}{op\+Min\+Integer\+Float} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a6fa3fda306a1df48dfe9fbc2cff75d74}{op\+Mod\+Integer\+Float} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Arithmetic operations (float-\/integer)}\par
+{\em Functions for performing float-\/integer operations on values. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a7c2619ce0699c09c53ab2aaf2c0977f7}{op\+Add\+Float\+Integer} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a499e486ea1a832b7105d3d8da3b76e91}{op\+Sub\+Float\+Integer} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a2cae8b697111b4eea690cdd38ddbc5a8}{op\+Mult\+Float\+Integer} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a89ec3da04bba6b628f84b131e804e3aa}{op\+Div\+Float\+Integer} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_ae290f0012a6e7ac888f6e42e162db0d1}{op\+Max\+Float\+Integer} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_aeba04e12530543d1ecc8a70669fac094}{op\+Min\+Float\+Integer} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a6d90cdaea27748de7784f43f82c31c8a}{op\+Mod\+Float\+Integer} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Arithmetic operations (float-\/float)}\par
+{\em Functions for performing float-\/float operations on values. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_ad07ed5a492963cbbfbaf26f10178a0da}{op\+Add\+Float\+Float} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a6fe0baa044b43505a5013455ce7f3ef4}{op\+Sub\+Float\+Float} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_ab28d564ef0da5903a3a2ed6c18dcad11}{op\+Mult\+Float\+Float} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a907454143b8856fe616d3b595cb917d1}{op\+Div\+Float\+Float} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a744d79a234d2a4f6490ef91624071c32}{op\+Max\+Float\+Float} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a901fca3f0217cce10f23a893372680a8}{op\+Min\+Float\+Float} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_ae7fd86387767d294c071b020ea5e9ccc}{op\+Mod\+Float\+Float} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Equality operations (boolean-\/boolean)}\par
+{\em Functions for performing boolean-\/boolean operations on values. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a49a410f97c8559f2ba41ca94b7aceb21}{op\+Eq\+Boolean\+Boolean} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_adf2234eccc6099f2f1829a7ee948e045}{op\+Neq\+Boolean\+Boolean} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Equality operations (integer-\/integer)}\par
+{\em Functions for performing integer-\/integer operations on values. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_af02dbffb1883def8d565b324d3b08fa4}{op\+Eq\+Integer\+Integer} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a737fac56d37cbf193f78775774cfdeeb}{op\+Neq\+Integer\+Integer} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Equality operations (integer-\/float)}\par
+{\em Functions for performing integer-\/float operations on values. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a918c1fe2753f0fa6a7f0abbb0f26790f}{op\+Eq\+Integer\+Float} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a689189c68d9b98c49d296cd9f04363e9}{op\+Neq\+Integer\+Float} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Equality operations (float-\/integer)}\par
+{\em Functions for performing float-\/integer operations on values. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a5b824e009801b5ca65d51abe36aecf97}{op\+Eq\+Float\+Integer} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a48ab7e79793cd6462d041d6288b770d9}{op\+Neq\+Float\+Integer} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Equality operations (float-\/float)}\par
+{\em Functions for performing float-\/float operations on values. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_ab721f724a3fac4900c4a8886d57c41d2}{op\+Eq\+Float\+Float} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_ac2f5e5a62a09a571b8be1ab942fa29cd}{op\+Neq\+Float\+Float} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Equality operations (string-\/string)}\par
+{\em Functions for performing string-\/string operations on values. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a990ba01ec898389b6bde8471e2ad0f9d}{op\+Eq\+String\+String} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a207c76cef3c01faa73750bd60e9b0037}{op\+Neq\+String\+String} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Equality operations (nil-\/nil)}\par
+{\em Functions for performing nil-\/nil operations on values. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_aa910b7104ad75428e66766f5bd06f4a8}{op\+Eq\+Nil\+Nil} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{interpreter_8h_a7ad8e455aa33ebc978836eab51b9c268}{op\+Neq\+Nil\+Nil} (\hyperlink{struct_value_object}{Value\+Object} $\ast$, \hyperlink{struct_value_object}{Value\+Object} $\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+Structures and functions for interpreting a parse tree. The interpreter traverses a parse tree in a depth-\/first manner, interpreting each node it reaches along the way. This is the last stage of the processing of a source code file.
+
+\begin{DoxyAuthor}{Author}
+Justin J. Meza
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2010-\/2012 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{interpreter_8h_ab09c63bb17c41b5d1c56f89c2a7c0306}\label{interpreter_8h_ab09c63bb17c41b5d1c56f89c2a7c0306}} 
+\index{interpreter.\+h@{interpreter.\+h}!get\+Integer@{get\+Integer}}
+\index{get\+Integer@{get\+Integer}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{get\+Integer}{getInteger}}
+{\footnotesize\ttfamily \#define get\+Integer(\begin{DoxyParamCaption}\item[{}]{value }\end{DoxyParamCaption})~(value-\/$>$data.\+i)}
+
+Retrieves a value\textquotesingle{}s integer data. \mbox{\Hypertarget{interpreter_8h_a476129305e12675fd848537c7a23be7e}\label{interpreter_8h_a476129305e12675fd848537c7a23be7e}} 
+\index{interpreter.\+h@{interpreter.\+h}!get\+Float@{get\+Float}}
+\index{get\+Float@{get\+Float}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{get\+Float}{getFloat}}
+{\footnotesize\ttfamily \#define get\+Float(\begin{DoxyParamCaption}\item[{}]{value }\end{DoxyParamCaption})~(value-\/$>$data.\+f)}
+
+Retrieves a value\textquotesingle{}s decimal data. \mbox{\Hypertarget{interpreter_8h_a2267d4f53f5d3d35446667cc2b26f392}\label{interpreter_8h_a2267d4f53f5d3d35446667cc2b26f392}} 
+\index{interpreter.\+h@{interpreter.\+h}!get\+String@{get\+String}}
+\index{get\+String@{get\+String}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{get\+String}{getString}}
+{\footnotesize\ttfamily \#define get\+String(\begin{DoxyParamCaption}\item[{}]{value }\end{DoxyParamCaption})~(value-\/$>$data.\+s)}
+
+Retrieves a value\textquotesingle{}s string data. \mbox{\Hypertarget{interpreter_8h_a36ed74c060905cc2dbe11d7fc17d1418}\label{interpreter_8h_a36ed74c060905cc2dbe11d7fc17d1418}} 
+\index{interpreter.\+h@{interpreter.\+h}!get\+Function@{get\+Function}}
+\index{get\+Function@{get\+Function}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{get\+Function}{getFunction}}
+{\footnotesize\ttfamily \#define get\+Function(\begin{DoxyParamCaption}\item[{}]{value }\end{DoxyParamCaption})~(value-\/$>$data.\+fn)}
+
+Retrieves a value\textquotesingle{}s function data. \mbox{\Hypertarget{interpreter_8h_a144d61454440bdf7bcb4b3e2fa5d13a9}\label{interpreter_8h_a144d61454440bdf7bcb4b3e2fa5d13a9}} 
+\index{interpreter.\+h@{interpreter.\+h}!get\+Array@{get\+Array}}
+\index{get\+Array@{get\+Array}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{get\+Array}{getArray}}
+{\footnotesize\ttfamily \#define get\+Array(\begin{DoxyParamCaption}\item[{}]{value }\end{DoxyParamCaption})~(value-\/$>$data.\+a)}
+
+Retrieves a value\textquotesingle{}s array data. \mbox{\Hypertarget{interpreter_8h_acdac0b055f8acfc246c8d1f6cc249012}\label{interpreter_8h_acdac0b055f8acfc246c8d1f6cc249012}} 
+\index{interpreter.\+h@{interpreter.\+h}!V@{V}}
+\index{V@{V}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{V}{V}}
+{\footnotesize\ttfamily \#define V(\begin{DoxyParamCaption}\item[{}]{value }\end{DoxyParamCaption})~(value-\/$>$semaphore++)}
+
+Increments a value\textquotesingle{}s semaphore. \mbox{\Hypertarget{interpreter_8h_add157945a6056e97010b859dd7b32c2c}\label{interpreter_8h_add157945a6056e97010b859dd7b32c2c}} 
+\index{interpreter.\+h@{interpreter.\+h}!P@{P}}
+\index{P@{P}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{P}{P}}
+{\footnotesize\ttfamily \#define P(\begin{DoxyParamCaption}\item[{}]{value }\end{DoxyParamCaption})~(value-\/$>$semaphore-\/-\/)}
+
+Decrements a value\textquotesingle{}s semaphore. 
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}\label{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}} 
+\index{interpreter.\+h@{interpreter.\+h}!Scope\+Object@{Scope\+Object}}
+\index{Scope\+Object@{Scope\+Object}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{Scope\+Object}{ScopeObject}}
+{\footnotesize\ttfamily typedef struct \hyperlink{structscopeobject}{scopeobject}  \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object}}
+
+Stores a set of variables hierarchically. 
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1}\label{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1}} 
+\index{interpreter.\+h@{interpreter.\+h}!Value\+Type@{Value\+Type}}
+\index{Value\+Type@{Value\+Type}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{Value\+Type}{ValueType}}
+{\footnotesize\ttfamily enum \hyperlink{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1}{Value\+Type}}
+
+Represents a value type. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{V\+T\+\_\+\+I\+N\+T\+E\+G\+ER@{V\+T\+\_\+\+I\+N\+T\+E\+G\+ER}!interpreter.\+h@{interpreter.\+h}}\index{interpreter.\+h@{interpreter.\+h}!V\+T\+\_\+\+I\+N\+T\+E\+G\+ER@{V\+T\+\_\+\+I\+N\+T\+E\+G\+ER}}}\mbox{\Hypertarget{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1a656b93fb21c4267dae17573f6129fe93}\label{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1a656b93fb21c4267dae17573f6129fe93}} 
+V\+T\+\_\+\+I\+N\+T\+E\+G\+ER&An integer value. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{V\+T\+\_\+\+F\+L\+O\+AT@{V\+T\+\_\+\+F\+L\+O\+AT}!interpreter.\+h@{interpreter.\+h}}\index{interpreter.\+h@{interpreter.\+h}!V\+T\+\_\+\+F\+L\+O\+AT@{V\+T\+\_\+\+F\+L\+O\+AT}}}\mbox{\Hypertarget{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1a361c0d0ff5ba71f4ddd9633d3f79635f}\label{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1a361c0d0ff5ba71f4ddd9633d3f79635f}} 
+V\+T\+\_\+\+F\+L\+O\+AT&A decimal value. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{V\+T\+\_\+\+B\+O\+O\+L\+E\+AN@{V\+T\+\_\+\+B\+O\+O\+L\+E\+AN}!interpreter.\+h@{interpreter.\+h}}\index{interpreter.\+h@{interpreter.\+h}!V\+T\+\_\+\+B\+O\+O\+L\+E\+AN@{V\+T\+\_\+\+B\+O\+O\+L\+E\+AN}}}\mbox{\Hypertarget{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1aa7db6a14e86242b201db0d4993d61862}\label{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1aa7db6a14e86242b201db0d4993d61862}} 
+V\+T\+\_\+\+B\+O\+O\+L\+E\+AN&A boolean value. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{V\+T\+\_\+\+S\+T\+R\+I\+NG@{V\+T\+\_\+\+S\+T\+R\+I\+NG}!interpreter.\+h@{interpreter.\+h}}\index{interpreter.\+h@{interpreter.\+h}!V\+T\+\_\+\+S\+T\+R\+I\+NG@{V\+T\+\_\+\+S\+T\+R\+I\+NG}}}\mbox{\Hypertarget{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1a7d0ada66d85d8eb695f3bdd2e48b5976}\label{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1a7d0ada66d85d8eb695f3bdd2e48b5976}} 
+V\+T\+\_\+\+S\+T\+R\+I\+NG&A string value. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{V\+T\+\_\+\+N\+IL@{V\+T\+\_\+\+N\+IL}!interpreter.\+h@{interpreter.\+h}}\index{interpreter.\+h@{interpreter.\+h}!V\+T\+\_\+\+N\+IL@{V\+T\+\_\+\+N\+IL}}}\mbox{\Hypertarget{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1a523067b7870725372ce9aa1399a8abba}\label{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1a523067b7870725372ce9aa1399a8abba}} 
+V\+T\+\_\+\+N\+IL&Represents no value. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{V\+T\+\_\+\+F\+U\+NC@{V\+T\+\_\+\+F\+U\+NC}!interpreter.\+h@{interpreter.\+h}}\index{interpreter.\+h@{interpreter.\+h}!V\+T\+\_\+\+F\+U\+NC@{V\+T\+\_\+\+F\+U\+NC}}}\mbox{\Hypertarget{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1affe2313f341864dd7b00dc48341cf69a}\label{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1affe2313f341864dd7b00dc48341cf69a}} 
+V\+T\+\_\+\+F\+U\+NC&A function. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{V\+T\+\_\+\+A\+R\+R\+AY@{V\+T\+\_\+\+A\+R\+R\+AY}!interpreter.\+h@{interpreter.\+h}}\index{interpreter.\+h@{interpreter.\+h}!V\+T\+\_\+\+A\+R\+R\+AY@{V\+T\+\_\+\+A\+R\+R\+AY}}}\mbox{\Hypertarget{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1a64c88cc545e7f47bb579477c9a9d02f3}\label{interpreter_8h_ad9971b6ef33e02ba2c75d19c1d2518a1a64c88cc545e7f47bb579477c9a9d02f3}} 
+V\+T\+\_\+\+A\+R\+R\+AY&An array. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{interpreter_8h_a36a419f0b50a0c1d2d4cf712e0ba64cc}\label{interpreter_8h_a36a419f0b50a0c1d2d4cf712e0ba64cc}} 
+\index{interpreter.\+h@{interpreter.\+h}!Return\+Type@{Return\+Type}}
+\index{Return\+Type@{Return\+Type}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{Return\+Type}{ReturnType}}
+{\footnotesize\ttfamily enum \hyperlink{interpreter_8h_a36a419f0b50a0c1d2d4cf712e0ba64cc}{Return\+Type}}
+
+Represents the return type. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+T\+\_\+\+D\+E\+F\+A\+U\+LT@{R\+T\+\_\+\+D\+E\+F\+A\+U\+LT}!interpreter.\+h@{interpreter.\+h}}\index{interpreter.\+h@{interpreter.\+h}!R\+T\+\_\+\+D\+E\+F\+A\+U\+LT@{R\+T\+\_\+\+D\+E\+F\+A\+U\+LT}}}\mbox{\Hypertarget{interpreter_8h_a36a419f0b50a0c1d2d4cf712e0ba64cca5799e236aeee53b6fe285dc67cb42f00}\label{interpreter_8h_a36a419f0b50a0c1d2d4cf712e0ba64cca5799e236aeee53b6fe285dc67cb42f00}} 
+R\+T\+\_\+\+D\+E\+F\+A\+U\+LT&Code block completed successfully. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+T\+\_\+\+B\+R\+E\+AK@{R\+T\+\_\+\+B\+R\+E\+AK}!interpreter.\+h@{interpreter.\+h}}\index{interpreter.\+h@{interpreter.\+h}!R\+T\+\_\+\+B\+R\+E\+AK@{R\+T\+\_\+\+B\+R\+E\+AK}}}\mbox{\Hypertarget{interpreter_8h_a36a419f0b50a0c1d2d4cf712e0ba64ccaa22f8c8892450d4ee8806a80a7e12b64}\label{interpreter_8h_a36a419f0b50a0c1d2d4cf712e0ba64ccaa22f8c8892450d4ee8806a80a7e12b64}} 
+R\+T\+\_\+\+B\+R\+E\+AK&Broke out of a loop or switch statement. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+T\+\_\+\+R\+E\+T\+U\+RN@{R\+T\+\_\+\+R\+E\+T\+U\+RN}!interpreter.\+h@{interpreter.\+h}}\index{interpreter.\+h@{interpreter.\+h}!R\+T\+\_\+\+R\+E\+T\+U\+RN@{R\+T\+\_\+\+R\+E\+T\+U\+RN}}}\mbox{\Hypertarget{interpreter_8h_a36a419f0b50a0c1d2d4cf712e0ba64ccae089a7a50c323705d8c848d0308ca41b}\label{interpreter_8h_a36a419f0b50a0c1d2d4cf712e0ba64ccae089a7a50c323705d8c848d0308ca41b}} 
+R\+T\+\_\+\+R\+E\+T\+U\+RN&Returned from a function. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{interpreter_8h_a1661856b86c8663a14033f1587007ebb}\label{interpreter_8h_a1661856b86c8663a14033f1587007ebb}} 
+\index{interpreter.\+h@{interpreter.\+h}!print\+Interpreter\+Error@{print\+Interpreter\+Error}}
+\index{print\+Interpreter\+Error@{print\+Interpreter\+Error}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{print\+Interpreter\+Error()}{printInterpreterError()}}
+{\footnotesize\ttfamily void print\+Interpreter\+Error (\begin{DoxyParamCaption}\item[{const char $\ast$}]{,  }\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{interpreter_8h_ae8f0bacd507d9507e2e2fb4435da52e4}\label{interpreter_8h_ae8f0bacd507d9507e2e2fb4435da52e4}} 
+\index{interpreter.\+h@{interpreter.\+h}!copy\+String@{copy\+String}}
+\index{copy\+String@{copy\+String}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{copy\+String()}{copyString()}}
+{\footnotesize\ttfamily char$\ast$ copy\+String (\begin{DoxyParamCaption}\item[{char $\ast$}]{data }\end{DoxyParamCaption})}
+
+Creates a new string by copying the contents of another string.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & The string to copy.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new string whose contents is a copy of {\itshape data}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a3bcb2030a3649910e8c2f5e073acf436}\label{interpreter_8h_a3bcb2030a3649910e8c2f5e073acf436}} 
+\index{interpreter.\+h@{interpreter.\+h}!is\+Hex\+String@{is\+Hex\+String}}
+\index{is\+Hex\+String@{is\+Hex\+String}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{is\+Hex\+String()}{isHexString()}}
+{\footnotesize\ttfamily unsigned int is\+Hex\+String (\begin{DoxyParamCaption}\item[{const char $\ast$}]{data }\end{DoxyParamCaption})}
+
+Checks if a string follows the format of a hexadecimal number.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & The characters to check the format of.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & The string is not a hexadecimal number.\\
+\hline
+{\em 1} & The string is a hexadecimal number. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a0a7a60fd2c08ec4d7fc71b5f752c0bca}\label{interpreter_8h_a0a7a60fd2c08ec4d7fc71b5f752c0bca}} 
+\index{interpreter.\+h@{interpreter.\+h}!resolve\+Identifier\+Name@{resolve\+Identifier\+Name}}
+\index{resolve\+Identifier\+Name@{resolve\+Identifier\+Name}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{resolve\+Identifier\+Name()}{resolveIdentifierName()}}
+{\footnotesize\ttfamily char$\ast$ resolve\+Identifier\+Name (\begin{DoxyParamCaption}\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{id,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Evaluates an identifier to produce its name as a string.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em id} & The identifier to evaluate.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape id} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new string containing the evaluated name of the identifier.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a7dcb8461a42853a5a7251631f714aad4}\label{interpreter_8h_a7dcb8461a42853a5a7251631f714aad4}} 
+\index{interpreter.\+h@{interpreter.\+h}!resolve\+Terminal\+Slot@{resolve\+Terminal\+Slot}}
+\index{resolve\+Terminal\+Slot@{resolve\+Terminal\+Slot}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{resolve\+Terminal\+Slot()}{resolveTerminalSlot()}}
+{\footnotesize\ttfamily int resolve\+Terminal\+Slot (\begin{DoxyParamCaption}\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{src,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{dest,  }\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{target,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$$\ast$}]{parent,  }\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$$\ast$}]{child }\end{DoxyParamCaption})}
+
+Starting from an initial parent scope and target identifier, traverses down until the target identifier is not a scope. Stores the value of the terminal child identifier and its parent scope.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em src} & The scope to resolve {\itshape target} in.\\
+\hline
+\mbox{\tt in}  & {\em dest} & The scope to retrieve {\itshape target} from.\\
+\hline
+\mbox{\tt in}  & {\em target} & The array slot to traverse.\\
+\hline
+\mbox{\tt out}  & {\em parent} & The parent of the terminal child identifier of {\itshape target}.\\
+\hline
+\mbox{\tt out}  & {\em child} & The terminal child identifier of {\itshape target}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A status code indicating success or failure.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Failed to traverse array.\\
+\hline
+{\em 1} & Succeeded to traverse array.\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape parent} will point to the parent scope containing the terminal child.
+
+{\itshape child} will point to the terminal child. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{interpreter_8h_a494ae7c921c6e7994e07d927f1dd619b}\label{interpreter_8h_a494ae7c921c6e7994e07d927f1dd619b}} 
+\index{interpreter.\+h@{interpreter.\+h}!create\+Nil\+Value\+Object@{create\+Nil\+Value\+Object}}
+\index{create\+Nil\+Value\+Object@{create\+Nil\+Value\+Object}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{create\+Nil\+Value\+Object()}{createNilValueObject()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ create\+Nil\+Value\+Object (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Creates a nil-\/type value.
+
+\begin{DoxyReturn}{Returns}
+A new nil-\/type value.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a83170df5413454d013a2624ffde40134}\label{interpreter_8h_a83170df5413454d013a2624ffde40134}} 
+\index{interpreter.\+h@{interpreter.\+h}!create\+Boolean\+Value\+Object@{create\+Boolean\+Value\+Object}}
+\index{create\+Boolean\+Value\+Object@{create\+Boolean\+Value\+Object}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{create\+Boolean\+Value\+Object()}{createBooleanValueObject()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ create\+Boolean\+Value\+Object (\begin{DoxyParamCaption}\item[{int}]{data }\end{DoxyParamCaption})}
+
+Creates a boolean-\/type value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & The boolean data to store.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A boolean-\/type value equalling 0 if {\itshape data} equals 0 and 1 otherwise.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a18641bbdeb32fc2f4eb565a8b2a6a62d}\label{interpreter_8h_a18641bbdeb32fc2f4eb565a8b2a6a62d}} 
+\index{interpreter.\+h@{interpreter.\+h}!create\+Integer\+Value\+Object@{create\+Integer\+Value\+Object}}
+\index{create\+Integer\+Value\+Object@{create\+Integer\+Value\+Object}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{create\+Integer\+Value\+Object()}{createIntegerValueObject()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ create\+Integer\+Value\+Object (\begin{DoxyParamCaption}\item[{long long}]{data }\end{DoxyParamCaption})}
+
+Creates a integer-\/type value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & The integer data to store.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An integer-\/type value equalling {\itshape data}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_aea96b6d2469b6f3d4531987c644c2d63}\label{interpreter_8h_aea96b6d2469b6f3d4531987c644c2d63}} 
+\index{interpreter.\+h@{interpreter.\+h}!create\+Float\+Value\+Object@{create\+Float\+Value\+Object}}
+\index{create\+Float\+Value\+Object@{create\+Float\+Value\+Object}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{create\+Float\+Value\+Object()}{createFloatValueObject()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ create\+Float\+Value\+Object (\begin{DoxyParamCaption}\item[{float}]{data }\end{DoxyParamCaption})}
+
+Creates a floating-\/point-\/type value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & The floating-\/point data to store.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A floating-\/point-\/type value equalling {\itshape data}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a9c7124b50cb92fb20edc6c2963a5f2b8}\label{interpreter_8h_a9c7124b50cb92fb20edc6c2963a5f2b8}} 
+\index{interpreter.\+h@{interpreter.\+h}!create\+String\+Value\+Object@{create\+String\+Value\+Object}}
+\index{create\+String\+Value\+Object@{create\+String\+Value\+Object}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{create\+String\+Value\+Object()}{createStringValueObject()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ create\+String\+Value\+Object (\begin{DoxyParamCaption}\item[{char $\ast$}]{data }\end{DoxyParamCaption})}
+
+Creates a string-\/type value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & The string data to store.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+{\itshape data} is stored as-\/is; no copy of it is made.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+A string-\/type value equalling {\itshape data}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a60e7bc7adc8e47af218b9e74a8253cd6}\label{interpreter_8h_a60e7bc7adc8e47af218b9e74a8253cd6}} 
+\index{interpreter.\+h@{interpreter.\+h}!create\+Function\+Value\+Object@{create\+Function\+Value\+Object}}
+\index{create\+Function\+Value\+Object@{create\+Function\+Value\+Object}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{create\+Function\+Value\+Object()}{createFunctionValueObject()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ create\+Function\+Value\+Object (\begin{DoxyParamCaption}\item[{\hyperlink{struct_func_def_stmt_node}{Func\+Def\+Stmt\+Node} $\ast$}]{def }\end{DoxyParamCaption})}
+
+Creates a function-\/type value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em def} & The function definition to store.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A function-\/type value containing {\itshape data}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a0cf184e4423d5d0a6b02262445504996}\label{interpreter_8h_a0cf184e4423d5d0a6b02262445504996}} 
+\index{interpreter.\+h@{interpreter.\+h}!create\+Array\+Value\+Object@{create\+Array\+Value\+Object}}
+\index{create\+Array\+Value\+Object@{create\+Array\+Value\+Object}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{create\+Array\+Value\+Object()}{createArrayValueObject()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ create\+Array\+Value\+Object (\begin{DoxyParamCaption}\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{parent }\end{DoxyParamCaption})}
+
+Creates an array-\/type value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parent} & The optional parent scope to use.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+{\itshape parent} may be N\+U\+LL, in which case this array is treated as the root.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+An empty array-\/type value with parent {\itshape parent}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a030b889cd6487c903b7e12e69268cdc4}\label{interpreter_8h_a030b889cd6487c903b7e12e69268cdc4}} 
+\index{interpreter.\+h@{interpreter.\+h}!copy\+Value\+Object@{copy\+Value\+Object}}
+\index{copy\+Value\+Object@{copy\+Value\+Object}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{copy\+Value\+Object()}{copyValueObject()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ copy\+Value\+Object (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{value }\end{DoxyParamCaption})}
+
+Copies a value.
+
+Instead of actually performing a copy of memory, this function increments a semaphore in {\itshape value} and returns {\itshape value} again. The semaphore gets decremented when {\itshape value} gets deleted. This way, an immutable copy of a value may be made without actually copying its blocks of memory; this reduces the overhead associated with copying a value--a fairly common operation--while still preserving its usability.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em value} & The value to copy.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A value with the same type and contents as {\itshape value}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & The type of {\itshape value} is unrecognized. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a47864225786b36609969a3fea1658a98}\label{interpreter_8h_a47864225786b36609969a3fea1658a98}} 
+\index{interpreter.\+h@{interpreter.\+h}!delete\+Value\+Object@{delete\+Value\+Object}}
+\index{delete\+Value\+Object@{delete\+Value\+Object}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{delete\+Value\+Object()}{deleteValueObject()}}
+{\footnotesize\ttfamily void delete\+Value\+Object (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{value }\end{DoxyParamCaption})}
+
+Deletes a value.
+
+This function decrements a semaphore in {\itshape value} and deletes {\itshape value} if the semaphore reaches 0 (no copies of this value are need anymore). The semaphore gets incremented when either the value is created or it gets copied. This way, an immutable copy of the value may be made without actually copying its memory.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em value} & The value to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape value} and any of its members will be freed (although see note for full details). 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{interpreter_8h_a00f475c904bf21ba3d14fa47177948ff}\label{interpreter_8h_a00f475c904bf21ba3d14fa47177948ff}} 
+\index{interpreter.\+h@{interpreter.\+h}!create\+Scope\+Object@{create\+Scope\+Object}}
+\index{create\+Scope\+Object@{create\+Scope\+Object}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{create\+Scope\+Object()}{createScopeObject()}}
+{\footnotesize\ttfamily \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object}$\ast$ create\+Scope\+Object (\begin{DoxyParamCaption}\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{parent }\end{DoxyParamCaption})}
+
+Creates a scope.
+
+Scopes are used to map identifiers to values. Scopes are organized hierarchically.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parent} & The optional parent scope to use.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An empty scope with parent {\itshape parent}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a0c196681d6ad8035fc76695fa9b25bf9}\label{interpreter_8h_a0c196681d6ad8035fc76695fa9b25bf9}} 
+\index{interpreter.\+h@{interpreter.\+h}!create\+Scope\+Object\+Caller@{create\+Scope\+Object\+Caller}}
+\index{create\+Scope\+Object\+Caller@{create\+Scope\+Object\+Caller}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{create\+Scope\+Object\+Caller()}{createScopeObjectCaller()}}
+{\footnotesize\ttfamily \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object}$\ast$ create\+Scope\+Object\+Caller (\begin{DoxyParamCaption}\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{parent,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{caller }\end{DoxyParamCaption})}
+
+Creates a scope with a specific caller.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parent} & The optional parent scope to use.\\
+\hline
+\mbox{\tt in}  & {\em caller} & The caller scope to use.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An empty scope with parent {\itshape parent} and caller {\itshape caller}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a2d477a01d56c2e2aed64ad096c6d5417}\label{interpreter_8h_a2d477a01d56c2e2aed64ad096c6d5417}} 
+\index{interpreter.\+h@{interpreter.\+h}!delete\+Scope\+Object@{delete\+Scope\+Object}}
+\index{delete\+Scope\+Object@{delete\+Scope\+Object}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{delete\+Scope\+Object()}{deleteScopeObject()}}
+{\footnotesize\ttfamily void delete\+Scope\+Object (\begin{DoxyParamCaption}\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Deletes a scope.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em scope} & The scope to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape scope} and any of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{interpreter_8h_ac03d42338acbb486c0aa4f2953c5de9c}\label{interpreter_8h_ac03d42338acbb486c0aa4f2953c5de9c}} 
+\index{interpreter.\+h@{interpreter.\+h}!create\+Scope\+Value@{create\+Scope\+Value}}
+\index{create\+Scope\+Value@{create\+Scope\+Value}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{create\+Scope\+Value()}{createScopeValue()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ create\+Scope\+Value (\begin{DoxyParamCaption}\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{src,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{dest,  }\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{target }\end{DoxyParamCaption})}
+
+Creates a new, nil-\/type value in a scope.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em src} & The scope to evaluate {\itshape target} under.\\
+\hline
+\mbox{\tt in,out}  & {\em dest} & The scope to create the new value in.\\
+\hline
+\mbox{\tt in}  & {\em target} & The name of the value to create.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The newly-\/created value.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_ac36baca67d1e736477a451a920c37cd6}\label{interpreter_8h_ac36baca67d1e736477a451a920c37cd6}} 
+\index{interpreter.\+h@{interpreter.\+h}!update\+Scope\+Value@{update\+Scope\+Value}}
+\index{update\+Scope\+Value@{update\+Scope\+Value}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{update\+Scope\+Value()}{updateScopeValue()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ update\+Scope\+Value (\begin{DoxyParamCaption}\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{src,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{dest,  }\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{target,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{value }\end{DoxyParamCaption})}
+
+Updates a value in a scope.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em src} & The scope to evaluate {\itshape target} under.\\
+\hline
+\mbox{\tt in,out}  & {\em dest} & The scope to update the value in.\\
+\hline
+\mbox{\tt in}  & {\em target} & The name of the value to create.\\
+\hline
+\mbox{\tt in}  & {\em value} & The new value to assign.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The updated value (will be the same as {\itshape val}).
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Either {\itshape target} could not be evaluated in {\itshape src} or {\itshape target} could not be found in {\itshape dest}. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a4fe0368a3dd14b3eb531b76a9f782e6d}\label{interpreter_8h_a4fe0368a3dd14b3eb531b76a9f782e6d}} 
+\index{interpreter.\+h@{interpreter.\+h}!get\+Scope\+Value@{get\+Scope\+Value}}
+\index{get\+Scope\+Value@{get\+Scope\+Value}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{get\+Scope\+Value()}{getScopeValue()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ get\+Scope\+Value (\begin{DoxyParamCaption}\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{src,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{dest,  }\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{target }\end{DoxyParamCaption})}
+
+Gets a stored value in a scope.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em src} & The scope to evaluate {\itshape target} under.\\
+\hline
+\mbox{\tt in,out}  & {\em dest} & The scope to update the value in.\\
+\hline
+\mbox{\tt in}  & {\em target} & The name of the value to get.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value in {\itshape dest}, named by evaluating {\itshape target} under {\itshape src}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Either {\itshape target} could not be evaluated in {\itshape src} or {\itshape target} could not be found in {\itshape dest}. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a64076fc6b8b7d7dbe28d1246f1ae925e}\label{interpreter_8h_a64076fc6b8b7d7dbe28d1246f1ae925e}} 
+\index{interpreter.\+h@{interpreter.\+h}!get\+Scope\+Value\+Local@{get\+Scope\+Value\+Local}}
+\index{get\+Scope\+Value\+Local@{get\+Scope\+Value\+Local}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{get\+Scope\+Value\+Local()}{getScopeValueLocal()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ get\+Scope\+Value\+Local (\begin{DoxyParamCaption}\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{src,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{dest,  }\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{target }\end{DoxyParamCaption})}
+
+Gets a value from a scope without accessing its ancestors.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em src} & The scope to evaluate {\itshape target} under.\\
+\hline
+\mbox{\tt in,out}  & {\em dest} & The scope to update the value in.\\
+\hline
+\mbox{\tt in}  & {\em target} & The name of the value to get.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value in {\itshape dest}, named by evaluating {\itshape target} under {\itshape src}, without accessing any ancestors of {\itshape dest}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Either {\itshape target} could not be evaluated in {\itshape src} or {\itshape target} could not be found in {\itshape dest}. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a099d931e309ce244f9ba48b2dec202ea}\label{interpreter_8h_a099d931e309ce244f9ba48b2dec202ea}} 
+\index{interpreter.\+h@{interpreter.\+h}!get\+Scope\+Object@{get\+Scope\+Object}}
+\index{get\+Scope\+Object@{get\+Scope\+Object}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{get\+Scope\+Object()}{getScopeObject()}}
+{\footnotesize\ttfamily \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object}$\ast$ get\+Scope\+Object (\begin{DoxyParamCaption}\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{src,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{dest,  }\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{target }\end{DoxyParamCaption})}
+
+Gets a scope from within another scope.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em src} & The scope to evaluate {\itshape target} under.\\
+\hline
+\mbox{\tt in,out}  & {\em dest} & The scope to update the value in.\\
+\hline
+\mbox{\tt in}  & {\em target} & The name of the scope to get.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value in {\itshape dest}, named by evaluating {\itshape target} under {\itshape src}, without accessing any ancestors of {\itshape dest}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Either {\itshape target} could not be evaluated in {\itshape src} or {\itshape target} could not be found in {\itshape dest}. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a6aa337979889b2d265b73d815adba49c}\label{interpreter_8h_a6aa337979889b2d265b73d815adba49c}} 
+\index{interpreter.\+h@{interpreter.\+h}!get\+Scope\+Object\+Local@{get\+Scope\+Object\+Local}}
+\index{get\+Scope\+Object\+Local@{get\+Scope\+Object\+Local}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{get\+Scope\+Object\+Local()}{getScopeObjectLocal()}}
+{\footnotesize\ttfamily \hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object}$\ast$ get\+Scope\+Object\+Local (\begin{DoxyParamCaption}\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{src,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{dest,  }\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{target }\end{DoxyParamCaption})}
+
+Gets a scope without accessing any arrays.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em src} & The scope to evaluate {\itshape target} under.\\
+\hline
+\mbox{\tt in,out}  & {\em dest} & The scope to update the value in.\\
+\hline
+\mbox{\tt in}  & {\em target} & The name of the value containing the scope to get.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The scope contained in the value in {\itshape dest}, named by evaluating {\itshape target} under {\itshape src}, without accessing any arrays.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Either {\itshape target} could not be evaluated in {\itshape src} or {\itshape target} could not be found in {\itshape dest}.\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000001}{Todo}]Add this definition to interpreter.\+h \end{DoxyRefDesc}
+\mbox{\Hypertarget{interpreter_8h_a65ea781de2f02ab047b9905e19b6d2e8}\label{interpreter_8h_a65ea781de2f02ab047b9905e19b6d2e8}} 
+\index{interpreter.\+h@{interpreter.\+h}!delete\+Scope\+Value@{delete\+Scope\+Value}}
+\index{delete\+Scope\+Value@{delete\+Scope\+Value}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{delete\+Scope\+Value()}{deleteScopeValue()}}
+{\footnotesize\ttfamily void delete\+Scope\+Value (\begin{DoxyParamCaption}\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{src,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{dest,  }\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{target }\end{DoxyParamCaption})}
+
+Deletes a value from a scope.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em src} & The scope to evaluate {\itshape target} under.\\
+\hline
+\mbox{\tt in,out}  & {\em dest} & The scope to update the value in.\\
+\hline
+\mbox{\tt in}  & {\em target} & The name of the value to delete. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interpreter_8h_ae981d9226d812c444fc16aa82755a483}\label{interpreter_8h_ae981d9226d812c444fc16aa82755a483}} 
+\index{interpreter.\+h@{interpreter.\+h}!create\+Return\+Object@{create\+Return\+Object}}
+\index{create\+Return\+Object@{create\+Return\+Object}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{create\+Return\+Object()}{createReturnObject()}}
+{\footnotesize\ttfamily \hyperlink{struct_return_object}{Return\+Object}$\ast$ create\+Return\+Object (\begin{DoxyParamCaption}\item[{\hyperlink{interpreter_8h_a36a419f0b50a0c1d2d4cf712e0ba64cc}{Return\+Type}}]{type,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{value }\end{DoxyParamCaption})}
+
+Creates a returned value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em type} & The type of returned value.\\
+\hline
+\mbox{\tt in}  & {\em value} & An optional value to return.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a returned value with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a573290ef3b6c111b59ad34136dd52d56}\label{interpreter_8h_a573290ef3b6c111b59ad34136dd52d56}} 
+\index{interpreter.\+h@{interpreter.\+h}!delete\+Return\+Object@{delete\+Return\+Object}}
+\index{delete\+Return\+Object@{delete\+Return\+Object}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{delete\+Return\+Object()}{deleteReturnObject()}}
+{\footnotesize\ttfamily void delete\+Return\+Object (\begin{DoxyParamCaption}\item[{\hyperlink{struct_return_object}{Return\+Object} $\ast$}]{object }\end{DoxyParamCaption})}
+
+Deletes a returned value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em object} & The returned value to be deleted.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape object} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{interpreter_8h_a17aa2b55578f49903859a41bb1d2dcba}\label{interpreter_8h_a17aa2b55578f49903859a41bb1d2dcba}} 
+\index{interpreter.\+h@{interpreter.\+h}!cast\+Boolean\+Implicit@{cast\+Boolean\+Implicit}}
+\index{cast\+Boolean\+Implicit@{cast\+Boolean\+Implicit}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{cast\+Boolean\+Implicit()}{castBooleanImplicit()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ cast\+Boolean\+Implicit (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Casts the contents of a value to boolean type in an implicit way. Casting is not done directly to {\itshape node}, instead, it is performed on a copy which is what is returned.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The value to cast.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to use for variable interpolation.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a value with a copy of the contents of {\itshape node}, cast to boolean type.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred while casting. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_abbf91182fe9db4f0e2e3c4472f0ad431}\label{interpreter_8h_abbf91182fe9db4f0e2e3c4472f0ad431}} 
+\index{interpreter.\+h@{interpreter.\+h}!cast\+Integer\+Implicit@{cast\+Integer\+Implicit}}
+\index{cast\+Integer\+Implicit@{cast\+Integer\+Implicit}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{cast\+Integer\+Implicit()}{castIntegerImplicit()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ cast\+Integer\+Implicit (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Casts the contents of a value to integer type in an implicit way. Casting is not done directly to {\itshape node}, instead, it is performed on a copy which is what is returned.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The value to cast.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to use for variable interpolation.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a value with a copy of the contents of {\itshape node}, cast to integer type.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred while casting. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a4132ca66d51545ce6ae5b3287070a50a}\label{interpreter_8h_a4132ca66d51545ce6ae5b3287070a50a}} 
+\index{interpreter.\+h@{interpreter.\+h}!cast\+Float\+Implicit@{cast\+Float\+Implicit}}
+\index{cast\+Float\+Implicit@{cast\+Float\+Implicit}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{cast\+Float\+Implicit()}{castFloatImplicit()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ cast\+Float\+Implicit (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Casts the contents of a value to decimal type in an implicit way. Casting is not done directly to {\itshape node}, instead, it is performed on a copy which is what is returned.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The value to cast.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to use for variable interpolation.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a value with a copy of the contents of {\itshape node}, cast to decimal type.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred while casting. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a58e25c56eb8e00ea5b5a2eaca71733b0}\label{interpreter_8h_a58e25c56eb8e00ea5b5a2eaca71733b0}} 
+\index{interpreter.\+h@{interpreter.\+h}!cast\+String\+Implicit@{cast\+String\+Implicit}}
+\index{cast\+String\+Implicit@{cast\+String\+Implicit}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{cast\+String\+Implicit()}{castStringImplicit()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ cast\+String\+Implicit (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Casts the contents of a value to string type in an implicit way. Casting is not done directly to {\itshape node}, instead, it is performed on a copy which is what is returned.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The value to cast.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to use for variable interpolation.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+{\itshape scope} is used to resolve variable interpolation within the string before casting it. Therefore, a simple way to interpolate the variables within a string is to call this function with it.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+A pointer to a value with a copy of the contents of {\itshape node}, cast to string type.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred while casting. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a9da4535836163318aac4d7d2eb03a2d2}\label{interpreter_8h_a9da4535836163318aac4d7d2eb03a2d2}} 
+\index{interpreter.\+h@{interpreter.\+h}!cast\+Boolean\+Explicit@{cast\+Boolean\+Explicit}}
+\index{cast\+Boolean\+Explicit@{cast\+Boolean\+Explicit}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{cast\+Boolean\+Explicit()}{castBooleanExplicit()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ cast\+Boolean\+Explicit (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Casts the contents of a value to boolean type in an explicit way. Casting is not done directly to {\itshape node}, instead, it is performed on a copy which is what is returned.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The value to cast.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to use for variable interpolation.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a value with a copy of the contents of {\itshape node}, cast to boolean type.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred while casting. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_aa211d313e27c2f081edc2309a4acb020}\label{interpreter_8h_aa211d313e27c2f081edc2309a4acb020}} 
+\index{interpreter.\+h@{interpreter.\+h}!cast\+Integer\+Explicit@{cast\+Integer\+Explicit}}
+\index{cast\+Integer\+Explicit@{cast\+Integer\+Explicit}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{cast\+Integer\+Explicit()}{castIntegerExplicit()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ cast\+Integer\+Explicit (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Casts the contents of a value to integer type in an explicit way. Casting is not done directly to {\itshape node}, instead, it is performed on a copy which is what is returned.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The value to cast.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to use for variable interpolation.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a value with a copy of the contents of {\itshape node}, cast to integer type.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred while casting. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_ab8aff5e3c1456ad85bf55cc816a84a87}\label{interpreter_8h_ab8aff5e3c1456ad85bf55cc816a84a87}} 
+\index{interpreter.\+h@{interpreter.\+h}!cast\+Float\+Explicit@{cast\+Float\+Explicit}}
+\index{cast\+Float\+Explicit@{cast\+Float\+Explicit}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{cast\+Float\+Explicit()}{castFloatExplicit()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ cast\+Float\+Explicit (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Casts the contents of a value to decimal type in an explicit way. Casting is not done directly to {\itshape node}, instead, it is performed on a copy which is what is returned.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The value to cast.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to use for variable interpolation.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a value with a copy of the contents of {\itshape node}, cast to decimal type.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred while casting. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a392cb43c47522cc46d70df0f673b73f6}\label{interpreter_8h_a392cb43c47522cc46d70df0f673b73f6}} 
+\index{interpreter.\+h@{interpreter.\+h}!cast\+String\+Explicit@{cast\+String\+Explicit}}
+\index{cast\+String\+Explicit@{cast\+String\+Explicit}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{cast\+String\+Explicit()}{castStringExplicit()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ cast\+String\+Explicit (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Casts the contents of a value to string type in an explicit way. Casting is not done directly to {\itshape node}, instead, it is performed on a copy which is what is returned.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The value to cast.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to use for variable interpolation.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+{\itshape scope} is used to resolve variable interpolation within the string before casting it. Therefore, a simple way to interpolate the variables within a string is to call this function with it.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+A pointer to a value with a copy of the contents of {\itshape node}, cast to string type.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred while casting. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a88e238ecbd85b9cfce3d34ad7025774d}\label{interpreter_8h_a88e238ecbd85b9cfce3d34ad7025774d}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Expr\+Node@{interpret\+Expr\+Node}}
+\index{interpret\+Expr\+Node@{interpret\+Expr\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Expr\+Node()}{interpretExprNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ interpret\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_expr_node}{Expr\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets an expression.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The expression to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape expr} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of {\itshape expr} evaluated under {\itshape scope}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a8243b0f033288a08ae06a1fc17c46303}\label{interpreter_8h_a8243b0f033288a08ae06a1fc17c46303}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Stmt\+Node@{interpret\+Stmt\+Node}}
+\index{interpret\+Stmt\+Node@{interpret\+Stmt\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Stmt\+Node()}{interpretStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_return_object}{Return\+Object}$\ast$ interpret\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets a statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The statement to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape node} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\itshape node} contains a statement created by parse\+Stmt\+Node().
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+A pointer to a return value set appropriately depending on the statement interpreted.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a7bb6c3c2339270c356e1aaaf44c52cf7}\label{interpreter_8h_a7bb6c3c2339270c356e1aaaf44c52cf7}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Stmt\+Node\+List@{interpret\+Stmt\+Node\+List}}
+\index{interpret\+Stmt\+Node\+List@{interpret\+Stmt\+Node\+List}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Stmt\+Node\+List()}{interpretStmtNodeList()}}
+{\footnotesize\ttfamily \hyperlink{struct_return_object}{Return\+Object}$\ast$ interpret\+Stmt\+Node\+List (\begin{DoxyParamCaption}\item[{\hyperlink{struct_stmt_node_list}{Stmt\+Node\+List} $\ast$}]{list,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets a list of statements.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em list} & The statements to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape list} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a return value set appropriately depending on the statements interpreted.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a35a65f719caa550f2d615abeb26a2200}\label{interpreter_8h_a35a65f719caa550f2d615abeb26a2200}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Block\+Node@{interpret\+Block\+Node}}
+\index{interpret\+Block\+Node@{interpret\+Block\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Block\+Node()}{interpretBlockNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_return_object}{Return\+Object}$\ast$ interpret\+Block\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_block_node}{Block\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets a block of code.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The block of code to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape block} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\itshape block} contains a block of code created by parse\+Block\+Node().
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+A pointer to a return value set appropriately depending on the statements interpreted.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a30be2c4c505c03683a6a3bdc4f7164aa}\label{interpreter_8h_a30be2c4c505c03683a6a3bdc4f7164aa}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Main\+Node@{interpret\+Main\+Node}}
+\index{interpret\+Main\+Node@{interpret\+Main\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Main\+Node()}{interpretMainNode()}}
+{\footnotesize\ttfamily int interpret\+Main\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_main_node}{Main\+Node} $\ast$}]{main }\end{DoxyParamCaption})}
+
+Interprets a the main block of code.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em main} & The main block of code to interpret.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\itshape main} contains a block of code created by parse\+Main\+Node().
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+The final status of the program.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & {\itshape main} was interpreted without any errors.\\
+\hline
+{\em 1} & An error occurred while interpreting {\itshape main}. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a27cedbf17b05209dea5559a175309a14}\label{interpreter_8h_a27cedbf17b05209dea5559a175309a14}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Imp\+Var\+Expr\+Node@{interpret\+Imp\+Var\+Expr\+Node}}
+\index{interpret\+Imp\+Var\+Expr\+Node@{interpret\+Imp\+Var\+Expr\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Imp\+Var\+Expr\+Node()}{interpretImpVarExprNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ interpret\+Imp\+Var\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_expr_node}{Expr\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets an implicit variable.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & Not used (see note).\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope from which to use the implicit variable.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+{\itshape node} is not used by this function but is still included in its prototype to allow this function to be stored in a jump table for fast execution.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of {\itshape scope\textquotesingle{}s} implicit variable. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a8836d5dd711beb5cd96336fe51cdc185}\label{interpreter_8h_a8836d5dd711beb5cd96336fe51cdc185}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Cast\+Expr\+Node@{interpret\+Cast\+Expr\+Node}}
+\index{interpret\+Cast\+Expr\+Node@{interpret\+Cast\+Expr\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Cast\+Expr\+Node()}{interpretCastExprNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ interpret\+Cast\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_expr_node}{Expr\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets a cast.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & A pointer to the expression to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & A pointer to a scope to evaluate {\itshape node} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\itshape node} contains a expression created by create\+Cast\+Expr\+Node().
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+A pointer to the cast value.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_aeacd50079f0ce4daf99a11f922182c08}\label{interpreter_8h_aeacd50079f0ce4daf99a11f922182c08}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Func\+Call\+Expr\+Node@{interpret\+Func\+Call\+Expr\+Node}}
+\index{interpret\+Func\+Call\+Expr\+Node@{interpret\+Func\+Call\+Expr\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Func\+Call\+Expr\+Node()}{interpretFuncCallExprNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ interpret\+Func\+Call\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_expr_node}{Expr\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets a function call.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & A pointer to the expression to interpret.\\
+\hline
+\mbox{\tt in,out}  & {\em scope} & A pointer to a scope to evaluate {\itshape node} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\itshape node} contains an expression created by create\+Func\+Call\+Expr\+Node().
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+A pointer to the returned value.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+We use interpret\+Stmt\+Node\+List here because we want to have access to the function\textquotesingle{}s scope as we may need to retrieve the implicit variable in the case of a default return.
+\end{DoxyNote}
+\mbox{\Hypertarget{interpreter_8h_a0f42bf997323efdae806c0bcf1c554d8}\label{interpreter_8h_a0f42bf997323efdae806c0bcf1c554d8}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Identifier\+Expr\+Node@{interpret\+Identifier\+Expr\+Node}}
+\index{interpret\+Identifier\+Expr\+Node@{interpret\+Identifier\+Expr\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Identifier\+Expr\+Node()}{interpretIdentifierExprNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ interpret\+Identifier\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_expr_node}{Expr\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets an identifier.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & A pointer to the expression to interpret.\\
+\hline
+\mbox{\tt in,out}  & {\em scope} & A pointer to a scope to evaluate {\itshape node} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\itshape node} contains an identifier created by create\+Identifier\+Node().
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+A pointer to the cast value.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_ad561e8b2aa21983e94b838f30337f099}\label{interpreter_8h_ad561e8b2aa21983e94b838f30337f099}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Constant\+Expr\+Node@{interpret\+Constant\+Expr\+Node}}
+\index{interpret\+Constant\+Expr\+Node@{interpret\+Constant\+Expr\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Constant\+Expr\+Node()}{interpretConstantExprNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ interpret\+Constant\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_expr_node}{Expr\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets a constant.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & A pointer to the expression to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & Not used (see note).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+{\itshape node} is not used by this function but is still included in its prototype to allow this function to be stored in a jump table for fast execution.
+\end{DoxyNote}
+\begin{DoxyPrecond}{Precondition}
+{\itshape node} contains a constant created by create\+X\+Constant\+Node(), where X is either Boolean, Integer, Float, or String.
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+A pointer to the constant value.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a7795828f9fd573ff3670ade6f6955b07}\label{interpreter_8h_a7795828f9fd573ff3670ade6f6955b07}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Not\+Op\+Expr\+Node@{interpret\+Not\+Op\+Expr\+Node}}
+\index{interpret\+Not\+Op\+Expr\+Node@{interpret\+Not\+Op\+Expr\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Not\+Op\+Expr\+Node()}{interpretNotOpExprNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ interpret\+Not\+Op\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_op_expr_node}{Op\+Expr\+Node} $\ast$}]{expr,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets a logical N\+OT operation.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em expr} & A pointer to the expression to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & A pointer to a scope to evaluate {\itshape node} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Only the first element of {\itshape args} is used.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the logical negation of the first element of {\itshape args}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_ac43fd9e88414ff9960db8a442ae9a0e8}\label{interpreter_8h_ac43fd9e88414ff9960db8a442ae9a0e8}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Arith\+Op\+Expr\+Node@{interpret\+Arith\+Op\+Expr\+Node}}
+\index{interpret\+Arith\+Op\+Expr\+Node@{interpret\+Arith\+Op\+Expr\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Arith\+Op\+Expr\+Node()}{interpretArithOpExprNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ interpret\+Arith\+Op\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_op_expr_node}{Op\+Expr\+Node} $\ast$}]{expr,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets an arithmetic operation.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em expr} & The operation to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape expr} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Only supports binary arithmetic operations.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the arithmetic operation.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_ad0dc393a1a5f2ef0eb59742fe70f07d1}\label{interpreter_8h_ad0dc393a1a5f2ef0eb59742fe70f07d1}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Bool\+Op\+Expr\+Node@{interpret\+Bool\+Op\+Expr\+Node}}
+\index{interpret\+Bool\+Op\+Expr\+Node@{interpret\+Bool\+Op\+Expr\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Bool\+Op\+Expr\+Node()}{interpretBoolOpExprNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ interpret\+Bool\+Op\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_op_expr_node}{Op\+Expr\+Node} $\ast$}]{expr,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets a boolean operation.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em expr} & The operation to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape expr} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the boolean operation.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+The specification does not say whether boolean logic short circuits or not. Here, we assume it does.
+\end{DoxyNote}
+\mbox{\Hypertarget{interpreter_8h_ab84fa97762a03da8689f763fc3165b41}\label{interpreter_8h_ab84fa97762a03da8689f763fc3165b41}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Equality\+Op\+Expr\+Node@{interpret\+Equality\+Op\+Expr\+Node}}
+\index{interpret\+Equality\+Op\+Expr\+Node@{interpret\+Equality\+Op\+Expr\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Equality\+Op\+Expr\+Node()}{interpretEqualityOpExprNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ interpret\+Equality\+Op\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_op_expr_node}{Op\+Expr\+Node} $\ast$}]{expr,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets an equality operation.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em expr} & The operation to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape expr} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the resulting value of the equality operation.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a4f45d788f390ee7a01a9f7a13f512d03}\label{interpreter_8h_a4f45d788f390ee7a01a9f7a13f512d03}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Concat\+Op\+Expr\+Node@{interpret\+Concat\+Op\+Expr\+Node}}
+\index{interpret\+Concat\+Op\+Expr\+Node@{interpret\+Concat\+Op\+Expr\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Concat\+Op\+Expr\+Node()}{interpretConcatOpExprNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ interpret\+Concat\+Op\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_op_expr_node}{Op\+Expr\+Node} $\ast$}]{expr,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets a concatenation operation.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em expr} & The operation to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape expr} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the resulting value of the concatenation operation.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a14b3a72f8c575160185d3e1ddd9721c3}\label{interpreter_8h_a14b3a72f8c575160185d3e1ddd9721c3}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Op\+Expr\+Node@{interpret\+Op\+Expr\+Node}}
+\index{interpret\+Op\+Expr\+Node@{interpret\+Op\+Expr\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Op\+Expr\+Node()}{interpretOpExprNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ interpret\+Op\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_expr_node}{Expr\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets an operation.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The operation to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape expr} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the resulting value of the operation.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a5742a88c672e9e224aecef05663d41ea}\label{interpreter_8h_a5742a88c672e9e224aecef05663d41ea}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Cast\+Stmt\+Node@{interpret\+Cast\+Stmt\+Node}}
+\index{interpret\+Cast\+Stmt\+Node@{interpret\+Cast\+Stmt\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Cast\+Stmt\+Node()}{interpretCastStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_return_object}{Return\+Object}$\ast$ interpret\+Cast\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets a cast statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The statement to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape node} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\itshape node} contains a statement created by create\+Cast\+Stmt\+Node().
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+A pointer to a default return value.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a3099ebd9282870922a92b1b59f675458}\label{interpreter_8h_a3099ebd9282870922a92b1b59f675458}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Print\+Stmt\+Node@{interpret\+Print\+Stmt\+Node}}
+\index{interpret\+Print\+Stmt\+Node@{interpret\+Print\+Stmt\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Print\+Stmt\+Node()}{interpretPrintStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_return_object}{Return\+Object}$\ast$ interpret\+Print\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets a print statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The statement to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape node} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\itshape node} contains a statement created by create\+Print\+Stmt\+Node().
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+A pointer to a default return value.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_ababafcbe6b8e86ed3284bb6643baafa4}\label{interpreter_8h_ababafcbe6b8e86ed3284bb6643baafa4}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Input\+Stmt\+Node@{interpret\+Input\+Stmt\+Node}}
+\index{interpret\+Input\+Stmt\+Node@{interpret\+Input\+Stmt\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Input\+Stmt\+Node()}{interpretInputStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_return_object}{Return\+Object}$\ast$ interpret\+Input\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets an input statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The statement to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape node} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\itshape node} contains a statement created by create\+Input\+Stmt\+Node().
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+A pointer to a default return value.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+The specification is unclear as to the exact semantics of input. Here, we read up until the first newline or E\+OF but do not store it.
+\end{DoxyNote}
+\mbox{\Hypertarget{interpreter_8h_a644bee21f70eaa27dd40ae1a9ea07145}\label{interpreter_8h_a644bee21f70eaa27dd40ae1a9ea07145}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Assignment\+Stmt\+Node@{interpret\+Assignment\+Stmt\+Node}}
+\index{interpret\+Assignment\+Stmt\+Node@{interpret\+Assignment\+Stmt\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Assignment\+Stmt\+Node()}{interpretAssignmentStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_return_object}{Return\+Object}$\ast$ interpret\+Assignment\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets an assignment statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The statement to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape node} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\itshape node} contains a statement created by create\+Assignment\+Stmt\+Node().
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+A pointer to a default return value.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a8f688271f7f3ad36ce62428e55940c03}\label{interpreter_8h_a8f688271f7f3ad36ce62428e55940c03}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Declaration\+Stmt\+Node@{interpret\+Declaration\+Stmt\+Node}}
+\index{interpret\+Declaration\+Stmt\+Node@{interpret\+Declaration\+Stmt\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Declaration\+Stmt\+Node()}{interpretDeclarationStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_return_object}{Return\+Object}$\ast$ interpret\+Declaration\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets a declaration statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The statement to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape node} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\itshape node} contains a statement created by create\+Declaration\+Stmt\+Node().
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+A pointer to a default return value.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a0214f5c76bcb63a1fbb9a242f9341763}\label{interpreter_8h_a0214f5c76bcb63a1fbb9a242f9341763}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+If\+Then\+Else\+Stmt\+Node@{interpret\+If\+Then\+Else\+Stmt\+Node}}
+\index{interpret\+If\+Then\+Else\+Stmt\+Node@{interpret\+If\+Then\+Else\+Stmt\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+If\+Then\+Else\+Stmt\+Node()}{interpretIfThenElseStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_return_object}{Return\+Object}$\ast$ interpret\+If\+Then\+Else\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets an if/then/else statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The statement to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape node} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\itshape node} contains a statement created by create\+If\+Then\+Else\+Stmt\+Node().
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+A pointer to a default return value.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_acbbc71ff8da84a69bea6a533c73c02ff}\label{interpreter_8h_acbbc71ff8da84a69bea6a533c73c02ff}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Switch\+Stmt\+Node@{interpret\+Switch\+Stmt\+Node}}
+\index{interpret\+Switch\+Stmt\+Node@{interpret\+Switch\+Stmt\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Switch\+Stmt\+Node()}{interpretSwitchStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_return_object}{Return\+Object}$\ast$ interpret\+Switch\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets a switch statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The statement to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape node} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\itshape node} contains a statement created by create\+Switch\+Stmt\+Node().
+\end{DoxyPrecond}
+\begin{DoxyNote}{Note}
+The specification is unclear as to whether guards are implicitly cast to the type of the implicit variable. This only matters in the case that mixed guard types are present, and in this code, the action that is performed is the same as the comparison operator, that is, in order for a guard to match, both its type and value must match the implicit variable.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+A pointer to a default return value.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+Strings with interpolation should have already been checked for.
+\end{DoxyNote}
+\mbox{\Hypertarget{interpreter_8h_af8856c962dbaeb39b8a2570c3939bebf}\label{interpreter_8h_af8856c962dbaeb39b8a2570c3939bebf}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Break\+Stmt\+Node@{interpret\+Break\+Stmt\+Node}}
+\index{interpret\+Break\+Stmt\+Node@{interpret\+Break\+Stmt\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Break\+Stmt\+Node()}{interpretBreakStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_return_object}{Return\+Object}$\ast$ interpret\+Break\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets a break statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & Not used (see note).\\
+\hline
+\mbox{\tt in}  & {\em scope} & Not used (see note).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\itshape node} contains a statement created by create\+Stmt\+Node() with arguments S\+T\+\_\+\+B\+R\+E\+AK and N\+U\+LL.
+\end{DoxyPrecond}
+\begin{DoxyNote}{Note}
+{\itshape node} and {\itshape scope} are not used by this function but are still included in its prototype to allow this function to be stored in a jump table for fast execution.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+A pointer to a break return value.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a83339941f601e7cbbecb09c7501b49fd}\label{interpreter_8h_a83339941f601e7cbbecb09c7501b49fd}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Return\+Stmt\+Node@{interpret\+Return\+Stmt\+Node}}
+\index{interpret\+Return\+Stmt\+Node@{interpret\+Return\+Stmt\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Return\+Stmt\+Node()}{interpretReturnStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_return_object}{Return\+Object}$\ast$ interpret\+Return\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets a return statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The statement to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape node} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\itshape node} contains a statement created by create\+Return\+Stmt\+Node().
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+A pointer to a return value of {\itshape node} interpreted under {\itshape scope}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a3907f4b04d219b06c4967b92af485ff8}\label{interpreter_8h_a3907f4b04d219b06c4967b92af485ff8}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Loop\+Stmt\+Node@{interpret\+Loop\+Stmt\+Node}}
+\index{interpret\+Loop\+Stmt\+Node@{interpret\+Loop\+Stmt\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Loop\+Stmt\+Node()}{interpretLoopStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_return_object}{Return\+Object}$\ast$ interpret\+Loop\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets a loop statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The statement to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape node} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\itshape node} contains a statement created by create\+Loop\+Stmt\+Node().
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+A pointer to a return value of {\itshape node} interpreted under {\itshape scope}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a8c223fb36e021e72d06c4da6bc198080}\label{interpreter_8h_a8c223fb36e021e72d06c4da6bc198080}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Deallocation\+Stmt\+Node@{interpret\+Deallocation\+Stmt\+Node}}
+\index{interpret\+Deallocation\+Stmt\+Node@{interpret\+Deallocation\+Stmt\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Deallocation\+Stmt\+Node()}{interpretDeallocationStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_return_object}{Return\+Object}$\ast$ interpret\+Deallocation\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets a deallocation statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The statement to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape node} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\itshape node} contains a statement created by create\+Deallocation\+Stmt\+Node().
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+A pointer to a default return value.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a8760ad4152e9a2dfeb2ed661c3ef04df}\label{interpreter_8h_a8760ad4152e9a2dfeb2ed661c3ef04df}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Func\+Def\+Stmt\+Node@{interpret\+Func\+Def\+Stmt\+Node}}
+\index{interpret\+Func\+Def\+Stmt\+Node@{interpret\+Func\+Def\+Stmt\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Func\+Def\+Stmt\+Node()}{interpretFuncDefStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_return_object}{Return\+Object}$\ast$ interpret\+Func\+Def\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets a function definition statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The statement to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape node} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\itshape node} contains a statement created by create\+Func\+Def\+Stmt\+Node().
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+A pointer to a default return value.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_ab8680118602f725af9bbb28f2a33ba93}\label{interpreter_8h_ab8680118602f725af9bbb28f2a33ba93}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Expr\+Stmt\+Node@{interpret\+Expr\+Stmt\+Node}}
+\index{interpret\+Expr\+Stmt\+Node@{interpret\+Expr\+Stmt\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Expr\+Stmt\+Node()}{interpretExprStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_return_object}{Return\+Object}$\ast$ interpret\+Expr\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets an expression statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The statement to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape node} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\itshape node} contains a statement created by create\+Expr\+Node().
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+The implicit variable of {\itshape scope} will be set the the value of {\itshape node} evaluated under {\itshape scope}.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to a default return value.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a682accc2207d4f55386446d4d63f1b2e}\label{interpreter_8h_a682accc2207d4f55386446d4d63f1b2e}} 
+\index{interpreter.\+h@{interpreter.\+h}!interpret\+Alt\+Array\+Def\+Stmt\+Node@{interpret\+Alt\+Array\+Def\+Stmt\+Node}}
+\index{interpret\+Alt\+Array\+Def\+Stmt\+Node@{interpret\+Alt\+Array\+Def\+Stmt\+Node}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{interpret\+Alt\+Array\+Def\+Stmt\+Node()}{interpretAltArrayDefStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_return_object}{Return\+Object}$\ast$ interpret\+Alt\+Array\+Def\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$}]{node,  }\item[{\hyperlink{interpreter_8h_a7be125c402f07f73bf856b70b37594b5}{Scope\+Object} $\ast$}]{scope }\end{DoxyParamCaption})}
+
+Interprets an alternate array definition statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em node} & The statement to interpret.\\
+\hline
+\mbox{\tt in}  & {\em scope} & The scope to evaluate {\itshape node} under.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\itshape node} contains a statement created by create\+Alt\+Array\+Def\+Node().
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+A pointer to a default return value.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An error occurred during interpretation. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a60442c44a3ac32b0a98e89294e785c7a}\label{interpreter_8h_a60442c44a3ac32b0a98e89294e785c7a}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Add\+Integer\+Integer@{op\+Add\+Integer\+Integer}}
+\index{op\+Add\+Integer\+Integer@{op\+Add\+Integer\+Integer}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Add\+Integer\+Integer()}{opAddIntegerInteger()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Add\+Integer\+Integer (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Adds an integer to an integer.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the sum of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a40c15754c7035023570c2f6706aa1bce}\label{interpreter_8h_a40c15754c7035023570c2f6706aa1bce}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Sub\+Integer\+Integer@{op\+Sub\+Integer\+Integer}}
+\index{op\+Sub\+Integer\+Integer@{op\+Sub\+Integer\+Integer}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Sub\+Integer\+Integer()}{opSubIntegerInteger()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Sub\+Integer\+Integer (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Subtracts an integer from an integer.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the difference of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a49439f8122d53198698d46dc8e355dec}\label{interpreter_8h_a49439f8122d53198698d46dc8e355dec}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Mult\+Integer\+Integer@{op\+Mult\+Integer\+Integer}}
+\index{op\+Mult\+Integer\+Integer@{op\+Mult\+Integer\+Integer}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Mult\+Integer\+Integer()}{opMultIntegerInteger()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Mult\+Integer\+Integer (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Multiplies an integer by an integer.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the product of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a1c2bad8d59cc55d1de2e90818552b727}\label{interpreter_8h_a1c2bad8d59cc55d1de2e90818552b727}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Div\+Integer\+Integer@{op\+Div\+Integer\+Integer}}
+\index{op\+Div\+Integer\+Integer@{op\+Div\+Integer\+Integer}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Div\+Integer\+Integer()}{opDivIntegerInteger()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Div\+Integer\+Integer (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Divides an integer by an integer.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the quotient of {\itshape a} and {\itshape b}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Division by zero. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a60d738376880221327c82bb0bf2de141}\label{interpreter_8h_a60d738376880221327c82bb0bf2de141}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Max\+Integer\+Integer@{op\+Max\+Integer\+Integer}}
+\index{op\+Max\+Integer\+Integer@{op\+Max\+Integer\+Integer}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Max\+Integer\+Integer()}{opMaxIntegerInteger()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Max\+Integer\+Integer (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Finds the maximum of an integer and an integer.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the maximum of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_af3f2a6f50fdd068834ab1b58d4928ec8}\label{interpreter_8h_af3f2a6f50fdd068834ab1b58d4928ec8}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Min\+Integer\+Integer@{op\+Min\+Integer\+Integer}}
+\index{op\+Min\+Integer\+Integer@{op\+Min\+Integer\+Integer}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Min\+Integer\+Integer()}{opMinIntegerInteger()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Min\+Integer\+Integer (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Finds the minimum of an integer and an integer.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the minimum of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a87b62a374250d0fbe4e9e95497c10b15}\label{interpreter_8h_a87b62a374250d0fbe4e9e95497c10b15}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Mod\+Integer\+Integer@{op\+Mod\+Integer\+Integer}}
+\index{op\+Mod\+Integer\+Integer@{op\+Mod\+Integer\+Integer}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Mod\+Integer\+Integer()}{opModIntegerInteger()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Mod\+Integer\+Integer (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Calculates the modulus of an integer and an integer.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the modulus of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_afd694eb2626213010cbc38830a462fde}\label{interpreter_8h_afd694eb2626213010cbc38830a462fde}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Add\+Integer\+Float@{op\+Add\+Integer\+Float}}
+\index{op\+Add\+Integer\+Float@{op\+Add\+Integer\+Float}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Add\+Integer\+Float()}{opAddIntegerFloat()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Add\+Integer\+Float (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Adds an integer to a decimal.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the sum of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a305d078f6079ca2938e21409816000be}\label{interpreter_8h_a305d078f6079ca2938e21409816000be}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Sub\+Integer\+Float@{op\+Sub\+Integer\+Float}}
+\index{op\+Sub\+Integer\+Float@{op\+Sub\+Integer\+Float}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Sub\+Integer\+Float()}{opSubIntegerFloat()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Sub\+Integer\+Float (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Subtracts an integer from a decimal.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the difference of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a5393045000bf05070b764eebe2012627}\label{interpreter_8h_a5393045000bf05070b764eebe2012627}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Mult\+Integer\+Float@{op\+Mult\+Integer\+Float}}
+\index{op\+Mult\+Integer\+Float@{op\+Mult\+Integer\+Float}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Mult\+Integer\+Float()}{opMultIntegerFloat()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Mult\+Integer\+Float (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Multiplies an integer by a decimal.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the product of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a0df5be521bfc67b35aca6ab1e30c2a32}\label{interpreter_8h_a0df5be521bfc67b35aca6ab1e30c2a32}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Div\+Integer\+Float@{op\+Div\+Integer\+Float}}
+\index{op\+Div\+Integer\+Float@{op\+Div\+Integer\+Float}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Div\+Integer\+Float()}{opDivIntegerFloat()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Div\+Integer\+Float (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Divides an integer by a decimal.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the quotient of {\itshape a} and {\itshape b}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Division by zero. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a5d68c3dc91195706810b6db725e62eaa}\label{interpreter_8h_a5d68c3dc91195706810b6db725e62eaa}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Max\+Integer\+Float@{op\+Max\+Integer\+Float}}
+\index{op\+Max\+Integer\+Float@{op\+Max\+Integer\+Float}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Max\+Integer\+Float()}{opMaxIntegerFloat()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Max\+Integer\+Float (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Finds the maximum of an integer and a decimal.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the maximum of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a5693ec134e9b9090f8cfe51d9906e38e}\label{interpreter_8h_a5693ec134e9b9090f8cfe51d9906e38e}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Min\+Integer\+Float@{op\+Min\+Integer\+Float}}
+\index{op\+Min\+Integer\+Float@{op\+Min\+Integer\+Float}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Min\+Integer\+Float()}{opMinIntegerFloat()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Min\+Integer\+Float (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Finds the minimum of an integer and a decimal.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the minimum of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a6fa3fda306a1df48dfe9fbc2cff75d74}\label{interpreter_8h_a6fa3fda306a1df48dfe9fbc2cff75d74}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Mod\+Integer\+Float@{op\+Mod\+Integer\+Float}}
+\index{op\+Mod\+Integer\+Float@{op\+Mod\+Integer\+Float}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Mod\+Integer\+Float()}{opModIntegerFloat()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Mod\+Integer\+Float (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Calculates the modulus of an integer and a decimal.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the modulus of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a7c2619ce0699c09c53ab2aaf2c0977f7}\label{interpreter_8h_a7c2619ce0699c09c53ab2aaf2c0977f7}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Add\+Float\+Integer@{op\+Add\+Float\+Integer}}
+\index{op\+Add\+Float\+Integer@{op\+Add\+Float\+Integer}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Add\+Float\+Integer()}{opAddFloatInteger()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Add\+Float\+Integer (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Adds a decimal to an integer.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the sum of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a499e486ea1a832b7105d3d8da3b76e91}\label{interpreter_8h_a499e486ea1a832b7105d3d8da3b76e91}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Sub\+Float\+Integer@{op\+Sub\+Float\+Integer}}
+\index{op\+Sub\+Float\+Integer@{op\+Sub\+Float\+Integer}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Sub\+Float\+Integer()}{opSubFloatInteger()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Sub\+Float\+Integer (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Subtracts a decimal from an integer.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the difference of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a2cae8b697111b4eea690cdd38ddbc5a8}\label{interpreter_8h_a2cae8b697111b4eea690cdd38ddbc5a8}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Mult\+Float\+Integer@{op\+Mult\+Float\+Integer}}
+\index{op\+Mult\+Float\+Integer@{op\+Mult\+Float\+Integer}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Mult\+Float\+Integer()}{opMultFloatInteger()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Mult\+Float\+Integer (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Multiplies a decimal by an integer.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the product of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a89ec3da04bba6b628f84b131e804e3aa}\label{interpreter_8h_a89ec3da04bba6b628f84b131e804e3aa}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Div\+Float\+Integer@{op\+Div\+Float\+Integer}}
+\index{op\+Div\+Float\+Integer@{op\+Div\+Float\+Integer}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Div\+Float\+Integer()}{opDivFloatInteger()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Div\+Float\+Integer (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Divides a decimal by an integer.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the quotient of {\itshape a} and {\itshape b}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Division by zero. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_ae290f0012a6e7ac888f6e42e162db0d1}\label{interpreter_8h_ae290f0012a6e7ac888f6e42e162db0d1}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Max\+Float\+Integer@{op\+Max\+Float\+Integer}}
+\index{op\+Max\+Float\+Integer@{op\+Max\+Float\+Integer}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Max\+Float\+Integer()}{opMaxFloatInteger()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Max\+Float\+Integer (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Finds the maximum of a decimal and an integer.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the maximum of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_aeba04e12530543d1ecc8a70669fac094}\label{interpreter_8h_aeba04e12530543d1ecc8a70669fac094}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Min\+Float\+Integer@{op\+Min\+Float\+Integer}}
+\index{op\+Min\+Float\+Integer@{op\+Min\+Float\+Integer}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Min\+Float\+Integer()}{opMinFloatInteger()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Min\+Float\+Integer (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Finds the minimum of a decimal and an integer.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the minimum of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a6d90cdaea27748de7784f43f82c31c8a}\label{interpreter_8h_a6d90cdaea27748de7784f43f82c31c8a}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Mod\+Float\+Integer@{op\+Mod\+Float\+Integer}}
+\index{op\+Mod\+Float\+Integer@{op\+Mod\+Float\+Integer}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Mod\+Float\+Integer()}{opModFloatInteger()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Mod\+Float\+Integer (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Calculates the modulus of a decimal and an integer.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the modulus of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_ad07ed5a492963cbbfbaf26f10178a0da}\label{interpreter_8h_ad07ed5a492963cbbfbaf26f10178a0da}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Add\+Float\+Float@{op\+Add\+Float\+Float}}
+\index{op\+Add\+Float\+Float@{op\+Add\+Float\+Float}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Add\+Float\+Float()}{opAddFloatFloat()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Add\+Float\+Float (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Adds a decimal to a decimal.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the sum of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a6fe0baa044b43505a5013455ce7f3ef4}\label{interpreter_8h_a6fe0baa044b43505a5013455ce7f3ef4}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Sub\+Float\+Float@{op\+Sub\+Float\+Float}}
+\index{op\+Sub\+Float\+Float@{op\+Sub\+Float\+Float}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Sub\+Float\+Float()}{opSubFloatFloat()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Sub\+Float\+Float (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Subtracts a decimal from a decimal.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the difference of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_ab28d564ef0da5903a3a2ed6c18dcad11}\label{interpreter_8h_ab28d564ef0da5903a3a2ed6c18dcad11}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Mult\+Float\+Float@{op\+Mult\+Float\+Float}}
+\index{op\+Mult\+Float\+Float@{op\+Mult\+Float\+Float}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Mult\+Float\+Float()}{opMultFloatFloat()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Mult\+Float\+Float (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Multiplies a decimal by a decimal.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the product of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a907454143b8856fe616d3b595cb917d1}\label{interpreter_8h_a907454143b8856fe616d3b595cb917d1}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Div\+Float\+Float@{op\+Div\+Float\+Float}}
+\index{op\+Div\+Float\+Float@{op\+Div\+Float\+Float}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Div\+Float\+Float()}{opDivFloatFloat()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Div\+Float\+Float (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Divides a decimal by a decimal.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the quotient of {\itshape a} and {\itshape b}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Division by zero. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{interpreter_8h_a744d79a234d2a4f6490ef91624071c32}\label{interpreter_8h_a744d79a234d2a4f6490ef91624071c32}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Max\+Float\+Float@{op\+Max\+Float\+Float}}
+\index{op\+Max\+Float\+Float@{op\+Max\+Float\+Float}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Max\+Float\+Float()}{opMaxFloatFloat()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Max\+Float\+Float (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Finds the maximum of a decimal and a decimal.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the maximum of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a901fca3f0217cce10f23a893372680a8}\label{interpreter_8h_a901fca3f0217cce10f23a893372680a8}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Min\+Float\+Float@{op\+Min\+Float\+Float}}
+\index{op\+Min\+Float\+Float@{op\+Min\+Float\+Float}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Min\+Float\+Float()}{opMinFloatFloat()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Min\+Float\+Float (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Finds the minimum of a decimal and a decimal.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the minimum of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_ae7fd86387767d294c071b020ea5e9ccc}\label{interpreter_8h_ae7fd86387767d294c071b020ea5e9ccc}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Mod\+Float\+Float@{op\+Mod\+Float\+Float}}
+\index{op\+Mod\+Float\+Float@{op\+Mod\+Float\+Float}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Mod\+Float\+Float()}{opModFloatFloat()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Mod\+Float\+Float (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Calculates the modulus of a decimal and a decimal.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first operand.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second operand.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the value of the modulus of {\itshape a} and {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a49a410f97c8559f2ba41ca94b7aceb21}\label{interpreter_8h_a49a410f97c8559f2ba41ca94b7aceb21}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Eq\+Boolean\+Boolean@{op\+Eq\+Boolean\+Boolean}}
+\index{op\+Eq\+Boolean\+Boolean@{op\+Eq\+Boolean\+Boolean}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Eq\+Boolean\+Boolean()}{opEqBooleanBoolean()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Eq\+Boolean\+Boolean (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Checks if a boolean value is equal to another boolean value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first value to check.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second value to check.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a boolean value indicating if {\itshape is} equal to {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_adf2234eccc6099f2f1829a7ee948e045}\label{interpreter_8h_adf2234eccc6099f2f1829a7ee948e045}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Neq\+Boolean\+Boolean@{op\+Neq\+Boolean\+Boolean}}
+\index{op\+Neq\+Boolean\+Boolean@{op\+Neq\+Boolean\+Boolean}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Neq\+Boolean\+Boolean()}{opNeqBooleanBoolean()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Neq\+Boolean\+Boolean (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Checks if a boolean value is not equal to another boolean value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first value to check.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second value to check.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a boolean value indicating if {\itshape is} not equal to {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_af02dbffb1883def8d565b324d3b08fa4}\label{interpreter_8h_af02dbffb1883def8d565b324d3b08fa4}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Eq\+Integer\+Integer@{op\+Eq\+Integer\+Integer}}
+\index{op\+Eq\+Integer\+Integer@{op\+Eq\+Integer\+Integer}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Eq\+Integer\+Integer()}{opEqIntegerInteger()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Eq\+Integer\+Integer (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Checks if an integer value is equal to another integer value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first value to check.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second value to check.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a boolean value indicating if {\itshape is} equal to {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a737fac56d37cbf193f78775774cfdeeb}\label{interpreter_8h_a737fac56d37cbf193f78775774cfdeeb}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Neq\+Integer\+Integer@{op\+Neq\+Integer\+Integer}}
+\index{op\+Neq\+Integer\+Integer@{op\+Neq\+Integer\+Integer}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Neq\+Integer\+Integer()}{opNeqIntegerInteger()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Neq\+Integer\+Integer (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Checks if an integer value is not equal to another integer value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first value to check.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second value to check.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a boolean value indicating if {\itshape is} not equal to {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a918c1fe2753f0fa6a7f0abbb0f26790f}\label{interpreter_8h_a918c1fe2753f0fa6a7f0abbb0f26790f}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Eq\+Integer\+Float@{op\+Eq\+Integer\+Float}}
+\index{op\+Eq\+Integer\+Float@{op\+Eq\+Integer\+Float}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Eq\+Integer\+Float()}{opEqIntegerFloat()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Eq\+Integer\+Float (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Checks if an integer value is equal to a decimal value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first value to check.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second value to check.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a boolean value indicating if {\itshape is} equal to {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a689189c68d9b98c49d296cd9f04363e9}\label{interpreter_8h_a689189c68d9b98c49d296cd9f04363e9}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Neq\+Integer\+Float@{op\+Neq\+Integer\+Float}}
+\index{op\+Neq\+Integer\+Float@{op\+Neq\+Integer\+Float}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Neq\+Integer\+Float()}{opNeqIntegerFloat()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Neq\+Integer\+Float (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Checks if an integer value is not equal to a decimal value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first value to check.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second value to check.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a boolean value indicating if {\itshape is} not equal to {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a5b824e009801b5ca65d51abe36aecf97}\label{interpreter_8h_a5b824e009801b5ca65d51abe36aecf97}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Eq\+Float\+Integer@{op\+Eq\+Float\+Integer}}
+\index{op\+Eq\+Float\+Integer@{op\+Eq\+Float\+Integer}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Eq\+Float\+Integer()}{opEqFloatInteger()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Eq\+Float\+Integer (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Checks if a decimal value is equal to an integer value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first value to check.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second value to check.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a boolean value indicating if {\itshape is} equal to {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a48ab7e79793cd6462d041d6288b770d9}\label{interpreter_8h_a48ab7e79793cd6462d041d6288b770d9}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Neq\+Float\+Integer@{op\+Neq\+Float\+Integer}}
+\index{op\+Neq\+Float\+Integer@{op\+Neq\+Float\+Integer}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Neq\+Float\+Integer()}{opNeqFloatInteger()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Neq\+Float\+Integer (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Checks if a decimal value is not equal to an integer value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first value to check.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second value to check.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a boolean value indicating if {\itshape is} not equal to {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_ab721f724a3fac4900c4a8886d57c41d2}\label{interpreter_8h_ab721f724a3fac4900c4a8886d57c41d2}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Eq\+Float\+Float@{op\+Eq\+Float\+Float}}
+\index{op\+Eq\+Float\+Float@{op\+Eq\+Float\+Float}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Eq\+Float\+Float()}{opEqFloatFloat()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Eq\+Float\+Float (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Checks if a decimal value is equal to another decimal value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first value to check.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second value to check.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a boolean value indicating if {\itshape is} equal to {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_ac2f5e5a62a09a571b8be1ab942fa29cd}\label{interpreter_8h_ac2f5e5a62a09a571b8be1ab942fa29cd}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Neq\+Float\+Float@{op\+Neq\+Float\+Float}}
+\index{op\+Neq\+Float\+Float@{op\+Neq\+Float\+Float}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Neq\+Float\+Float()}{opNeqFloatFloat()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Neq\+Float\+Float (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Checks if a decimal value is not equal to another decimal value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first value to check.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second value to check.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a boolean value indicating if {\itshape is} not equal to {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a990ba01ec898389b6bde8471e2ad0f9d}\label{interpreter_8h_a990ba01ec898389b6bde8471e2ad0f9d}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Eq\+String\+String@{op\+Eq\+String\+String}}
+\index{op\+Eq\+String\+String@{op\+Eq\+String\+String}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Eq\+String\+String()}{opEqStringString()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Eq\+String\+String (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Checks if a string value is equal to another string value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first value to check.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second value to check.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a boolean value indicating if {\itshape is} equal to {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a207c76cef3c01faa73750bd60e9b0037}\label{interpreter_8h_a207c76cef3c01faa73750bd60e9b0037}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Neq\+String\+String@{op\+Neq\+String\+String}}
+\index{op\+Neq\+String\+String@{op\+Neq\+String\+String}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Neq\+String\+String()}{opNeqStringString()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Neq\+String\+String (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Checks if a string value is not equal to another string value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & The first value to check.\\
+\hline
+\mbox{\tt in}  & {\em b} & The second value to check.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a boolean value indicating if {\itshape is} not equal to {\itshape b}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_aa910b7104ad75428e66766f5bd06f4a8}\label{interpreter_8h_aa910b7104ad75428e66766f5bd06f4a8}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Eq\+Nil\+Nil@{op\+Eq\+Nil\+Nil}}
+\index{op\+Eq\+Nil\+Nil@{op\+Eq\+Nil\+Nil}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Eq\+Nil\+Nil()}{opEqNilNil()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Eq\+Nil\+Nil (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Returns true because two nil values are always equal.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & Not used.\\
+\hline
+\mbox{\tt in}  & {\em b} & Not used.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A true boolean value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interpreter_8h_a7ad8e455aa33ebc978836eab51b9c268}\label{interpreter_8h_a7ad8e455aa33ebc978836eab51b9c268}} 
+\index{interpreter.\+h@{interpreter.\+h}!op\+Neq\+Nil\+Nil@{op\+Neq\+Nil\+Nil}}
+\index{op\+Neq\+Nil\+Nil@{op\+Neq\+Nil\+Nil}!interpreter.\+h@{interpreter.\+h}}
+\subsubsection{\texorpdfstring{op\+Neq\+Nil\+Nil()}{opNeqNilNil()}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ op\+Neq\+Nil\+Nil (\begin{DoxyParamCaption}\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{a,  }\item[{\hyperlink{struct_value_object}{Value\+Object} $\ast$}]{b }\end{DoxyParamCaption})}
+
+Returns false because two nil values are never not equal.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em a} & Not used.\\
+\hline
+\mbox{\tt in}  & {\em b} & Not used.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A false boolean value. 
+\end{DoxyReturn}

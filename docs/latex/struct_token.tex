@@ -1,0 +1,60 @@
+\hypertarget{struct_token}{}\section{Token Struct Reference}
+\label{struct_token}\index{Token@{Token}}
+
+
+{\ttfamily \#include $<$tokenizer.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type} \hyperlink{struct_token_a67919af9f3a80dc0b28a0ab1e6d5bf8a}{type}
+\item 
+\hyperlink{union_token_data}{Token\+Data} \hyperlink{struct_token_a064a6753289db58ee17f722a10d15287}{data}
+\item 
+char $\ast$ \hyperlink{struct_token_aa33ebe86afc6f09ce9e335e062426b4a}{image}
+\item 
+const char $\ast$ \hyperlink{struct_token_a5f8c8d8ce49bdcca122fcd6aefc342fd}{fname}
+\item 
+unsigned int \hyperlink{struct_token_addf8630713f51d489c62396c97312f21}{line}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Stores a token type and any parsed values. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{struct_token_a67919af9f3a80dc0b28a0ab1e6d5bf8a}\label{struct_token_a67919af9f3a80dc0b28a0ab1e6d5bf8a}} 
+\index{Token@{Token}!type@{type}}
+\index{type@{type}!Token@{Token}}
+\subsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type} Token\+::type}
+
+The type of token. \mbox{\Hypertarget{struct_token_a064a6753289db58ee17f722a10d15287}\label{struct_token_a064a6753289db58ee17f722a10d15287}} 
+\index{Token@{Token}!data@{data}}
+\index{data@{data}!Token@{Token}}
+\subsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily \hyperlink{union_token_data}{Token\+Data} Token\+::data}
+
+The stored data of type {\itshape type}. \mbox{\Hypertarget{struct_token_aa33ebe86afc6f09ce9e335e062426b4a}\label{struct_token_aa33ebe86afc6f09ce9e335e062426b4a}} 
+\index{Token@{Token}!image@{image}}
+\index{image@{image}!Token@{Token}}
+\subsubsection{\texorpdfstring{image}{image}}
+{\footnotesize\ttfamily char$\ast$ Token\+::image}
+
+The characters that comprise the token. \mbox{\Hypertarget{struct_token_a5f8c8d8ce49bdcca122fcd6aefc342fd}\label{struct_token_a5f8c8d8ce49bdcca122fcd6aefc342fd}} 
+\index{Token@{Token}!fname@{fname}}
+\index{fname@{fname}!Token@{Token}}
+\subsubsection{\texorpdfstring{fname}{fname}}
+{\footnotesize\ttfamily const char$\ast$ Token\+::fname}
+
+The name of the file containing the token. \mbox{\Hypertarget{struct_token_addf8630713f51d489c62396c97312f21}\label{struct_token_addf8630713f51d489c62396c97312f21}} 
+\index{Token@{Token}!line@{line}}
+\index{line@{line}!Token@{Token}}
+\subsubsection{\texorpdfstring{line}{line}}
+{\footnotesize\ttfamily unsigned int Token\+::line}
+
+The line number the token was on. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{tokenizer_8h}{tokenizer.\+h}\end{DoxyCompactItemize}

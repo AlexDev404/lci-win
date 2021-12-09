@@ -1,0 +1,68 @@
+\hypertarget{structscopeobject}{}\section{scopeobject Struct Reference}
+\label{structscopeobject}\index{scopeobject@{scopeobject}}
+
+
+{\ttfamily \#include $<$interpreter.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structscopeobject}{scopeobject} $\ast$ \hyperlink{structscopeobject_aa2e35271cf1ca0ecb0f8d256f6d3f78e}{parent}
+\item 
+struct \hyperlink{structscopeobject}{scopeobject} $\ast$ \hyperlink{structscopeobject_a279c4dacf326e1b913f69bcc5825896b}{caller}
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$ \hyperlink{structscopeobject_ae41fb9156685d42f9b30c1871603c87b}{impvar}
+\item 
+unsigned int \hyperlink{structscopeobject_af8cb43430f28df6a4935d53ec1ac470b}{numvals}
+\item 
+char $\ast$$\ast$ \hyperlink{structscopeobject_a69981d4f863a3a236e052d8d7c911072}{names}
+\item 
+\hyperlink{struct_value_object}{Value\+Object} $\ast$$\ast$ \hyperlink{structscopeobject_a91d5a05990706ccd0dd32356fbb534ba}{values}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Stores a set of variables hierarchically. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structscopeobject_aa2e35271cf1ca0ecb0f8d256f6d3f78e}\label{structscopeobject_aa2e35271cf1ca0ecb0f8d256f6d3f78e}} 
+\index{scopeobject@{scopeobject}!parent@{parent}}
+\index{parent@{parent}!scopeobject@{scopeobject}}
+\subsubsection{\texorpdfstring{parent}{parent}}
+{\footnotesize\ttfamily struct \hyperlink{structscopeobject}{scopeobject}$\ast$ scopeobject\+::parent}
+
+The parent scope. \mbox{\Hypertarget{structscopeobject_a279c4dacf326e1b913f69bcc5825896b}\label{structscopeobject_a279c4dacf326e1b913f69bcc5825896b}} 
+\index{scopeobject@{scopeobject}!caller@{caller}}
+\index{caller@{caller}!scopeobject@{scopeobject}}
+\subsubsection{\texorpdfstring{caller}{caller}}
+{\footnotesize\ttfamily struct \hyperlink{structscopeobject}{scopeobject}$\ast$ scopeobject\+::caller}
+
+The caller scope (if in a function). \mbox{\Hypertarget{structscopeobject_ae41fb9156685d42f9b30c1871603c87b}\label{structscopeobject_ae41fb9156685d42f9b30c1871603c87b}} 
+\index{scopeobject@{scopeobject}!impvar@{impvar}}
+\index{impvar@{impvar}!scopeobject@{scopeobject}}
+\subsubsection{\texorpdfstring{impvar}{impvar}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$ scopeobject\+::impvar}
+
+The \hyperlink{impvar}{implicit variable}. \mbox{\Hypertarget{structscopeobject_af8cb43430f28df6a4935d53ec1ac470b}\label{structscopeobject_af8cb43430f28df6a4935d53ec1ac470b}} 
+\index{scopeobject@{scopeobject}!numvals@{numvals}}
+\index{numvals@{numvals}!scopeobject@{scopeobject}}
+\subsubsection{\texorpdfstring{numvals}{numvals}}
+{\footnotesize\ttfamily unsigned int scopeobject\+::numvals}
+
+The number of values in the scope. \mbox{\Hypertarget{structscopeobject_a69981d4f863a3a236e052d8d7c911072}\label{structscopeobject_a69981d4f863a3a236e052d8d7c911072}} 
+\index{scopeobject@{scopeobject}!names@{names}}
+\index{names@{names}!scopeobject@{scopeobject}}
+\subsubsection{\texorpdfstring{names}{names}}
+{\footnotesize\ttfamily char$\ast$$\ast$ scopeobject\+::names}
+
+The names of the values. \mbox{\Hypertarget{structscopeobject_a91d5a05990706ccd0dd32356fbb534ba}\label{structscopeobject_a91d5a05990706ccd0dd32356fbb534ba}} 
+\index{scopeobject@{scopeobject}!values@{values}}
+\index{values@{values}!scopeobject@{scopeobject}}
+\subsubsection{\texorpdfstring{values}{values}}
+{\footnotesize\ttfamily \hyperlink{struct_value_object}{Value\+Object}$\ast$$\ast$ scopeobject\+::values}
+
+The values in the scope. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{interpreter_8h}{interpreter.\+h}\end{DoxyCompactItemize}

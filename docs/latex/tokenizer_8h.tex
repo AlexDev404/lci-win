@@ -1,0 +1,714 @@
+\hypertarget{tokenizer_8h}{}\section{tokenizer.\+h File Reference}
+\label{tokenizer_8h}\index{tokenizer.\+h@{tokenizer.\+h}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lexer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}error.\+h\char`\"{}}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+union \hyperlink{union_token_data}{Token\+Data}
+\item 
+struct \hyperlink{struct_token}{Token}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type} \{ \newline
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a1f5af7d472428d6e70215b337f1199ac}{T\+T\+\_\+\+I\+N\+T\+E\+G\+ER}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a4987d82c06fd958ce0f15fe5574bd39c}{T\+T\+\_\+\+F\+L\+O\+AT}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a3355cc282f3b7c2eea509d182247b0fa}{T\+T\+\_\+\+S\+T\+R\+I\+NG}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a464a5aac554c7208ae3a26a9a1fe1b6b}{T\+T\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+ER}, 
+\newline
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921acbc3b94f7c49c59403057c6d761ff0fb}{T\+T\+\_\+\+B\+O\+O\+L\+E\+AN}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a9b3709ca27d48c27d3685a65761a10f6}{T\+T\+\_\+\+IT}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a6fc763bd0af4d9bca9f83f33dd18aeb4}{T\+T\+\_\+\+I\+T\+Z\+L\+I\+E\+KA}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ab2358e4e697ce7accf62937aa593d745}{T\+T\+\_\+\+N\+O\+OB}, 
+\newline
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a0e5ed6fe8a0629115724700020183f57}{T\+T\+\_\+\+N\+U\+M\+BR}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ac80111b0a9b56ee20262571060bf09ef}{T\+T\+\_\+\+N\+U\+M\+B\+AR}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921af4161f84122ac43ee477976ef636ecf9}{T\+T\+\_\+\+T\+R\+O\+OF}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a396fbba002b3159d23d9ba7fcbf1a740}{T\+T\+\_\+\+Y\+A\+RN}, 
+\newline
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a5c9f6c0c87ab8833a427bc735ad363f9}{T\+T\+\_\+\+B\+U\+K\+K\+IT}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921aaffedff66c98c1bc186e2c35cdc7ab66}{T\+T\+\_\+\+E\+OF}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921af4301819344df26e6eb32a41085c321d}{T\+T\+\_\+\+N\+E\+W\+L\+I\+NE}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ae340274d5d3f3541a1836650477fbc25}{T\+T\+\_\+\+H\+AI}, 
+\newline
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a192c0562d324a2106d0b144e0bb95d7d}{T\+T\+\_\+\+K\+T\+H\+X\+B\+YE}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a78092eb342fa2e2b979cfc3c64c2e437}{T\+T\+\_\+\+H\+A\+SA}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a792ff488ad1b1296499bf60a5331bf3b}{T\+T\+\_\+\+H\+A\+S\+AN}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a973daf4e803ff4fe5eef073f49a09f03}{T\+T\+\_\+\+I\+T\+ZA}, 
+\newline
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a2b2047123f8c311ae4485f68df15761c}{T\+T\+\_\+\+I\+TZ}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a08c0c19cbdccacf7f93f19d2fc674042}{T\+T\+\_\+\+R\+N\+O\+OB}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921acb238b4009cd7c4245117dd07c5507a5}{T\+T\+\_\+R}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a59a7df0830de33a90a54c350b1a64467}{T\+T\+\_\+\+A\+N\+YR}, 
+\newline
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a3d0c071ff42b1e994322c9b63d8856d2}{T\+T\+\_\+\+AN}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a8a67b61c21735eca9be22425b2a34eb2}{T\+T\+\_\+\+S\+U\+M\+OF}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a5573d4491646ce084e4433c2c978401c}{T\+T\+\_\+\+D\+I\+F\+F\+OF}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a9bd3664927460f3337db91d58a74fdcb}{T\+T\+\_\+\+P\+R\+O\+D\+U\+K\+T\+OF}, 
+\newline
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a5405ff9a17a8698aaaa312dae537f105}{T\+T\+\_\+\+Q\+U\+O\+S\+H\+U\+N\+T\+OF}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a76540ca249fa6a87003c543cae899d9f}{T\+T\+\_\+\+M\+O\+D\+OF}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921aaeb170df92ca5757b5cf1e725fba6545}{T\+T\+\_\+\+B\+I\+G\+G\+R\+OF}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ace42b538932e001a1a3076fb26530c4d}{T\+T\+\_\+\+S\+M\+A\+L\+L\+R\+OF}, 
+\newline
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a902cff771ba2dd799d4ae3653ddf62b4}{T\+T\+\_\+\+B\+O\+T\+H\+OF}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a10561853d332579cbb6a5a69dcbcf4b4}{T\+T\+\_\+\+E\+I\+T\+H\+E\+R\+OF}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ae644ce96c9de2845762e617c1c194ae8}{T\+T\+\_\+\+W\+O\+N\+OF}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a7ffbed267df3e8b22ba26a2d4014754f}{T\+T\+\_\+\+N\+OT}, 
+\newline
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a4928a70acfb32be59de3d97614ad6178}{T\+T\+\_\+\+M\+K\+AY}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a5dd4a14eff05d344d8d366cf1b87f774}{T\+T\+\_\+\+A\+L\+L\+OF}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a83ed81bfe82c33d521da11ba4e8fce91}{T\+T\+\_\+\+A\+N\+Y\+OF}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a1bc2c81d845af2ead3379d1ebd8dd135}{T\+T\+\_\+\+B\+O\+T\+H\+S\+A\+EM}, 
+\newline
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ae895c8f63bb5def6d74565a84ef3b53b}{T\+T\+\_\+\+D\+I\+F\+F\+R\+I\+NT}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a8ef8fa20ebbd74b7ec50bef9942f1328}{T\+T\+\_\+\+M\+A\+EK}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a584f470461c5873d82e61f2baf023589}{T\+T\+\_\+A}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ae121ce8e3538b852d4e91bd57b30a0d3}{T\+T\+\_\+\+I\+S\+N\+O\+WA}, 
+\newline
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a1aab818de48c25f0c3e2ba295554ec18}{T\+T\+\_\+\+V\+I\+S\+I\+B\+LE}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a57b9e0824ad1eb9127dd233ffdfa1550}{T\+T\+\_\+\+I\+N\+V\+I\+S\+I\+B\+LE}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921aedc63b11f496352060d6bc24d6d2714a}{T\+T\+\_\+\+S\+M\+O\+O\+SH}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a9d717b539bca7efe20301832aa8b251d}{T\+T\+\_\+\+B\+A\+NG}, 
+\newline
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ab99bedef252261b162d0fbafc851bcd5}{T\+T\+\_\+\+G\+I\+M\+M\+EH}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a81cd074bdaa854527744a7d905bb8104}{T\+T\+\_\+\+O\+R\+LY}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ac9f38d6a1f03b44415b596a2139c86dd}{T\+T\+\_\+\+Y\+A\+R\+LY}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a00d4f73dc2f6a48ce406ee0726414fbe}{T\+T\+\_\+\+M\+E\+B\+BE}, 
+\newline
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a6436971f52bb146138485e5c7117fb8a}{T\+T\+\_\+\+N\+O\+W\+AI}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ad12595ab92ea76fe5dc3d9f91d02aa34}{T\+T\+\_\+\+O\+IC}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a10ab4996927fcb6224fffbd8bde7807d}{T\+T\+\_\+\+W\+TF}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921aa5c5e44a184c3a9fe1146a449b0116b1}{T\+T\+\_\+\+O\+MG}, 
+\newline
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a76baf694941e0894ccf6599c3e107350}{T\+T\+\_\+\+O\+M\+G\+W\+TF}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a409f8d6216ac45908225a0037ea7c47b}{T\+T\+\_\+\+G\+T\+FO}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a40503d85a4d2bcd3add539034672ba3e}{T\+T\+\_\+\+I\+M\+I\+N\+YR}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a50d64b5b7d5dfa487b7a4bf7e1ad6eb0}{T\+T\+\_\+\+U\+P\+P\+IN}, 
+\newline
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a9542c38fde90ae313ac02bf3354e0437}{T\+T\+\_\+\+N\+E\+R\+F\+IN}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a8c80c670fd578fb94f331f10e5a143ee}{T\+T\+\_\+\+YR}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a7e8a2e462cd28ee206ff1b1eedb7a3a4}{T\+T\+\_\+\+T\+IL}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ad3afa841624d4d6c65df2cde84bb2a81}{T\+T\+\_\+\+W\+I\+LE}, 
+\newline
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a5d5ed5c6f1f868620d8783fae3cb69ea}{T\+T\+\_\+\+I\+M\+O\+U\+T\+T\+A\+YR}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a5eb1aff5739d5200fba751f881c7baec}{T\+T\+\_\+\+H\+O\+W\+IZ}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a399da16a6464d7ba2ec0b4b942b18065}{T\+T\+\_\+\+IZ}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921af8e608a626b9e92c0cf6e3a7b72b6ffa}{T\+T\+\_\+\+I\+F\+U\+S\+A\+Y\+SO}, 
+\newline
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a7d00b798f99bcb8655594002425a7b3d}{T\+T\+\_\+\+F\+O\+U\+N\+D\+YR}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a62f9f8e29d7fbabf6670ccfa852a76b2}{T\+T\+\_\+\+S\+RS}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a31420c41c37d125ebdd0d16da0fa862f}{T\+T\+\_\+\+A\+P\+O\+S\+T\+R\+O\+P\+H\+EZ}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a188e3e395555609834bbb74d38058e18}{T\+T\+\_\+\+O\+H\+A\+I\+IM}, 
+\newline
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a492d76cb3accccf8c9e36b75beadd70f}{T\+T\+\_\+\+I\+M\+L\+I\+EK}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a223c4060fdcac50859d4f5cffb3b2ed9}{T\+T\+\_\+\+K\+T\+HX}, 
+\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a205e364d38e5d84a4442850855a02a1e}{T\+T\+\_\+\+E\+N\+D\+O\+F\+T\+O\+K\+E\+NS}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{Indent}\textbf{ Utilities}\par
+{\em Functions for performing helper tasks. }\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{tokenizer_8h_a0ebaf37662850ea110812dab4905e4a5}{is\+Integer} (const char $\ast$)
+\item 
+int \hyperlink{tokenizer_8h_a34232bc30ac2fd47ad26bd82b077201b}{is\+Float} (const char $\ast$)
+\item 
+int \hyperlink{tokenizer_8h_a7e8009af59ecb471ff4f52b1d46702fe}{is\+String} (const char $\ast$)
+\item 
+int \hyperlink{tokenizer_8h_a73357dd06797311f27e41a0d8393fde1}{is\+Identifier} (const char $\ast$)
+\item 
+\hyperlink{struct_token}{Token} $\ast$ \hyperlink{tokenizer_8h_ad6b372e0e6ec9d44601e89db77ae903c}{is\+Keyword} (\hyperlink{struct_lexeme_list}{Lexeme\+List} $\ast$, unsigned int $\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Token modifiers}\par
+{\em Functions for creating and deleting tokens. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_token}{Token} $\ast$ \hyperlink{tokenizer_8h_a098ead0ad166642da98cb0532b9606b8}{create\+Token} (\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}, const char $\ast$, const char $\ast$, unsigned int)
+\item 
+void \hyperlink{tokenizer_8h_a80e2b898800b99dc42afa663df0f9a44}{delete\+Token} (\hyperlink{struct_token}{Token} $\ast$)
+\item 
+int \hyperlink{tokenizer_8h_a131a18338464beb76d1c78cf507523b1}{add\+Token} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$, unsigned int $\ast$, \hyperlink{struct_token}{Token} $\ast$)
+\item 
+void \hyperlink{tokenizer_8h_a973a45c24c49c724c1adf73953a1820d}{delete\+Tokens} (\hyperlink{struct_token}{Token} $\ast$$\ast$)
+\item 
+unsigned int \hyperlink{tokenizer_8h_ade1b429790c63fac86fd57b4dccd540c}{accept\+Lexemes} (\hyperlink{struct_lexeme_list}{Lexeme\+List} $\ast$, unsigned int, const char $\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Lexeme tokenizer}\par
+{\em Generates tokens from lexemes. }\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_token}{Token} $\ast$$\ast$ \hyperlink{tokenizer_8h_ad476678f03982ffd7019fee27e9585d0}{tokenize\+Lexemes} (\hyperlink{struct_lexeme_list}{Lexeme\+List} $\ast$)
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+Structures and functions for grouping lexemes into tokens. The tokenizer reads through an array of lexemes (generated by the lexer) and groups them into tokens based on their structure. In addition, some lexemes with semantic meaning (such as integers, floats, strings, and booleans) will have their values extracted and stored.
+
+\begin{DoxyAuthor}{Author}
+Justin J. Meza
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2010-\/2012 
+\end{DoxyDate}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921}} 
+\index{tokenizer.\+h@{tokenizer.\+h}!Token\+Type@{Token\+Type}}
+\index{Token\+Type@{Token\+Type}!tokenizer.\+h@{tokenizer.\+h}}
+\subsubsection{\texorpdfstring{Token\+Type}{TokenType}}
+{\footnotesize\ttfamily enum \hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}
+
+Represents a token type. All of the token type names correspond to either the semantic type of token data or the lexemes which make up the particular token.
+
+\begin{DoxyNote}{Note}
+Remember to update the keywords array (below) with the token image. 
+\end{DoxyNote}
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+I\+N\+T\+E\+G\+ER@{T\+T\+\_\+\+I\+N\+T\+E\+G\+ER}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+I\+N\+T\+E\+G\+ER@{T\+T\+\_\+\+I\+N\+T\+E\+G\+ER}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a1f5af7d472428d6e70215b337f1199ac}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a1f5af7d472428d6e70215b337f1199ac}} 
+T\+T\+\_\+\+I\+N\+T\+E\+G\+ER&Integer literal. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+F\+L\+O\+AT@{T\+T\+\_\+\+F\+L\+O\+AT}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+F\+L\+O\+AT@{T\+T\+\_\+\+F\+L\+O\+AT}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a4987d82c06fd958ce0f15fe5574bd39c}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a4987d82c06fd958ce0f15fe5574bd39c}} 
+T\+T\+\_\+\+F\+L\+O\+AT&Decimal literal. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+S\+T\+R\+I\+NG@{T\+T\+\_\+\+S\+T\+R\+I\+NG}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+S\+T\+R\+I\+NG@{T\+T\+\_\+\+S\+T\+R\+I\+NG}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a3355cc282f3b7c2eea509d182247b0fa}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a3355cc282f3b7c2eea509d182247b0fa}} 
+T\+T\+\_\+\+S\+T\+R\+I\+NG&String literal. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+ER@{T\+T\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+ER}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+ER@{T\+T\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+ER}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a464a5aac554c7208ae3a26a9a1fe1b6b}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a464a5aac554c7208ae3a26a9a1fe1b6b}} 
+T\+T\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+ER&Identifier literal. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+B\+O\+O\+L\+E\+AN@{T\+T\+\_\+\+B\+O\+O\+L\+E\+AN}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+B\+O\+O\+L\+E\+AN@{T\+T\+\_\+\+B\+O\+O\+L\+E\+AN}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921acbc3b94f7c49c59403057c6d761ff0fb}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921acbc3b94f7c49c59403057c6d761ff0fb}} 
+T\+T\+\_\+\+B\+O\+O\+L\+E\+AN&Boolean literal. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+IT@{T\+T\+\_\+\+IT}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+IT@{T\+T\+\_\+\+IT}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a9b3709ca27d48c27d3685a65761a10f6}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a9b3709ca27d48c27d3685a65761a10f6}} 
+T\+T\+\_\+\+IT&\hyperlink{impvar}{Implicit variable}. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+I\+T\+Z\+L\+I\+E\+KA@{T\+T\+\_\+\+I\+T\+Z\+L\+I\+E\+KA}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+I\+T\+Z\+L\+I\+E\+KA@{T\+T\+\_\+\+I\+T\+Z\+L\+I\+E\+KA}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a6fc763bd0af4d9bca9f83f33dd18aeb4}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a6fc763bd0af4d9bca9f83f33dd18aeb4}} 
+T\+T\+\_\+\+I\+T\+Z\+L\+I\+E\+KA&Inherited object declaration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+N\+O\+OB@{T\+T\+\_\+\+N\+O\+OB}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+N\+O\+OB@{T\+T\+\_\+\+N\+O\+OB}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ab2358e4e697ce7accf62937aa593d745}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ab2358e4e697ce7accf62937aa593d745}} 
+T\+T\+\_\+\+N\+O\+OB&Nil keyword. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+N\+U\+M\+BR@{T\+T\+\_\+\+N\+U\+M\+BR}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+N\+U\+M\+BR@{T\+T\+\_\+\+N\+U\+M\+BR}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a0e5ed6fe8a0629115724700020183f57}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a0e5ed6fe8a0629115724700020183f57}} 
+T\+T\+\_\+\+N\+U\+M\+BR&Integer keyword. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+N\+U\+M\+B\+AR@{T\+T\+\_\+\+N\+U\+M\+B\+AR}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+N\+U\+M\+B\+AR@{T\+T\+\_\+\+N\+U\+M\+B\+AR}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ac80111b0a9b56ee20262571060bf09ef}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ac80111b0a9b56ee20262571060bf09ef}} 
+T\+T\+\_\+\+N\+U\+M\+B\+AR&Decimal keyword. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+T\+R\+O\+OF@{T\+T\+\_\+\+T\+R\+O\+OF}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+T\+R\+O\+OF@{T\+T\+\_\+\+T\+R\+O\+OF}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921af4161f84122ac43ee477976ef636ecf9}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921af4161f84122ac43ee477976ef636ecf9}} 
+T\+T\+\_\+\+T\+R\+O\+OF&Boolean keyword. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+Y\+A\+RN@{T\+T\+\_\+\+Y\+A\+RN}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+Y\+A\+RN@{T\+T\+\_\+\+Y\+A\+RN}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a396fbba002b3159d23d9ba7fcbf1a740}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a396fbba002b3159d23d9ba7fcbf1a740}} 
+T\+T\+\_\+\+Y\+A\+RN&String keyword. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+B\+U\+K\+K\+IT@{T\+T\+\_\+\+B\+U\+K\+K\+IT}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+B\+U\+K\+K\+IT@{T\+T\+\_\+\+B\+U\+K\+K\+IT}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a5c9f6c0c87ab8833a427bc735ad363f9}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a5c9f6c0c87ab8833a427bc735ad363f9}} 
+T\+T\+\_\+\+B\+U\+K\+K\+IT&Array. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+E\+OF@{T\+T\+\_\+\+E\+OF}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+E\+OF@{T\+T\+\_\+\+E\+OF}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921aaffedff66c98c1bc186e2c35cdc7ab66}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921aaffedff66c98c1bc186e2c35cdc7ab66}} 
+T\+T\+\_\+\+E\+OF&End of file. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+N\+E\+W\+L\+I\+NE@{T\+T\+\_\+\+N\+E\+W\+L\+I\+NE}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+N\+E\+W\+L\+I\+NE@{T\+T\+\_\+\+N\+E\+W\+L\+I\+NE}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921af4301819344df26e6eb32a41085c321d}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921af4301819344df26e6eb32a41085c321d}} 
+T\+T\+\_\+\+N\+E\+W\+L\+I\+NE&Newline. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+H\+AI@{T\+T\+\_\+\+H\+AI}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+H\+AI@{T\+T\+\_\+\+H\+AI}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ae340274d5d3f3541a1836650477fbc25}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ae340274d5d3f3541a1836650477fbc25}} 
+T\+T\+\_\+\+H\+AI&Beginning of main block. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+K\+T\+H\+X\+B\+YE@{T\+T\+\_\+\+K\+T\+H\+X\+B\+YE}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+K\+T\+H\+X\+B\+YE@{T\+T\+\_\+\+K\+T\+H\+X\+B\+YE}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a192c0562d324a2106d0b144e0bb95d7d}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a192c0562d324a2106d0b144e0bb95d7d}} 
+T\+T\+\_\+\+K\+T\+H\+X\+B\+YE&End of main block. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+H\+A\+SA@{T\+T\+\_\+\+H\+A\+SA}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+H\+A\+SA@{T\+T\+\_\+\+H\+A\+SA}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a78092eb342fa2e2b979cfc3c64c2e437}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a78092eb342fa2e2b979cfc3c64c2e437}} 
+T\+T\+\_\+\+H\+A\+SA&Variable declaration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+H\+A\+S\+AN@{T\+T\+\_\+\+H\+A\+S\+AN}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+H\+A\+S\+AN@{T\+T\+\_\+\+H\+A\+S\+AN}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a792ff488ad1b1296499bf60a5331bf3b}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a792ff488ad1b1296499bf60a5331bf3b}} 
+T\+T\+\_\+\+H\+A\+S\+AN&Variable declaration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+I\+T\+ZA@{T\+T\+\_\+\+I\+T\+ZA}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+I\+T\+ZA@{T\+T\+\_\+\+I\+T\+ZA}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a973daf4e803ff4fe5eef073f49a09f03}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a973daf4e803ff4fe5eef073f49a09f03}} 
+T\+T\+\_\+\+I\+T\+ZA&Variable type initialization. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+I\+TZ@{T\+T\+\_\+\+I\+TZ}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+I\+TZ@{T\+T\+\_\+\+I\+TZ}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a2b2047123f8c311ae4485f68df15761c}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a2b2047123f8c311ae4485f68df15761c}} 
+T\+T\+\_\+\+I\+TZ&Variable value initialization. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+R\+N\+O\+OB@{T\+T\+\_\+\+R\+N\+O\+OB}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+R\+N\+O\+OB@{T\+T\+\_\+\+R\+N\+O\+OB}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a08c0c19cbdccacf7f93f19d2fc674042}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a08c0c19cbdccacf7f93f19d2fc674042}} 
+T\+T\+\_\+\+R\+N\+O\+OB&Deallocation. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+R@{T\+T\+\_\+R}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+R@{T\+T\+\_\+R}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921acb238b4009cd7c4245117dd07c5507a5}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921acb238b4009cd7c4245117dd07c5507a5}} 
+T\+T\+\_\+R&Assignment. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+A\+N\+YR@{T\+T\+\_\+\+A\+N\+YR}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+A\+N\+YR@{T\+T\+\_\+\+A\+N\+YR}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a59a7df0830de33a90a54c350b1a64467}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a59a7df0830de33a90a54c350b1a64467}} 
+T\+T\+\_\+\+A\+N\+YR&User-\/defined function argument separator. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+AN@{T\+T\+\_\+\+AN}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+AN@{T\+T\+\_\+\+AN}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a3d0c071ff42b1e994322c9b63d8856d2}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a3d0c071ff42b1e994322c9b63d8856d2}} 
+T\+T\+\_\+\+AN&Built-\/in function argument separator. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+S\+U\+M\+OF@{T\+T\+\_\+\+S\+U\+M\+OF}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+S\+U\+M\+OF@{T\+T\+\_\+\+S\+U\+M\+OF}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a8a67b61c21735eca9be22425b2a34eb2}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a8a67b61c21735eca9be22425b2a34eb2}} 
+T\+T\+\_\+\+S\+U\+M\+OF&Addition. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+D\+I\+F\+F\+OF@{T\+T\+\_\+\+D\+I\+F\+F\+OF}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+D\+I\+F\+F\+OF@{T\+T\+\_\+\+D\+I\+F\+F\+OF}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a5573d4491646ce084e4433c2c978401c}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a5573d4491646ce084e4433c2c978401c}} 
+T\+T\+\_\+\+D\+I\+F\+F\+OF&Subtraction. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+P\+R\+O\+D\+U\+K\+T\+OF@{T\+T\+\_\+\+P\+R\+O\+D\+U\+K\+T\+OF}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+P\+R\+O\+D\+U\+K\+T\+OF@{T\+T\+\_\+\+P\+R\+O\+D\+U\+K\+T\+OF}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a9bd3664927460f3337db91d58a74fdcb}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a9bd3664927460f3337db91d58a74fdcb}} 
+T\+T\+\_\+\+P\+R\+O\+D\+U\+K\+T\+OF&Multiplication. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+Q\+U\+O\+S\+H\+U\+N\+T\+OF@{T\+T\+\_\+\+Q\+U\+O\+S\+H\+U\+N\+T\+OF}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+Q\+U\+O\+S\+H\+U\+N\+T\+OF@{T\+T\+\_\+\+Q\+U\+O\+S\+H\+U\+N\+T\+OF}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a5405ff9a17a8698aaaa312dae537f105}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a5405ff9a17a8698aaaa312dae537f105}} 
+T\+T\+\_\+\+Q\+U\+O\+S\+H\+U\+N\+T\+OF&Division. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+M\+O\+D\+OF@{T\+T\+\_\+\+M\+O\+D\+OF}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+M\+O\+D\+OF@{T\+T\+\_\+\+M\+O\+D\+OF}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a76540ca249fa6a87003c543cae899d9f}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a76540ca249fa6a87003c543cae899d9f}} 
+T\+T\+\_\+\+M\+O\+D\+OF&Modulo. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+B\+I\+G\+G\+R\+OF@{T\+T\+\_\+\+B\+I\+G\+G\+R\+OF}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+B\+I\+G\+G\+R\+OF@{T\+T\+\_\+\+B\+I\+G\+G\+R\+OF}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921aaeb170df92ca5757b5cf1e725fba6545}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921aaeb170df92ca5757b5cf1e725fba6545}} 
+T\+T\+\_\+\+B\+I\+G\+G\+R\+OF&Greater than. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+S\+M\+A\+L\+L\+R\+OF@{T\+T\+\_\+\+S\+M\+A\+L\+L\+R\+OF}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+S\+M\+A\+L\+L\+R\+OF@{T\+T\+\_\+\+S\+M\+A\+L\+L\+R\+OF}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ace42b538932e001a1a3076fb26530c4d}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ace42b538932e001a1a3076fb26530c4d}} 
+T\+T\+\_\+\+S\+M\+A\+L\+L\+R\+OF&Less than. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+B\+O\+T\+H\+OF@{T\+T\+\_\+\+B\+O\+T\+H\+OF}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+B\+O\+T\+H\+OF@{T\+T\+\_\+\+B\+O\+T\+H\+OF}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a902cff771ba2dd799d4ae3653ddf62b4}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a902cff771ba2dd799d4ae3653ddf62b4}} 
+T\+T\+\_\+\+B\+O\+T\+H\+OF&Logical A\+ND. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+E\+I\+T\+H\+E\+R\+OF@{T\+T\+\_\+\+E\+I\+T\+H\+E\+R\+OF}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+E\+I\+T\+H\+E\+R\+OF@{T\+T\+\_\+\+E\+I\+T\+H\+E\+R\+OF}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a10561853d332579cbb6a5a69dcbcf4b4}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a10561853d332579cbb6a5a69dcbcf4b4}} 
+T\+T\+\_\+\+E\+I\+T\+H\+E\+R\+OF&Logical OR. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+W\+O\+N\+OF@{T\+T\+\_\+\+W\+O\+N\+OF}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+W\+O\+N\+OF@{T\+T\+\_\+\+W\+O\+N\+OF}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ae644ce96c9de2845762e617c1c194ae8}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ae644ce96c9de2845762e617c1c194ae8}} 
+T\+T\+\_\+\+W\+O\+N\+OF&Logical X\+OR. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+N\+OT@{T\+T\+\_\+\+N\+OT}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+N\+OT@{T\+T\+\_\+\+N\+OT}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a7ffbed267df3e8b22ba26a2d4014754f}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a7ffbed267df3e8b22ba26a2d4014754f}} 
+T\+T\+\_\+\+N\+OT&Logical N\+OT. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+M\+K\+AY@{T\+T\+\_\+\+M\+K\+AY}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+M\+K\+AY@{T\+T\+\_\+\+M\+K\+AY}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a4928a70acfb32be59de3d97614ad6178}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a4928a70acfb32be59de3d97614ad6178}} 
+T\+T\+\_\+\+M\+K\+AY&Infinite arity argument delimiter. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+A\+L\+L\+OF@{T\+T\+\_\+\+A\+L\+L\+OF}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+A\+L\+L\+OF@{T\+T\+\_\+\+A\+L\+L\+OF}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a5dd4a14eff05d344d8d366cf1b87f774}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a5dd4a14eff05d344d8d366cf1b87f774}} 
+T\+T\+\_\+\+A\+L\+L\+OF&Infinite arity logical A\+ND. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+A\+N\+Y\+OF@{T\+T\+\_\+\+A\+N\+Y\+OF}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+A\+N\+Y\+OF@{T\+T\+\_\+\+A\+N\+Y\+OF}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a83ed81bfe82c33d521da11ba4e8fce91}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a83ed81bfe82c33d521da11ba4e8fce91}} 
+T\+T\+\_\+\+A\+N\+Y\+OF&Infinite arity logical OR. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+B\+O\+T\+H\+S\+A\+EM@{T\+T\+\_\+\+B\+O\+T\+H\+S\+A\+EM}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+B\+O\+T\+H\+S\+A\+EM@{T\+T\+\_\+\+B\+O\+T\+H\+S\+A\+EM}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a1bc2c81d845af2ead3379d1ebd8dd135}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a1bc2c81d845af2ead3379d1ebd8dd135}} 
+T\+T\+\_\+\+B\+O\+T\+H\+S\+A\+EM&Equality. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+D\+I\+F\+F\+R\+I\+NT@{T\+T\+\_\+\+D\+I\+F\+F\+R\+I\+NT}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+D\+I\+F\+F\+R\+I\+NT@{T\+T\+\_\+\+D\+I\+F\+F\+R\+I\+NT}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ae895c8f63bb5def6d74565a84ef3b53b}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ae895c8f63bb5def6d74565a84ef3b53b}} 
+T\+T\+\_\+\+D\+I\+F\+F\+R\+I\+NT&Inequality. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+M\+A\+EK@{T\+T\+\_\+\+M\+A\+EK}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+M\+A\+EK@{T\+T\+\_\+\+M\+A\+EK}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a8ef8fa20ebbd74b7ec50bef9942f1328}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a8ef8fa20ebbd74b7ec50bef9942f1328}} 
+T\+T\+\_\+\+M\+A\+EK&Cast. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+A@{T\+T\+\_\+A}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+A@{T\+T\+\_\+A}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a584f470461c5873d82e61f2baf023589}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a584f470461c5873d82e61f2baf023589}} 
+T\+T\+\_\+A&Cast target separator. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+I\+S\+N\+O\+WA@{T\+T\+\_\+\+I\+S\+N\+O\+WA}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+I\+S\+N\+O\+WA@{T\+T\+\_\+\+I\+S\+N\+O\+WA}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ae121ce8e3538b852d4e91bd57b30a0d3}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ae121ce8e3538b852d4e91bd57b30a0d3}} 
+T\+T\+\_\+\+I\+S\+N\+O\+WA&In-\/place cast. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+V\+I\+S\+I\+B\+LE@{T\+T\+\_\+\+V\+I\+S\+I\+B\+LE}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+V\+I\+S\+I\+B\+LE@{T\+T\+\_\+\+V\+I\+S\+I\+B\+LE}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a1aab818de48c25f0c3e2ba295554ec18}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a1aab818de48c25f0c3e2ba295554ec18}} 
+T\+T\+\_\+\+V\+I\+S\+I\+B\+LE&Print. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+I\+N\+V\+I\+S\+I\+B\+LE@{T\+T\+\_\+\+I\+N\+V\+I\+S\+I\+B\+LE}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+I\+N\+V\+I\+S\+I\+B\+LE@{T\+T\+\_\+\+I\+N\+V\+I\+S\+I\+B\+LE}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a57b9e0824ad1eb9127dd233ffdfa1550}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a57b9e0824ad1eb9127dd233ffdfa1550}} 
+T\+T\+\_\+\+I\+N\+V\+I\+S\+I\+B\+LE&Print to standard error. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+S\+M\+O\+O\+SH@{T\+T\+\_\+\+S\+M\+O\+O\+SH}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+S\+M\+O\+O\+SH@{T\+T\+\_\+\+S\+M\+O\+O\+SH}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921aedc63b11f496352060d6bc24d6d2714a}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921aedc63b11f496352060d6bc24d6d2714a}} 
+T\+T\+\_\+\+S\+M\+O\+O\+SH&String concatenation. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+B\+A\+NG@{T\+T\+\_\+\+B\+A\+NG}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+B\+A\+NG@{T\+T\+\_\+\+B\+A\+NG}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a9d717b539bca7efe20301832aa8b251d}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a9d717b539bca7efe20301832aa8b251d}} 
+T\+T\+\_\+\+B\+A\+NG&Exclamation point (!) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+G\+I\+M\+M\+EH@{T\+T\+\_\+\+G\+I\+M\+M\+EH}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+G\+I\+M\+M\+EH@{T\+T\+\_\+\+G\+I\+M\+M\+EH}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ab99bedef252261b162d0fbafc851bcd5}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ab99bedef252261b162d0fbafc851bcd5}} 
+T\+T\+\_\+\+G\+I\+M\+M\+EH&Input. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+O\+R\+LY@{T\+T\+\_\+\+O\+R\+LY}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+O\+R\+LY@{T\+T\+\_\+\+O\+R\+LY}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a81cd074bdaa854527744a7d905bb8104}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a81cd074bdaa854527744a7d905bb8104}} 
+T\+T\+\_\+\+O\+R\+LY&Conditional. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+Y\+A\+R\+LY@{T\+T\+\_\+\+Y\+A\+R\+LY}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+Y\+A\+R\+LY@{T\+T\+\_\+\+Y\+A\+R\+LY}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ac9f38d6a1f03b44415b596a2139c86dd}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ac9f38d6a1f03b44415b596a2139c86dd}} 
+T\+T\+\_\+\+Y\+A\+R\+LY&True branch. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+M\+E\+B\+BE@{T\+T\+\_\+\+M\+E\+B\+BE}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+M\+E\+B\+BE@{T\+T\+\_\+\+M\+E\+B\+BE}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a00d4f73dc2f6a48ce406ee0726414fbe}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a00d4f73dc2f6a48ce406ee0726414fbe}} 
+T\+T\+\_\+\+M\+E\+B\+BE&Else branch. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+N\+O\+W\+AI@{T\+T\+\_\+\+N\+O\+W\+AI}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+N\+O\+W\+AI@{T\+T\+\_\+\+N\+O\+W\+AI}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a6436971f52bb146138485e5c7117fb8a}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a6436971f52bb146138485e5c7117fb8a}} 
+T\+T\+\_\+\+N\+O\+W\+AI&False branch. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+O\+IC@{T\+T\+\_\+\+O\+IC}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+O\+IC@{T\+T\+\_\+\+O\+IC}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ad12595ab92ea76fe5dc3d9f91d02aa34}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ad12595ab92ea76fe5dc3d9f91d02aa34}} 
+T\+T\+\_\+\+O\+IC&Conditional and switch delimiter. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+W\+TF@{T\+T\+\_\+\+W\+TF}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+W\+TF@{T\+T\+\_\+\+W\+TF}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a10ab4996927fcb6224fffbd8bde7807d}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a10ab4996927fcb6224fffbd8bde7807d}} 
+T\+T\+\_\+\+W\+TF&Switch. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+O\+MG@{T\+T\+\_\+\+O\+MG}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+O\+MG@{T\+T\+\_\+\+O\+MG}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921aa5c5e44a184c3a9fe1146a449b0116b1}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921aa5c5e44a184c3a9fe1146a449b0116b1}} 
+T\+T\+\_\+\+O\+MG&Case. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+O\+M\+G\+W\+TF@{T\+T\+\_\+\+O\+M\+G\+W\+TF}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+O\+M\+G\+W\+TF@{T\+T\+\_\+\+O\+M\+G\+W\+TF}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a76baf694941e0894ccf6599c3e107350}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a76baf694941e0894ccf6599c3e107350}} 
+T\+T\+\_\+\+O\+M\+G\+W\+TF&Default case. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+G\+T\+FO@{T\+T\+\_\+\+G\+T\+FO}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+G\+T\+FO@{T\+T\+\_\+\+G\+T\+FO}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a409f8d6216ac45908225a0037ea7c47b}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a409f8d6216ac45908225a0037ea7c47b}} 
+T\+T\+\_\+\+G\+T\+FO&Break or return without value. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+I\+M\+I\+N\+YR@{T\+T\+\_\+\+I\+M\+I\+N\+YR}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+I\+M\+I\+N\+YR@{T\+T\+\_\+\+I\+M\+I\+N\+YR}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a40503d85a4d2bcd3add539034672ba3e}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a40503d85a4d2bcd3add539034672ba3e}} 
+T\+T\+\_\+\+I\+M\+I\+N\+YR&Loop beginning. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+U\+P\+P\+IN@{T\+T\+\_\+\+U\+P\+P\+IN}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+U\+P\+P\+IN@{T\+T\+\_\+\+U\+P\+P\+IN}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a50d64b5b7d5dfa487b7a4bf7e1ad6eb0}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a50d64b5b7d5dfa487b7a4bf7e1ad6eb0}} 
+T\+T\+\_\+\+U\+P\+P\+IN&Auto increment loop variable. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+N\+E\+R\+F\+IN@{T\+T\+\_\+\+N\+E\+R\+F\+IN}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+N\+E\+R\+F\+IN@{T\+T\+\_\+\+N\+E\+R\+F\+IN}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a9542c38fde90ae313ac02bf3354e0437}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a9542c38fde90ae313ac02bf3354e0437}} 
+T\+T\+\_\+\+N\+E\+R\+F\+IN&Auto decrement loop variable. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+YR@{T\+T\+\_\+\+YR}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+YR@{T\+T\+\_\+\+YR}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a8c80c670fd578fb94f331f10e5a143ee}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a8c80c670fd578fb94f331f10e5a143ee}} 
+T\+T\+\_\+\+YR&Function name delimiter. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+T\+IL@{T\+T\+\_\+\+T\+IL}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+T\+IL@{T\+T\+\_\+\+T\+IL}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a7e8a2e462cd28ee206ff1b1eedb7a3a4}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a7e8a2e462cd28ee206ff1b1eedb7a3a4}} 
+T\+T\+\_\+\+T\+IL&Do until. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+W\+I\+LE@{T\+T\+\_\+\+W\+I\+LE}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+W\+I\+LE@{T\+T\+\_\+\+W\+I\+LE}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ad3afa841624d4d6c65df2cde84bb2a81}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921ad3afa841624d4d6c65df2cde84bb2a81}} 
+T\+T\+\_\+\+W\+I\+LE&Do while. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+I\+M\+O\+U\+T\+T\+A\+YR@{T\+T\+\_\+\+I\+M\+O\+U\+T\+T\+A\+YR}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+I\+M\+O\+U\+T\+T\+A\+YR@{T\+T\+\_\+\+I\+M\+O\+U\+T\+T\+A\+YR}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a5d5ed5c6f1f868620d8783fae3cb69ea}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a5d5ed5c6f1f868620d8783fae3cb69ea}} 
+T\+T\+\_\+\+I\+M\+O\+U\+T\+T\+A\+YR&Loop ending. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+H\+O\+W\+IZ@{T\+T\+\_\+\+H\+O\+W\+IZ}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+H\+O\+W\+IZ@{T\+T\+\_\+\+H\+O\+W\+IZ}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a5eb1aff5739d5200fba751f881c7baec}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a5eb1aff5739d5200fba751f881c7baec}} 
+T\+T\+\_\+\+H\+O\+W\+IZ&Function definition beginning. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+IZ@{T\+T\+\_\+\+IZ}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+IZ@{T\+T\+\_\+\+IZ}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a399da16a6464d7ba2ec0b4b942b18065}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a399da16a6464d7ba2ec0b4b942b18065}} 
+T\+T\+\_\+\+IZ&Function scope delimiter. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+I\+F\+U\+S\+A\+Y\+SO@{T\+T\+\_\+\+I\+F\+U\+S\+A\+Y\+SO}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+I\+F\+U\+S\+A\+Y\+SO@{T\+T\+\_\+\+I\+F\+U\+S\+A\+Y\+SO}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921af8e608a626b9e92c0cf6e3a7b72b6ffa}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921af8e608a626b9e92c0cf6e3a7b72b6ffa}} 
+T\+T\+\_\+\+I\+F\+U\+S\+A\+Y\+SO&Function definition end. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+F\+O\+U\+N\+D\+YR@{T\+T\+\_\+\+F\+O\+U\+N\+D\+YR}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+F\+O\+U\+N\+D\+YR@{T\+T\+\_\+\+F\+O\+U\+N\+D\+YR}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a7d00b798f99bcb8655594002425a7b3d}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a7d00b798f99bcb8655594002425a7b3d}} 
+T\+T\+\_\+\+F\+O\+U\+N\+D\+YR&Return with value. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+S\+RS@{T\+T\+\_\+\+S\+RS}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+S\+RS@{T\+T\+\_\+\+S\+RS}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a62f9f8e29d7fbabf6670ccfa852a76b2}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a62f9f8e29d7fbabf6670ccfa852a76b2}} 
+T\+T\+\_\+\+S\+RS&Indirect variable access. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+A\+P\+O\+S\+T\+R\+O\+P\+H\+EZ@{T\+T\+\_\+\+A\+P\+O\+S\+T\+R\+O\+P\+H\+EZ}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+A\+P\+O\+S\+T\+R\+O\+P\+H\+EZ@{T\+T\+\_\+\+A\+P\+O\+S\+T\+R\+O\+P\+H\+EZ}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a31420c41c37d125ebdd0d16da0fa862f}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a31420c41c37d125ebdd0d16da0fa862f}} 
+T\+T\+\_\+\+A\+P\+O\+S\+T\+R\+O\+P\+H\+EZ&Array slot access (\textquotesingle{}Z). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+O\+H\+A\+I\+IM@{T\+T\+\_\+\+O\+H\+A\+I\+IM}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+O\+H\+A\+I\+IM@{T\+T\+\_\+\+O\+H\+A\+I\+IM}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a188e3e395555609834bbb74d38058e18}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a188e3e395555609834bbb74d38058e18}} 
+T\+T\+\_\+\+O\+H\+A\+I\+IM&Alternate array declaration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+I\+M\+L\+I\+EK@{T\+T\+\_\+\+I\+M\+L\+I\+EK}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+I\+M\+L\+I\+EK@{T\+T\+\_\+\+I\+M\+L\+I\+EK}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a492d76cb3accccf8c9e36b75beadd70f}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a492d76cb3accccf8c9e36b75beadd70f}} 
+T\+T\+\_\+\+I\+M\+L\+I\+EK&Alternate inherited object declaration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+K\+T\+HX@{T\+T\+\_\+\+K\+T\+HX}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+K\+T\+HX@{T\+T\+\_\+\+K\+T\+HX}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a223c4060fdcac50859d4f5cffb3b2ed9}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a223c4060fdcac50859d4f5cffb3b2ed9}} 
+T\+T\+\_\+\+K\+T\+HX&End of alternate array declaration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{T\+T\+\_\+\+E\+N\+D\+O\+F\+T\+O\+K\+E\+NS@{T\+T\+\_\+\+E\+N\+D\+O\+F\+T\+O\+K\+E\+NS}!tokenizer.\+h@{tokenizer.\+h}}\index{tokenizer.\+h@{tokenizer.\+h}!T\+T\+\_\+\+E\+N\+D\+O\+F\+T\+O\+K\+E\+NS@{T\+T\+\_\+\+E\+N\+D\+O\+F\+T\+O\+K\+E\+NS}}}\mbox{\Hypertarget{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a205e364d38e5d84a4442850855a02a1e}\label{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921a205e364d38e5d84a4442850855a02a1e}} 
+T\+T\+\_\+\+E\+N\+D\+O\+F\+T\+O\+K\+E\+NS&Sentinel end of this enum -- don\textquotesingle{}t move it! \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{tokenizer_8h_a0ebaf37662850ea110812dab4905e4a5}\label{tokenizer_8h_a0ebaf37662850ea110812dab4905e4a5}} 
+\index{tokenizer.\+h@{tokenizer.\+h}!is\+Integer@{is\+Integer}}
+\index{is\+Integer@{is\+Integer}!tokenizer.\+h@{tokenizer.\+h}}
+\subsubsection{\texorpdfstring{is\+Integer()}{isInteger()}}
+{\footnotesize\ttfamily int is\+Integer (\begin{DoxyParamCaption}\item[{const char $\ast$}]{image }\end{DoxyParamCaption})}
+
+Checks if a string follows the format for an integer. Specifically, it checks if the string matches the regular expression\+: (-\/?\mbox{[}1-\/9\mbox{]}\mbox{[}0-\/9\mbox{]}$\ast$$\vert$0).
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em image} & The string to check.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & {\itshape image} does not match the pattern for an integer.\\
+\hline
+{\em 1} & {\itshape image} matches the pattern for an integer. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{tokenizer_8h_a34232bc30ac2fd47ad26bd82b077201b}\label{tokenizer_8h_a34232bc30ac2fd47ad26bd82b077201b}} 
+\index{tokenizer.\+h@{tokenizer.\+h}!is\+Float@{is\+Float}}
+\index{is\+Float@{is\+Float}!tokenizer.\+h@{tokenizer.\+h}}
+\subsubsection{\texorpdfstring{is\+Float()}{isFloat()}}
+{\footnotesize\ttfamily int is\+Float (\begin{DoxyParamCaption}\item[{const char $\ast$}]{image }\end{DoxyParamCaption})}
+
+Checks if a string follows the format for a decimal. Specifically, it checks if the string matches the regular expression\+: (-\/?\mbox{[}0-\/9\mbox{]}.\mbox{[}0-\/9\mbox{]}$\ast$).
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em image} & The string to check.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & {\itshape image} does not match the pattern for a decimal.\\
+\hline
+{\em 1} & {\itshape image} matches the pattern for a decimal. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{tokenizer_8h_a7e8009af59ecb471ff4f52b1d46702fe}\label{tokenizer_8h_a7e8009af59ecb471ff4f52b1d46702fe}} 
+\index{tokenizer.\+h@{tokenizer.\+h}!is\+String@{is\+String}}
+\index{is\+String@{is\+String}!tokenizer.\+h@{tokenizer.\+h}}
+\subsubsection{\texorpdfstring{is\+String()}{isString()}}
+{\footnotesize\ttfamily int is\+String (\begin{DoxyParamCaption}\item[{const char $\ast$}]{image }\end{DoxyParamCaption})}
+
+Checks if a string follows the format for a string literal. Specifically, it checks if the string matches the regular expression\+: (\char`\"{}.$\ast$\char`\"{}).
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em image} & The string to check.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & {\itshape image} does not match the pattern for a string.\\
+\hline
+{\em 1} & {\itshape image} matches the pattern for a string. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{tokenizer_8h_a73357dd06797311f27e41a0d8393fde1}\label{tokenizer_8h_a73357dd06797311f27e41a0d8393fde1}} 
+\index{tokenizer.\+h@{tokenizer.\+h}!is\+Identifier@{is\+Identifier}}
+\index{is\+Identifier@{is\+Identifier}!tokenizer.\+h@{tokenizer.\+h}}
+\subsubsection{\texorpdfstring{is\+Identifier()}{isIdentifier()}}
+{\footnotesize\ttfamily int is\+Identifier (\begin{DoxyParamCaption}\item[{const char $\ast$}]{image }\end{DoxyParamCaption})}
+
+Checks if a string follows the format for an identifier. Specifically, it checks if the string matches the regular expression\+: (\mbox{[}a-\/z\+A-\/Z\mbox{]}\mbox{[}a-\/z\+A-\/\+Z0-\/9\+\_\+\mbox{]}$\ast$).
+
+
+\begin{DoxyParams}{Parameters}
+{\em image} & \mbox{[}in\mbox{]} The string to check.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & {\itshape image} does not match the pattern for an identifier.\\
+\hline
+{\em 1} & {\itshape image} matches the pattern for an identifier. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{tokenizer_8h_ad6b372e0e6ec9d44601e89db77ae903c}\label{tokenizer_8h_ad6b372e0e6ec9d44601e89db77ae903c}} 
+\index{tokenizer.\+h@{tokenizer.\+h}!is\+Keyword@{is\+Keyword}}
+\index{is\+Keyword@{is\+Keyword}!tokenizer.\+h@{tokenizer.\+h}}
+\subsubsection{\texorpdfstring{is\+Keyword()}{isKeyword()}}
+{\footnotesize\ttfamily \hyperlink{struct_token}{Token}$\ast$ is\+Keyword (\begin{DoxyParamCaption}\item[{\hyperlink{struct_lexeme_list}{Lexeme\+List} $\ast$}]{lexemes,  }\item[{unsigned int $\ast$}]{start }\end{DoxyParamCaption})}
+
+Checks if the next lexemes in a list comprise a keyword and, if so, generates a new token representing that keyword. Specifically, {\itshape lexemes} is searched, starting at {\itshape start} for keywords. If one is found, an appropriate token is created and returned and {\itshape start} is incremented by the number of lexemes matched minus one.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lexemes} & \mbox{[}in\mbox{]} A list of lexemes to search for keywords in.\\
+\hline
+{\em start} & \mbox{[}in,out\mbox{]} The position within {\itshape lexemes} to begin searching for keywords.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+If a keyword is not found, {\itshape start} will not be modified. Otherwise, {\itshape start} will be incremented by the number of lexemes matched minus one.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to the token containing the matched keyword.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & No keywords were found or there was an error allocating memory. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{tokenizer_8h_a098ead0ad166642da98cb0532b9606b8}\label{tokenizer_8h_a098ead0ad166642da98cb0532b9606b8}} 
+\index{tokenizer.\+h@{tokenizer.\+h}!create\+Token@{create\+Token}}
+\index{create\+Token@{create\+Token}!tokenizer.\+h@{tokenizer.\+h}}
+\subsubsection{\texorpdfstring{create\+Token()}{createToken()}}
+{\footnotesize\ttfamily \hyperlink{struct_token}{Token}$\ast$ create\+Token (\begin{DoxyParamCaption}\item[{\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}]{type,  }\item[{const char $\ast$}]{image,  }\item[{const char $\ast$}]{fname,  }\item[{unsigned int}]{line }\end{DoxyParamCaption})}
+
+Creates a token.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em type} & The type of token to create.\\
+\hline
+\mbox{\tt in}  & {\em image} & The string that represents the token.\\
+\hline
+\mbox{\tt in}  & {\em fname} & The name of the file containing the token.\\
+\hline
+\mbox{\tt in}  & {\em line} & The number of the line containing the token.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a new token with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+fname is not copied because only one copy is stored for all Token structures that share it.
+\end{DoxyNote}
+\mbox{\Hypertarget{tokenizer_8h_a80e2b898800b99dc42afa663df0f9a44}\label{tokenizer_8h_a80e2b898800b99dc42afa663df0f9a44}} 
+\index{tokenizer.\+h@{tokenizer.\+h}!delete\+Token@{delete\+Token}}
+\index{delete\+Token@{delete\+Token}!tokenizer.\+h@{tokenizer.\+h}}
+\subsubsection{\texorpdfstring{delete\+Token()}{deleteToken()}}
+{\footnotesize\ttfamily void delete\+Token (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$}]{token }\end{DoxyParamCaption})}
+
+Deletes a token.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em token} & The token to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape token} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{tokenizer_8h_a131a18338464beb76d1c78cf507523b1}\label{tokenizer_8h_a131a18338464beb76d1c78cf507523b1}} 
+\index{tokenizer.\+h@{tokenizer.\+h}!add\+Token@{add\+Token}}
+\index{add\+Token@{add\+Token}!tokenizer.\+h@{tokenizer.\+h}}
+\subsubsection{\texorpdfstring{add\+Token()}{addToken()}}
+{\footnotesize\ttfamily int add\+Token (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{list,  }\item[{unsigned int $\ast$}]{num,  }\item[{\hyperlink{struct_token}{Token} $\ast$}]{token }\end{DoxyParamCaption})}
+
+Adds a token to a list.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em list} & The list of tokens to add {\itshape token} to.\\
+\hline
+\mbox{\tt in,out}  & {\em num} & The number of tokens in {\itshape list}.\\
+\hline
+\mbox{\tt in}  & {\em token} & The token to add to {\itshape list}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape token} will be added to the end of {\itshape list} and the size of {\itshape list} will be updated.
+\end{DoxyPostcond}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Memory allocation failed.\\
+\hline
+{\em 1} & {\itshape token} was added to {\itshape list}. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{tokenizer_8h_a973a45c24c49c724c1adf73953a1820d}\label{tokenizer_8h_a973a45c24c49c724c1adf73953a1820d}} 
+\index{tokenizer.\+h@{tokenizer.\+h}!delete\+Tokens@{delete\+Tokens}}
+\index{delete\+Tokens@{delete\+Tokens}!tokenizer.\+h@{tokenizer.\+h}}
+\subsubsection{\texorpdfstring{delete\+Tokens()}{deleteTokens()}}
+{\footnotesize\ttfamily void delete\+Tokens (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$}]{list }\end{DoxyParamCaption})}
+
+Deletes a list of tokens.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \mbox{[}in,out\mbox{]} The list of tokens to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape list} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{tokenizer_8h_ade1b429790c63fac86fd57b4dccd540c}\label{tokenizer_8h_ade1b429790c63fac86fd57b4dccd540c}} 
+\index{tokenizer.\+h@{tokenizer.\+h}!accept\+Lexemes@{accept\+Lexemes}}
+\index{accept\+Lexemes@{accept\+Lexemes}!tokenizer.\+h@{tokenizer.\+h}}
+\subsubsection{\texorpdfstring{accept\+Lexemes()}{acceptLexemes()}}
+{\footnotesize\ttfamily unsigned int accept\+Lexemes (\begin{DoxyParamCaption}\item[{\hyperlink{struct_lexeme_list}{Lexeme\+List} $\ast$}]{lexemes,  }\item[{unsigned int}]{start,  }\item[{const char $\ast$}]{match }\end{DoxyParamCaption})}
+
+Matches lexemes against a string. Traverses {\itshape lexemes} starting at {\itshape start} and compares lexeme images to space-\/delimited substrings from {\itshape match}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lexemes} & \mbox{[}in\mbox{]} The list of lexemes to match from.\\
+\hline
+{\em start} & \mbox{[}in\mbox{]} The index within {\itshape lexemes} to start matching at.\\
+\hline
+{\em match} & \mbox{[}in\mbox{]} A string of space-\/delimited substrings to match.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of lexemes matched. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{tokenizer_8h_ad476678f03982ffd7019fee27e9585d0}\label{tokenizer_8h_ad476678f03982ffd7019fee27e9585d0}} 
+\index{tokenizer.\+h@{tokenizer.\+h}!tokenize\+Lexemes@{tokenize\+Lexemes}}
+\index{tokenize\+Lexemes@{tokenize\+Lexemes}!tokenizer.\+h@{tokenizer.\+h}}
+\subsubsection{\texorpdfstring{tokenize\+Lexemes()}{tokenizeLexemes()}}
+{\footnotesize\ttfamily \hyperlink{struct_token}{Token}$\ast$$\ast$ tokenize\+Lexemes (\begin{DoxyParamCaption}\item[{\hyperlink{struct_lexeme_list}{Lexeme\+List} $\ast$}]{list }\end{DoxyParamCaption})}
+
+Converts a list of lexemes into tokens. Also parses integers, floats, and strings into tokens with semantic meaning.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & \mbox{[}in\mbox{]} A list of lexemes to tokenize.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of tokens generated from {\itshape list}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & An unrecognized token was encounteres or memory allocation failed. \\
+\hline
+\end{DoxyRetVals}

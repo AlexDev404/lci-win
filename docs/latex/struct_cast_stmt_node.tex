@@ -1,0 +1,36 @@
+\hypertarget{struct_cast_stmt_node}{}\section{Cast\+Stmt\+Node Struct Reference}
+\label{struct_cast_stmt_node}\index{Cast\+Stmt\+Node@{Cast\+Stmt\+Node}}
+
+
+{\ttfamily \#include $<$parser.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$ \hyperlink{struct_cast_stmt_node_a89d56358f0a8fc4d4fb0df7029ea494e}{target}
+\item 
+\hyperlink{struct_type_node}{Type\+Node} $\ast$ \hyperlink{struct_cast_stmt_node_adbeebc6cefa4f2cb92079b82cb4f4df8}{newtype}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Stores a cast statement. This statement changes the type of a variable. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{struct_cast_stmt_node_a89d56358f0a8fc4d4fb0df7029ea494e}\label{struct_cast_stmt_node_a89d56358f0a8fc4d4fb0df7029ea494e}} 
+\index{Cast\+Stmt\+Node@{Cast\+Stmt\+Node}!target@{target}}
+\index{target@{target}!Cast\+Stmt\+Node@{Cast\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node}$\ast$ Cast\+Stmt\+Node\+::target}
+
+The name of the variable to cast. \mbox{\Hypertarget{struct_cast_stmt_node_adbeebc6cefa4f2cb92079b82cb4f4df8}\label{struct_cast_stmt_node_adbeebc6cefa4f2cb92079b82cb4f4df8}} 
+\index{Cast\+Stmt\+Node@{Cast\+Stmt\+Node}!newtype@{newtype}}
+\index{newtype@{newtype}!Cast\+Stmt\+Node@{Cast\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{newtype}{newtype}}
+{\footnotesize\ttfamily \hyperlink{struct_type_node}{Type\+Node}$\ast$ Cast\+Stmt\+Node\+::newtype}
+
+The type to cast {\itshape target} to. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{parser_8h}{parser.\+h}\end{DoxyCompactItemize}

@@ -1,0 +1,37 @@
+\hypertarget{index_license}{}\section{License}\label{index_license}
+lci -\/ a L\+O\+L\+C\+O\+DE interpreter written in C. Copyright (C) 2010-\/2014 Justin J. Meza
+
+This program is free software\+: you can redistribute it and/or modify it under the terms of the G\+NU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+UT A\+NY W\+A\+R\+R\+A\+N\+TY; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY or F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE. See the G\+NU General Public License for more details.
+
+You should have received a copy of the G\+NU General Public License along with this program. If not, see \href{http://www.gnu.org/licenses/}{\tt http\+://www.\+gnu.\+org/licenses/}.\hypertarget{index_maintainer}{}\section{Maintainer}\label{index_maintainer}
+
+\begin{DoxyItemize}
+\item The lead maintainer for this project is Justin J. Meza (\href{mailto:justin.meza@gmail.com}{\tt justin.\+meza@gmail.\+com}).
+\item For more information, check this project\textquotesingle{}s webpage at \href{http://icanhaslolcode.org}{\tt http\+://icanhaslolcode.\+org} .
+\end{DoxyItemize}\hypertarget{index_about}{}\section{About}\label{index_about}
+lci is a L\+O\+L\+C\+O\+DE interpreter written in C and is designed to be correct, portable, fast, and precisely documented.
+
+
+\begin{DoxyItemize}
+\item correct\+: Every effort has been made to test lci\textquotesingle{}s conformance to the L\+O\+L\+C\+O\+DE language specification. Unit tests come packaged with the lci source code.
+\item portable\+: lci follows the widely ported A\+N\+SI C specification allowing it to compile on a broad range of systems.
+\item fast\+: Much effort has gone into producing simple and efficient code whenever possible to the extent that the above points are not compromized.
+\item precisely documented\+: lci uses Doxygen to generate literate code documentation, browsable here.
+\end{DoxyItemize}\hypertarget{index_organization}{}\section{Organization}\label{index_organization}
+lci employs several different modules which each perform a specific task during interpretation of code\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries lexer} (lexer.\+c, lexer.\+h)-\/ The lexer takes an array of characters and splits it up into individual {\itshape lexemes}. Lexemes are divided by whitespace and other rules of the language.
+\item {\bfseries tokenizer} (tokenizer.\+c, tokenizer.\+h) -\/ The tokenizer takes the output of the lexer and converts it into individual {\itshape tokens}. Tokens are different from lexemes in that a single token may be made up of multiple lexemes. Also, the contents of some tokens are evaluated (such as integers and floats) for later use.
+\item {\bfseries parser} (parser.\+c, parser.\+h) -\/ The parser takes the output of the tokenizer and analyzes it semantically to turn it into a parse tree.
+\item {\bfseries interpreter} (interpreter.\+c, interpreter.\+h) -\/ The interpreter takes the output of the parser and executes it.
+\end{DoxyItemize}
+
+Each of these modules is contained within its own C header and source code files of the same name.
+
+To handle the conversion of Unicode code points and normative names to bytes, two additional files, unicode.\+c and unicode.\+h are used.
+
+Finally, main.\+c ties all of these modules together and handles the initial loading of input data for the lexer. 

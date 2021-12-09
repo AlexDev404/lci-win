@@ -1,0 +1,152 @@
+Presented below is the E\+B\+NF (see \href{http://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form}{\tt http\+://en.\+wikipedia.\+org/wiki/\+Extended\+\_\+\+Backus\%\+E2\%80\%93\+Naur\+\_\+\+Form}) for the L\+O\+L\+C\+O\+DE language that {\ttfamily lci} parses. Note that by this stage, the scanner has\+:
+\begin{DoxyItemize}
+\item already removed any whitespace between tokens,
+\item added in and truncated newline tokens at logical line breaks, and
+\item added an end-\/of-\/file ({\ttfamily \$}) token.
+\end{DoxyItemize}\hypertarget{lolebnf_progebnf}{}\section{Program Structure}\label{lolebnf_progebnf}
+These production rules dictate the overall form of the program.
+
+\begin{DoxyParagraph}{}
+Main\+Node \+:\+:= {\ttfamily T\+T\+\_\+\+H\+AI} {\itshape version} {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} Block\+Node {\ttfamily \$} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Block\+Node \+:\+:= Stmt\+Node $\ast$
+\end{DoxyParagraph}
+\hypertarget{lolebnf_typesebnf}{}\section{Types}\label{lolebnf_typesebnf}
+These production rules specify some general types of parse structures.
+
+\begin{DoxyParagraph}{}
+Constant\+Node \+:\+:= Boolean $\vert$ Integer $\vert$ Float $\vert$ String
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Identifier\+Node \+:\+:= Identifier $\vert$ {\ttfamily T\+T\+\_\+\+S\+RS} Expr\+Node
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Type\+Node \+:\+:= {\ttfamily T\+T\+\_\+\+N\+O\+OB} $\vert$ {\ttfamily T\+T\+\_\+\+T\+R\+O\+OF} $\vert$ {\ttfamily T\+T\+\_\+\+N\+U\+M\+BR} $\vert$ {\ttfamily T\+T\+\_\+\+N\+U\+M\+B\+AR} $\vert$ {\ttfamily T\+T\+\_\+\+Y\+A\+RN} 
+\end{DoxyParagraph}
+\hypertarget{lolebnf_stmtebnf}{}\section{Statements}\label{lolebnf_stmtebnf}
+These production rules specify the types of statements formed.
+
+\begin{DoxyParagraph}{}
+Stmt\+Node \+:\+:= Cast\+Stmt\+Node $\vert$ Print\+Stmt\+Node $\vert$ Input\+Stmt\+Node $\vert$ Assignment\+Stmt\+Node $\vert$ Declaration\+Stmt\+Node $\vert$ If\+Then\+Else\+Stmt\+Node $\vert$ Switch\+Stmt\+Node $\vert$ Break\+Stmt $\vert$ Return\+Stmt\+Node $\vert$ Loop\+Stmt\+Node $\vert$ Deallocation\+Stmt\+Node $\vert$ Func\+Def\+Stmt\+Node $\vert$ Expr\+Stmt $\vert$ Alt\+Array\+Def\+Stmt\+Node
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Cast\+Stmt\+Node \+:\+:= Identifier\+Node {\ttfamily T\+T\+\_\+\+I\+S\+N\+O\+WA} Type\+Node {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Print\+Stmt\+Node \+:\+:= {\ttfamily T\+T\+\_\+\+V\+I\+S\+I\+B\+LE} Expr\+Node\+List {\ttfamily T\+T\+\_\+\+B\+A\+NG} ? {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} $\vert$ {\ttfamily T\+T\+\_\+\+I\+N\+V\+I\+S\+I\+B\+LE} Expr\+Node\+List {\ttfamily T\+T\+\_\+\+B\+A\+NG} ? {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Input\+Stmt\+Node \+:\+:= {\ttfamily T\+T\+\_\+\+G\+I\+M\+M\+EH} Identifier\+Node {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Assignment\+Stmt\+Node \+:\+:= Identifier\+Node {\ttfamily T\+T\+\_\+R} Expr\+Node {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Declaration\+Stmt\+Node \+:\+:= Identifier\+Node {\ttfamily T\+T\+\_\+\+H\+A\+SA} Identifier\+Node Initialization ? {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} $\vert$ Identifier\+Node {\ttfamily T\+T\+\_\+\+H\+A\+S\+AN} Identifier\+Node Initialization ? {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Initialization \+:\+:= {\ttfamily T\+T\+\_\+\+I\+TZ} Expr\+Node $\vert$ {\ttfamily T\+T\+\_\+\+I\+T\+ZA} Type\+Node $\vert$ {\ttfamily T\+T\+\_\+\+I\+T\+Z\+L\+I\+E\+KA} Identifier\+Node
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+If\+Then\+Else\+Stmt\+Node \+:\+:= {\ttfamily T\+T\+\_\+\+O\+R\+LY} {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} {\ttfamily T\+T\+\_\+\+Y\+A\+R\+LY} {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} Block\+Node Else\+If $\ast$ Else ? {\ttfamily T\+T\+\_\+\+O\+IC} {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Else\+If \+:\+:= {\ttfamily T\+T\+\_\+\+M\+E\+B\+BE} Expr\+Node {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} Block\+Node
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Else \+:\+:= {\ttfamily T\+T\+\_\+\+N\+O\+W\+AI} {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} Block\+Node
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Switch\+Stmt\+Node \+:\+:= {\ttfamily T\+T\+\_\+\+W\+TF} {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} Case + Default\+Case ? {\ttfamily T\+T\+\_\+\+O\+IC} {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Case \+:\+:= {\ttfamily T\+T\+\_\+\+O\+MG} Expr\+Node {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} Block\+Node
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Default\+Case \+:\+:= {\ttfamily T\+T\+\_\+\+O\+M\+G\+W\+TF} {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} Block\+Node
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Break\+Stmt \+:\+:= {\ttfamily T\+T\+\_\+\+G\+T\+FO} {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Return\+Stmt\+Node \+:\+:= {\ttfamily T\+T\+\_\+\+F\+O\+U\+N\+D\+YR} Expr\+Node {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Loop\+Stmt\+Node \+:\+:= {\ttfamily T\+T\+\_\+\+I\+M\+I\+N\+YR} Identifier\+Node Loop\+Update ? Loop\+Guard ? {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} Block\+Node {\ttfamily T\+T\+\_\+\+I\+M\+O\+U\+T\+T\+A\+YR} Identifier\+Node {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Loop\+Update \+:\+:= Loop\+Update\+Op {\ttfamily T\+T\+\_\+\+YR} Identifier\+Node
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Loop\+Update\+Op \+:\+:= {\ttfamily T\+T\+\_\+\+U\+P\+P\+IN} $\vert$ {\ttfamily T\+T\+\_\+\+N\+E\+R\+F\+IN} $\vert$ Unary\+Function
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Unary\+Function \+:\+:= The name of a previously defined unary function.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Loop\+Guard \+:\+:= {\ttfamily T\+T\+\_\+\+T\+IL} Expr\+Node $\vert$ {\ttfamily T\+T\+\_\+\+W\+I\+LE} Expr\+Node
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Deallocation\+Stmt\+Node \+:\+:= Identifier\+Node {\ttfamily T\+T\+\_\+\+R\+N\+O\+OB} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Func\+Def\+Stmt\+Node \+:\+:= {\ttfamily T\+T\+\_\+\+H\+O\+W\+IZ} Identifier\+Node Identifier\+Node Function\+Args ? {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} Block\+Node {\ttfamily T\+T\+\_\+\+I\+F\+U\+S\+A\+Y\+SO} {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Function\+Args \+:\+:= {\ttfamily T\+T\+\_\+\+YR} Identifier\+Node Function\+Arg $\ast$
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Function\+Arg \+:\+:= {\ttfamily T\+T\+\_\+\+A\+N\+YR} Identifier\+Node
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Expr\+Stmt \+:\+:= Expr\+Node {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Alt\+Array\+Def\+Stmt\+Node \+:\+:= {\ttfamily T\+T\+\_\+\+O\+H\+A\+I\+IM} Identifier\+Node Alt\+Array\+Inheritance ? {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} Block\+Node {\ttfamily T\+T\+\_\+\+K\+T\+HX} {\ttfamily T\+T\+\_\+\+N\+E\+W\+L\+I\+NE} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Alt\+Array\+Inheritance \+:\+:= {\ttfamily T\+T\+\_\+\+I\+M\+L\+I\+EK} Identifier\+Node
+\end{DoxyParagraph}
+\hypertarget{lolebnf_exprebnf}{}\section{Expressions}\label{lolebnf_exprebnf}
+These production rules specify the types of expressions formed.
+
+\begin{DoxyParagraph}{}
+Expr\+Node \+:\+:= Cast\+Expr\+Node $\vert$ Constant\+Node $\vert$ Identifier\+Node $\vert$ Func\+Call\+Expr\+Node $\vert$ Op\+Expr\+Node $\vert$ Implicit\+Variable
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Cast\+Expr\+Node \+:\+:= {\ttfamily T\+T\+\_\+\+M\+A\+EK} Expr\+Node {\ttfamily T\+T\+\_\+A} Type\+Node
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Func\+Call\+Expr\+Node \+:\+:= Identifier\+Node {\ttfamily T\+T\+\_\+\+IZ} Identifier\+Node Function\+Args ? T\+T\+\_\+\+M\+K\+AY
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Op\+Expr\+Node \+:\+:= Unary\+Op $\vert$ Binary\+Op $\vert$ Nary\+Op
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Unary\+Op \+:\+:= Unary\+Op\+Type Expr\+Node
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Unary\+Op\+Type \+:\+:= {\ttfamily T\+T\+\_\+\+N\+OT} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Binary\+Op \+:\+:= Binary\+Op\+Type Expr\+Node {\ttfamily T\+T\+\_\+\+AN} ? Expr\+Node
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Binary\+Op\+Type \+:\+:= {\ttfamily T\+T\+\_\+\+S\+U\+M\+OF} $\vert$ {\ttfamily T\+T\+\_\+\+D\+I\+F\+F\+OF} $\vert$ {\ttfamily T\+T\+\_\+\+P\+R\+O\+D\+U\+K\+T\+OF} $\vert$ {\ttfamily T\+T\+\_\+\+Q\+U\+O\+S\+H\+U\+N\+T\+OF} $\vert$ {\ttfamily T\+T\+\_\+\+M\+O\+D\+OF} $\vert$ {\ttfamily B\+I\+G\+G\+R\+OF} $\vert$ {\ttfamily S\+M\+A\+L\+L\+R\+OF} $\vert$ {\ttfamily T\+T\+\_\+\+B\+O\+T\+H\+OF} $\vert$ {\ttfamily T\+T\+\_\+\+E\+I\+T\+H\+E\+R\+OF} $\vert$ {\ttfamily T\+T\+\_\+\+W\+O\+N\+OF} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Nary\+Op \+:\+:= Nary\+Op\+Type Nary\+Op\+Args {\ttfamily T\+T\+\_\+\+M\+K\+AY} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Nary\+Op\+Type \+:\+:= {\ttfamily T\+T\+\_\+\+A\+L\+L\+OF} $\vert$ {\ttfamily T\+T\+\_\+\+A\+N\+Y\+OF} $\vert$ {\ttfamily T\+T\+\_\+\+S\+M\+O\+O\+SH} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Nary\+Op\+Args \+:\+:= Expr\+Node Nary\+Op\+Arg +
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Nary\+Op\+Arg \+:\+:= {\ttfamily T\+T\+\_\+\+AN} ? Expr\+Node
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{}
+Implicit\+Variable \+:\+:= {\ttfamily T\+T\+\_\+\+IT} 
+\end{DoxyParagraph}

@@ -1,0 +1,44 @@
+\hypertarget{struct_switch_stmt_node}{}\section{Switch\+Stmt\+Node Struct Reference}
+\label{struct_switch_stmt_node}\index{Switch\+Stmt\+Node@{Switch\+Stmt\+Node}}
+
+
+{\ttfamily \#include $<$parser.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_expr_node_list}{Expr\+Node\+List} $\ast$ \hyperlink{struct_switch_stmt_node_a125319a6fd02d72d96d41193daffb4a2}{guards}
+\item 
+\hyperlink{struct_block_node_list}{Block\+Node\+List} $\ast$ \hyperlink{struct_switch_stmt_node_a6cdb5c66044261b28302b6ca682d7564}{blocks}
+\item 
+\hyperlink{struct_block_node}{Block\+Node} $\ast$ \hyperlink{struct_switch_stmt_node_ad75de1632a46c451d251959e56d53d44}{def}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Stores a switch statement. This statement compares the value of the \hyperlink{impvar}{implicit variable} to each of the {\itshape guards} and executes the respective block of code in {\itshape blocks} if they match. If no matches are found, the optional default block of code, {\itshape def}, is executed. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{struct_switch_stmt_node_a125319a6fd02d72d96d41193daffb4a2}\label{struct_switch_stmt_node_a125319a6fd02d72d96d41193daffb4a2}} 
+\index{Switch\+Stmt\+Node@{Switch\+Stmt\+Node}!guards@{guards}}
+\index{guards@{guards}!Switch\+Stmt\+Node@{Switch\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{guards}{guards}}
+{\footnotesize\ttfamily \hyperlink{struct_expr_node_list}{Expr\+Node\+List}$\ast$ Switch\+Stmt\+Node\+::guards}
+
+The expressions to evaluate. \mbox{\Hypertarget{struct_switch_stmt_node_a6cdb5c66044261b28302b6ca682d7564}\label{struct_switch_stmt_node_a6cdb5c66044261b28302b6ca682d7564}} 
+\index{Switch\+Stmt\+Node@{Switch\+Stmt\+Node}!blocks@{blocks}}
+\index{blocks@{blocks}!Switch\+Stmt\+Node@{Switch\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{blocks}{blocks}}
+{\footnotesize\ttfamily \hyperlink{struct_block_node_list}{Block\+Node\+List}$\ast$ Switch\+Stmt\+Node\+::blocks}
+
+The blocks of code to execute. \mbox{\Hypertarget{struct_switch_stmt_node_ad75de1632a46c451d251959e56d53d44}\label{struct_switch_stmt_node_ad75de1632a46c451d251959e56d53d44}} 
+\index{Switch\+Stmt\+Node@{Switch\+Stmt\+Node}!def@{def}}
+\index{def@{def}!Switch\+Stmt\+Node@{Switch\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{def}{def}}
+{\footnotesize\ttfamily \hyperlink{struct_block_node}{Block\+Node}$\ast$ Switch\+Stmt\+Node\+::def}
+
+An optional default block of code. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{parser_8h}{parser.\+h}\end{DoxyCompactItemize}

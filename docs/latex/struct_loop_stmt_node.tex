@@ -1,0 +1,60 @@
+\hypertarget{struct_loop_stmt_node}{}\section{Loop\+Stmt\+Node Struct Reference}
+\label{struct_loop_stmt_node}\index{Loop\+Stmt\+Node@{Loop\+Stmt\+Node}}
+
+
+{\ttfamily \#include $<$parser.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$ \hyperlink{struct_loop_stmt_node_a36b401d6c4fd2c16a68de026b99187f3}{name}
+\item 
+\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$ \hyperlink{struct_loop_stmt_node_afb3820072966231fd1d43eea8ebd9234}{var}
+\item 
+\hyperlink{struct_expr_node}{Expr\+Node} $\ast$ \hyperlink{struct_loop_stmt_node_a53a86fb7f989cf43f54192b8f3ad6c1a}{guard}
+\item 
+\hyperlink{struct_expr_node}{Expr\+Node} $\ast$ \hyperlink{struct_loop_stmt_node_a0400ab555fff51b09f79c495af20f37f}{update}
+\item 
+\hyperlink{struct_block_node}{Block\+Node} $\ast$ \hyperlink{struct_loop_stmt_node_a6844fd9206ed5d6b4fd48fc1365969aa}{body}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Stores a loop statement. This statement repeatedly executes its {\itshape body} while {\itshape guard} evaluates to true, executing {\itshape update} at the end of each cycle. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{struct_loop_stmt_node_a36b401d6c4fd2c16a68de026b99187f3}\label{struct_loop_stmt_node_a36b401d6c4fd2c16a68de026b99187f3}} 
+\index{Loop\+Stmt\+Node@{Loop\+Stmt\+Node}!name@{name}}
+\index{name@{name}!Loop\+Stmt\+Node@{Loop\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node}$\ast$ Loop\+Stmt\+Node\+::name}
+
+The name of the loop. \mbox{\Hypertarget{struct_loop_stmt_node_afb3820072966231fd1d43eea8ebd9234}\label{struct_loop_stmt_node_afb3820072966231fd1d43eea8ebd9234}} 
+\index{Loop\+Stmt\+Node@{Loop\+Stmt\+Node}!var@{var}}
+\index{var@{var}!Loop\+Stmt\+Node@{Loop\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{var}{var}}
+{\footnotesize\ttfamily \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node}$\ast$ Loop\+Stmt\+Node\+::var}
+
+The variable to be updated. \mbox{\Hypertarget{struct_loop_stmt_node_a53a86fb7f989cf43f54192b8f3ad6c1a}\label{struct_loop_stmt_node_a53a86fb7f989cf43f54192b8f3ad6c1a}} 
+\index{Loop\+Stmt\+Node@{Loop\+Stmt\+Node}!guard@{guard}}
+\index{guard@{guard}!Loop\+Stmt\+Node@{Loop\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{guard}{guard}}
+{\footnotesize\ttfamily \hyperlink{struct_expr_node}{Expr\+Node}$\ast$ Loop\+Stmt\+Node\+::guard}
+
+The expression to determine continuation. \mbox{\Hypertarget{struct_loop_stmt_node_a0400ab555fff51b09f79c495af20f37f}\label{struct_loop_stmt_node_a0400ab555fff51b09f79c495af20f37f}} 
+\index{Loop\+Stmt\+Node@{Loop\+Stmt\+Node}!update@{update}}
+\index{update@{update}!Loop\+Stmt\+Node@{Loop\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{update}{update}}
+{\footnotesize\ttfamily \hyperlink{struct_expr_node}{Expr\+Node}$\ast$ Loop\+Stmt\+Node\+::update}
+
+The expression to update {\itshape var} with. \mbox{\Hypertarget{struct_loop_stmt_node_a6844fd9206ed5d6b4fd48fc1365969aa}\label{struct_loop_stmt_node_a6844fd9206ed5d6b4fd48fc1365969aa}} 
+\index{Loop\+Stmt\+Node@{Loop\+Stmt\+Node}!body@{body}}
+\index{body@{body}!Loop\+Stmt\+Node@{Loop\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{body}{body}}
+{\footnotesize\ttfamily \hyperlink{struct_block_node}{Block\+Node}$\ast$ Loop\+Stmt\+Node\+::body}
+
+The code to execute at each iteration. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{parser_8h}{parser.\+h}\end{DoxyCompactItemize}

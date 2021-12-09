@@ -1,0 +1,2083 @@
+\hypertarget{parser_8c}{}\section{parser.\+c File Reference}
+\label{parser_8c}\index{parser.\+c@{parser.\+c}}
+{\ttfamily \#include \char`\"{}parser.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_main_node}{Main\+Node} $\ast$ \hyperlink{parser_8c_a1ee29948c426b43d9f2534fcf50f1fe8}{create\+Main\+Node} (\hyperlink{struct_block_node}{Block\+Node} $\ast$block)
+\item 
+void \hyperlink{parser_8c_a98ef10336ddfedf438488084f3dcfcac}{delete\+Main\+Node} (\hyperlink{struct_main_node}{Main\+Node} $\ast$node)
+\item 
+\hyperlink{struct_block_node}{Block\+Node} $\ast$ \hyperlink{parser_8c_af4c48c1dad7430a58c5b223b89a866f7}{create\+Block\+Node} (\hyperlink{struct_stmt_node_list}{Stmt\+Node\+List} $\ast$stmts)
+\item 
+void \hyperlink{parser_8c_a612de62da711fab7d1996a796f23fd8f}{delete\+Block\+Node} (\hyperlink{struct_block_node}{Block\+Node} $\ast$node)
+\item 
+\hyperlink{struct_block_node_list}{Block\+Node\+List} $\ast$ \hyperlink{parser_8c_a6fd5021f338c03f9ad6a5b0707c0e0db}{create\+Block\+Node\+List} (void)
+\item 
+int \hyperlink{parser_8c_a8a949cce5c79839d05120548ba6eda12}{add\+Block\+Node} (\hyperlink{struct_block_node_list}{Block\+Node\+List} $\ast$list, \hyperlink{struct_block_node}{Block\+Node} $\ast$node)
+\item 
+void \hyperlink{parser_8c_a172268426b294758732c50381c4e0b8a}{delete\+Block\+Node\+List} (\hyperlink{struct_block_node_list}{Block\+Node\+List} $\ast$list)
+\item 
+\hyperlink{struct_constant_node}{Constant\+Node} $\ast$ \hyperlink{parser_8c_a1555a1eeb0a82afd310516014b8c86bb}{create\+Boolean\+Constant\+Node} (int data)
+\item 
+\hyperlink{struct_constant_node}{Constant\+Node} $\ast$ \hyperlink{parser_8c_a4b0f1be428d15feffe20b50334d409f5}{create\+Integer\+Constant\+Node} (long long data)
+\item 
+\hyperlink{struct_constant_node}{Constant\+Node} $\ast$ \hyperlink{parser_8c_a9cd100153967eac91900fe0d02c17d5e}{create\+Float\+Constant\+Node} (float data)
+\item 
+\hyperlink{struct_constant_node}{Constant\+Node} $\ast$ \hyperlink{parser_8c_a9eab00d42b70a4da965f646a4b8c0711}{create\+String\+Constant\+Node} (char $\ast$data)
+\item 
+void \hyperlink{parser_8c_ab95d800ea8ea87ace54b9418c899c804}{delete\+Constant\+Node} (\hyperlink{struct_constant_node}{Constant\+Node} $\ast$node)
+\item 
+\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$ \hyperlink{parser_8c_a79cfaca34405d2adf760280a5514e683}{create\+Identifier\+Node} (\hyperlink{parser_8h_a7ddfda537ff35a65ab6f7b9e9b596b62}{Identifier\+Type} type, void $\ast$id, \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$slot, const char $\ast$fname, unsigned int line)
+\item 
+void \hyperlink{parser_8c_a96f079b292f54897920d07e0e3f59b88}{delete\+Identifier\+Node} (\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$node)
+\item 
+\hyperlink{struct_identifier_node_list}{Identifier\+Node\+List} $\ast$ \hyperlink{parser_8c_a071185a9419aa55306ef21a2b51a6c0c}{create\+Identifier\+Node\+List} (void)
+\item 
+int \hyperlink{parser_8c_a3458d90bcc5b6275ecfbabb6b25707a5}{add\+Identifier\+Node} (\hyperlink{struct_identifier_node_list}{Identifier\+Node\+List} $\ast$list, \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$node)
+\item 
+void \hyperlink{parser_8c_a0981294f5b54e2daaa5b007cccdaab10}{delete\+Identifier\+Node\+List} (\hyperlink{struct_identifier_node_list}{Identifier\+Node\+List} $\ast$list)
+\item 
+\hyperlink{struct_type_node}{Type\+Node} $\ast$ \hyperlink{parser_8c_a33cdfe250d86d923adf96777bd63a9ec}{create\+Type\+Node} (\hyperlink{parser_8h_a455cdd942ce73c87e99cb3f9d6a01926}{Constant\+Type} type)
+\item 
+void \hyperlink{parser_8c_a0cdee82cef1017fcd4d92bb7393eacb4}{delete\+Type\+Node} (\hyperlink{struct_type_node}{Type\+Node} $\ast$node)
+\item 
+\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$ \hyperlink{parser_8c_a9f425cb8f8c892a4941673598deea1fe}{create\+Stmt\+Node} (\hyperlink{parser_8h_a9c1bfaf3c0a28d12826afa7bd1b0a3db}{Stmt\+Type} type, void $\ast$stmt)
+\item 
+void \hyperlink{parser_8c_aebbf8222e30b610b62cec46862e5232f}{delete\+Stmt\+Node} (\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$node)
+\item 
+\hyperlink{struct_stmt_node_list}{Stmt\+Node\+List} $\ast$ \hyperlink{parser_8c_a5387dc4eb63531315f26e6ad56edf0c6}{create\+Stmt\+Node\+List} (void)
+\item 
+int \hyperlink{parser_8c_a7575fde1c65625cd7f10cbdd01897125}{add\+Stmt\+Node} (\hyperlink{struct_stmt_node_list}{Stmt\+Node\+List} $\ast$list, \hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$node)
+\item 
+void \hyperlink{parser_8c_a8f05e322e85bb18963d784f364dc1829}{delete\+Stmt\+Node\+List} (\hyperlink{struct_stmt_node_list}{Stmt\+Node\+List} $\ast$list)
+\item 
+\hyperlink{struct_cast_stmt_node}{Cast\+Stmt\+Node} $\ast$ \hyperlink{parser_8c_aac4756cdb1495bba9fc61848aabd9345}{create\+Cast\+Stmt\+Node} (\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$target, \hyperlink{struct_type_node}{Type\+Node} $\ast$newtype)
+\item 
+void \hyperlink{parser_8c_a4a0b6ba43c4ac5d73c0c1adaef696a4a}{delete\+Cast\+Stmt\+Node} (\hyperlink{struct_cast_stmt_node}{Cast\+Stmt\+Node} $\ast$node)
+\item 
+\hyperlink{struct_print_stmt_node}{Print\+Stmt\+Node} $\ast$ \hyperlink{parser_8c_af275e517e8f93a38d73234305e66095c}{create\+Print\+Stmt\+Node} (\hyperlink{struct_expr_node_list}{Expr\+Node\+List} $\ast$args, F\+I\+LE $\ast$file, int nonl)
+\item 
+void \hyperlink{parser_8c_af1d7b92a63e7a7b05963d8195286c54c}{delete\+Print\+Stmt\+Node} (\hyperlink{struct_print_stmt_node}{Print\+Stmt\+Node} $\ast$node)
+\item 
+\hyperlink{struct_input_stmt_node}{Input\+Stmt\+Node} $\ast$ \hyperlink{parser_8c_a2396ffcbc70e7b5b2314dc6c16cc7a68}{create\+Input\+Stmt\+Node} (\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$target)
+\item 
+void \hyperlink{parser_8c_a9caac52b9a18a5e98126c4e9707c2918}{delete\+Input\+Stmt\+Node} (\hyperlink{struct_input_stmt_node}{Input\+Stmt\+Node} $\ast$node)
+\item 
+\hyperlink{struct_assignment_stmt_node}{Assignment\+Stmt\+Node} $\ast$ \hyperlink{parser_8c_a359466584c0daa035e4f7277d44d8550}{create\+Assignment\+Stmt\+Node} (\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$target, \hyperlink{struct_expr_node}{Expr\+Node} $\ast$expr)
+\item 
+void \hyperlink{parser_8c_a3a7f5dcbfc2015b2af2ffb94ff798578}{delete\+Assignment\+Stmt\+Node} (\hyperlink{struct_assignment_stmt_node}{Assignment\+Stmt\+Node} $\ast$node)
+\item 
+\hyperlink{struct_declaration_stmt_node}{Declaration\+Stmt\+Node} $\ast$ \hyperlink{parser_8c_a5e8d037eac6083f9f32d9bf414b8afbd}{create\+Declaration\+Stmt\+Node} (\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$scope, \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$target, \hyperlink{struct_expr_node}{Expr\+Node} $\ast$expr, \hyperlink{struct_type_node}{Type\+Node} $\ast$type, \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$parent)
+\item 
+void \hyperlink{parser_8c_aac3232a5af64e872c317c62d11493f75}{delete\+Declaration\+Stmt\+Node} (\hyperlink{struct_declaration_stmt_node}{Declaration\+Stmt\+Node} $\ast$node)
+\item 
+\hyperlink{struct_if_then_else_stmt_node}{If\+Then\+Else\+Stmt\+Node} $\ast$ \hyperlink{parser_8c_a12f221df6b151291485323de52737fcc}{create\+If\+Then\+Else\+Stmt\+Node} (\hyperlink{struct_block_node}{Block\+Node} $\ast$yes, \hyperlink{struct_block_node}{Block\+Node} $\ast$no, \hyperlink{struct_expr_node_list}{Expr\+Node\+List} $\ast$guards, \hyperlink{struct_block_node_list}{Block\+Node\+List} $\ast$blocks)
+\item 
+void \hyperlink{parser_8c_acbd132c4c95ab2462015a804df4a89ed}{delete\+If\+Then\+Else\+Stmt\+Node} (\hyperlink{struct_if_then_else_stmt_node}{If\+Then\+Else\+Stmt\+Node} $\ast$node)
+\item 
+\hyperlink{struct_switch_stmt_node}{Switch\+Stmt\+Node} $\ast$ \hyperlink{parser_8c_a70a99b5a9938cc173f564064a0d4eaf5}{create\+Switch\+Stmt\+Node} (\hyperlink{struct_expr_node_list}{Expr\+Node\+List} $\ast$guards, \hyperlink{struct_block_node_list}{Block\+Node\+List} $\ast$blocks, \hyperlink{struct_block_node}{Block\+Node} $\ast$def)
+\item 
+void \hyperlink{parser_8c_a2eaae2e2a53cd2635596e5ce8810aef2}{delete\+Switch\+Stmt\+Node} (\hyperlink{struct_switch_stmt_node}{Switch\+Stmt\+Node} $\ast$node)
+\item 
+\hyperlink{struct_return_stmt_node}{Return\+Stmt\+Node} $\ast$ \hyperlink{parser_8c_a1afd6ea39064c70835443ea4e29ce914}{create\+Return\+Stmt\+Node} (\hyperlink{struct_expr_node}{Expr\+Node} $\ast$value)
+\item 
+void \hyperlink{parser_8c_af3190c617bce6238a272de3a3be58081}{delete\+Return\+Stmt\+Node} (\hyperlink{struct_return_stmt_node}{Return\+Stmt\+Node} $\ast$node)
+\item 
+\hyperlink{struct_loop_stmt_node}{Loop\+Stmt\+Node} $\ast$ \hyperlink{parser_8c_a70fb88da6e4c3c70ce7e2250ec3bba0a}{create\+Loop\+Stmt\+Node} (\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$name, \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$var, \hyperlink{struct_expr_node}{Expr\+Node} $\ast$guard, \hyperlink{struct_expr_node}{Expr\+Node} $\ast$update, \hyperlink{struct_block_node}{Block\+Node} $\ast$body)
+\item 
+void \hyperlink{parser_8c_aecacd84d092fc3a16b0c6ab32b440219}{delete\+Loop\+Stmt\+Node} (\hyperlink{struct_loop_stmt_node}{Loop\+Stmt\+Node} $\ast$node)
+\item 
+\hyperlink{struct_deallocation_stmt_node}{Deallocation\+Stmt\+Node} $\ast$ \hyperlink{parser_8c_ad788bf99f3bffeb050fab417af6c5909}{create\+Deallocation\+Stmt\+Node} (\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$target)
+\item 
+void \hyperlink{parser_8c_abef301f3727167f7a34c871010b2fd5d}{delete\+Deallocation\+Stmt\+Node} (\hyperlink{struct_deallocation_stmt_node}{Deallocation\+Stmt\+Node} $\ast$node)
+\item 
+\hyperlink{struct_func_def_stmt_node}{Func\+Def\+Stmt\+Node} $\ast$ \hyperlink{parser_8c_a7f73e98a023071061c207bc57dcd0dee}{create\+Func\+Def\+Stmt\+Node} (\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$scope, \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$name, \hyperlink{struct_identifier_node_list}{Identifier\+Node\+List} $\ast$args, \hyperlink{struct_block_node}{Block\+Node} $\ast$body)
+\item 
+void \hyperlink{parser_8c_a337060b35ed8cf6f5c1e12e2e6d5e891}{delete\+Func\+Def\+Stmt\+Node} (\hyperlink{struct_func_def_stmt_node}{Func\+Def\+Stmt\+Node} $\ast$node)
+\item 
+\hyperlink{struct_alt_array_def_stmt_node}{Alt\+Array\+Def\+Stmt\+Node} $\ast$ \hyperlink{parser_8c_a5fe1f55058ab9d3df03960d111b3f529}{create\+Alt\+Array\+Def\+Stmt\+Node} (\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$name, \hyperlink{struct_block_node}{Block\+Node} $\ast$body, \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$parent)
+\item 
+void \hyperlink{parser_8c_a722771c18a47cfe05990674083d5eef8}{delete\+Alt\+Array\+Def\+Stmt\+Node} (\hyperlink{struct_alt_array_def_stmt_node}{Alt\+Array\+Def\+Stmt\+Node} $\ast$node)
+\item 
+\hyperlink{struct_expr_node}{Expr\+Node} $\ast$ \hyperlink{parser_8c_ab36f0b9e5b262b0dd97b0e46e96b24d5}{create\+Expr\+Node} (\hyperlink{parser_8h_a3e262b377dc15baba6e58438868decb7}{Expr\+Type} type, void $\ast$expr)
+\item 
+void \hyperlink{parser_8c_a1610e071c2e138a812b05fd85d608ead}{delete\+Expr\+Node} (\hyperlink{struct_expr_node}{Expr\+Node} $\ast$node)
+\item 
+\hyperlink{struct_expr_node_list}{Expr\+Node\+List} $\ast$ \hyperlink{parser_8c_a976d79408740dce7ba2723415f9180b0}{create\+Expr\+Node\+List} (void)
+\item 
+int \hyperlink{parser_8c_ae3438edca28bed182f6c6be37a6be343}{add\+Expr\+Node} (\hyperlink{struct_expr_node_list}{Expr\+Node\+List} $\ast$list, \hyperlink{struct_expr_node}{Expr\+Node} $\ast$node)
+\item 
+void \hyperlink{parser_8c_a366d2606b5dc9e6b20fb1fd58621a27f}{delete\+Expr\+Node\+List} (\hyperlink{struct_expr_node_list}{Expr\+Node\+List} $\ast$list)
+\item 
+\hyperlink{struct_cast_expr_node}{Cast\+Expr\+Node} $\ast$ \hyperlink{parser_8c_a9fa09e58fee51a326a92cab995420cc7}{create\+Cast\+Expr\+Node} (\hyperlink{struct_expr_node}{Expr\+Node} $\ast$target, \hyperlink{struct_type_node}{Type\+Node} $\ast$newtype)
+\item 
+void \hyperlink{parser_8c_aa480c9bdc2b683a7060e20bb0a93e349}{delete\+Cast\+Expr\+Node} (\hyperlink{struct_cast_expr_node}{Cast\+Expr\+Node} $\ast$node)
+\item 
+\hyperlink{struct_func_call_expr_node}{Func\+Call\+Expr\+Node} $\ast$ \hyperlink{parser_8c_a2ffacceb0bb70c5fec4392750e86f3d5}{create\+Func\+Call\+Expr\+Node} (\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$scope, \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$name, \hyperlink{struct_expr_node_list}{Expr\+Node\+List} $\ast$args)
+\item 
+void \hyperlink{parser_8c_ab140ee4f88cdb5d30b7e6f03f7071edf}{delete\+Func\+Call\+Expr\+Node} (\hyperlink{struct_func_call_expr_node}{Func\+Call\+Expr\+Node} $\ast$node)
+\item 
+\hyperlink{struct_op_expr_node}{Op\+Expr\+Node} $\ast$ \hyperlink{parser_8c_a250c5e71ecf3b4d096a12f37df2c3f01}{create\+Op\+Expr\+Node} (\hyperlink{parser_8h_aa1aa1c6a8f3bbed5b167bc2d4511b969}{Op\+Type} type, \hyperlink{struct_expr_node_list}{Expr\+Node\+List} $\ast$args)
+\item 
+void \hyperlink{parser_8c_a0400c388330a025fb9f71e8bb8dfc752}{delete\+Op\+Expr\+Node} (\hyperlink{struct_op_expr_node}{Op\+Expr\+Node} $\ast$node)
+\item 
+int \hyperlink{parser_8c_ad42d9df31ba34d692cc89cc0406a09a5}{accept\+Token} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp, \hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type} token)
+\item 
+int \hyperlink{parser_8c_af9957220bd0480dcfa551246ba16d0d8}{peek\+Token} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp, \hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type} token)
+\item 
+int \hyperlink{parser_8c_aa10261047594f44b492647cfdf6f6f3d}{next\+Token} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp, \hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type} token)
+\item 
+void \hyperlink{parser_8c_a22b4dc114481249cd0ac373602e6df24}{parser\+\_\+error} (\hyperlink{error_8h_ab0df38968e4f03a3f1f6d6df0f31f45a}{Error\+Type} type, \hyperlink{struct_token}{Token} $\ast$$\ast$tokens)
+\item 
+void \hyperlink{parser_8c_aa8d8bd3b527456714cf282b13471d264}{parser\+\_\+error\+\_\+expected\+\_\+token} (\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type} token, \hyperlink{struct_token}{Token} $\ast$$\ast$tokens)
+\item 
+void \hyperlink{parser_8c_a69b07c7715f4582171962b4a3ea54f46}{parser\+\_\+error\+\_\+expected\+\_\+either\+\_\+token} (\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type} token1, \hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type} token2, \hyperlink{struct_token}{Token} $\ast$$\ast$tokens)
+\item 
+\hyperlink{struct_constant_node}{Constant\+Node} $\ast$ \hyperlink{parser_8c_a493791945f27cac200999fadcadd3276}{parse\+Constant\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_type_node}{Type\+Node} $\ast$ \hyperlink{parser_8c_a77b4f6cbfced83754ac9547742f14d94}{parse\+Type\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$ \hyperlink{parser_8c_aad0f490bc610eef7c5cf371095882156}{parse\+Identifier\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_expr_node}{Expr\+Node} $\ast$ \hyperlink{parser_8c_a206bb992dd9e86508c2405dd6b1355ff}{parse\+Cast\+Expr\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_expr_node}{Expr\+Node} $\ast$ \hyperlink{parser_8c_afa50845127cf6bef7095041b843c5914}{parse\+Constant\+Expr\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_expr_node}{Expr\+Node} $\ast$ \hyperlink{parser_8c_a6c45211a0f43f419902391ccc6547077}{parse\+Identifier\+Expr\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_expr_node}{Expr\+Node} $\ast$ \hyperlink{parser_8c_a2fb668ba00e802589c4d25fe0e158bad}{parse\+Func\+Call\+Expr\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_expr_node}{Expr\+Node} $\ast$ \hyperlink{parser_8c_a00fefc6a3a76bdc7bd4394a821de0a67}{parse\+Op\+Expr\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_expr_node}{Expr\+Node} $\ast$ \hyperlink{parser_8c_a867bf4b8a31142aeb7321513799cea15}{parse\+Expr\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$ \hyperlink{parser_8c_ace8f9b52a2f261ce85c014ea56b9e4c0}{parse\+Cast\+Stmt\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$ \hyperlink{parser_8c_a2d8505d1ad8418a59d1e5053eea99cdc}{parse\+Print\+Stmt\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$ \hyperlink{parser_8c_a939fe9198dd6c3355520df78ae7a0157}{parse\+Input\+Stmt\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$ \hyperlink{parser_8c_ac46df05b0e33cdf8a16594ae391f1e6f}{parse\+Assignment\+Stmt\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$ \hyperlink{parser_8c_a8b3a525f2f13fa6d94ab4da5b76739b9}{parse\+Declaration\+Stmt\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$ \hyperlink{parser_8c_a5d89f9ca150111f580a00524004b64de}{parse\+If\+Then\+Else\+Stmt\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$ \hyperlink{parser_8c_aee826135409280ba98ea55a44e4657b5}{parse\+Switch\+Stmt\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$ \hyperlink{parser_8c_a34eb6a8f5026a75cc01786ac9509cd6a}{parse\+Break\+Stmt\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$ \hyperlink{parser_8c_a4418db149fa0f6fa85fb9ca7aa764dc0}{parse\+Return\+Stmt\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$ \hyperlink{parser_8c_a72bc60ab8d2b10232a1bd948e4efec9b}{parse\+Loop\+Stmt\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$ \hyperlink{parser_8c_a8d62cad8b64156216fcf3c2157a0eac8}{parse\+Deallocation\+Stmt\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$ \hyperlink{parser_8c_acf0d50367dfb8ca6371588cfca842e8f}{parse\+Func\+Def\+Stmt\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$ \hyperlink{parser_8c_ab1f922422eea030e1d2e80213eabf741}{parse\+Alt\+Array\+Def\+Stmt\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$ \hyperlink{parser_8c_a1ce5eebd4ffdb91c0db261a26331b728}{parse\+Stmt\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_block_node}{Block\+Node} $\ast$ \hyperlink{parser_8c_a31fc3ee59737d23b2168bd45fa4fcc75}{parse\+Block\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$tokenp)
+\item 
+\hyperlink{struct_main_node}{Main\+Node} $\ast$ \hyperlink{parser_8c_ab459fe6aeb124199fd237030f8582f6b}{parse\+Main\+Node} (\hyperlink{struct_token}{Token} $\ast$$\ast$tokens)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{parser_8c_a1ee29948c426b43d9f2534fcf50f1fe8}\label{parser_8c_a1ee29948c426b43d9f2534fcf50f1fe8}} 
+\index{parser.\+c@{parser.\+c}!create\+Main\+Node@{create\+Main\+Node}}
+\index{create\+Main\+Node@{create\+Main\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Main\+Node()}{createMainNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_main_node}{Main\+Node}$\ast$ create\+Main\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_block_node}{Block\+Node} $\ast$}]{block }\end{DoxyParamCaption})}
+
+Creates the main code block of a program.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em block} & The first code block to execute.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the main code block with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a98ef10336ddfedf438488084f3dcfcac}\label{parser_8c_a98ef10336ddfedf438488084f3dcfcac}} 
+\index{parser.\+c@{parser.\+c}!delete\+Main\+Node@{delete\+Main\+Node}}
+\index{delete\+Main\+Node@{delete\+Main\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Main\+Node()}{deleteMainNode()}}
+{\footnotesize\ttfamily void delete\+Main\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_main_node}{Main\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Deletes the main code block of a program.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em node} & The main code block to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape node} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_af4c48c1dad7430a58c5b223b89a866f7}\label{parser_8c_af4c48c1dad7430a58c5b223b89a866f7}} 
+\index{parser.\+c@{parser.\+c}!create\+Block\+Node@{create\+Block\+Node}}
+\index{create\+Block\+Node@{create\+Block\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Block\+Node()}{createBlockNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_block_node}{Block\+Node}$\ast$ create\+Block\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_stmt_node_list}{Stmt\+Node\+List} $\ast$}]{stmts }\end{DoxyParamCaption})}
+
+Creates a code block.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em stmts} & The list of statements which comprise the code block.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the code block with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a612de62da711fab7d1996a796f23fd8f}\label{parser_8c_a612de62da711fab7d1996a796f23fd8f}} 
+\index{parser.\+c@{parser.\+c}!delete\+Block\+Node@{delete\+Block\+Node}}
+\index{delete\+Block\+Node@{delete\+Block\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Block\+Node()}{deleteBlockNode()}}
+{\footnotesize\ttfamily void delete\+Block\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_block_node}{Block\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Deletes a code block.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em node} & The code block to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape node} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_a6fd5021f338c03f9ad6a5b0707c0e0db}\label{parser_8c_a6fd5021f338c03f9ad6a5b0707c0e0db}} 
+\index{parser.\+c@{parser.\+c}!create\+Block\+Node\+List@{create\+Block\+Node\+List}}
+\index{create\+Block\+Node\+List@{create\+Block\+Node\+List}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Block\+Node\+List()}{createBlockNodeList()}}
+{\footnotesize\ttfamily \hyperlink{struct_block_node_list}{Block\+Node\+List}$\ast$ create\+Block\+Node\+List (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Creates an empty code block list.
+
+\begin{DoxyReturn}{Returns}
+A pointer to an empty code block list.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a8a949cce5c79839d05120548ba6eda12}\label{parser_8c_a8a949cce5c79839d05120548ba6eda12}} 
+\index{parser.\+c@{parser.\+c}!add\+Block\+Node@{add\+Block\+Node}}
+\index{add\+Block\+Node@{add\+Block\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{add\+Block\+Node()}{addBlockNode()}}
+{\footnotesize\ttfamily int add\+Block\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_block_node_list}{Block\+Node\+List} $\ast$}]{list,  }\item[{\hyperlink{struct_block_node}{Block\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Adds a code block to a list.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em list} & The code block list to add {\itshape node} to.\\
+\hline
+\mbox{\tt in}  & {\em node} & The code block to add to {\itshape list}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape node} will be added to {\itshape list} and its size will be updated.
+\end{DoxyPostcond}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Memory allocation failed.\\
+\hline
+{\em 1} & {\itshape node} was added to {\itshape list}. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a172268426b294758732c50381c4e0b8a}\label{parser_8c_a172268426b294758732c50381c4e0b8a}} 
+\index{parser.\+c@{parser.\+c}!delete\+Block\+Node\+List@{delete\+Block\+Node\+List}}
+\index{delete\+Block\+Node\+List@{delete\+Block\+Node\+List}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Block\+Node\+List()}{deleteBlockNodeList()}}
+{\footnotesize\ttfamily void delete\+Block\+Node\+List (\begin{DoxyParamCaption}\item[{\hyperlink{struct_block_node_list}{Block\+Node\+List} $\ast$}]{list }\end{DoxyParamCaption})}
+
+Deletes a code block list.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em list} & The code block list to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape list} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_a1555a1eeb0a82afd310516014b8c86bb}\label{parser_8c_a1555a1eeb0a82afd310516014b8c86bb}} 
+\index{parser.\+c@{parser.\+c}!create\+Boolean\+Constant\+Node@{create\+Boolean\+Constant\+Node}}
+\index{create\+Boolean\+Constant\+Node@{create\+Boolean\+Constant\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Boolean\+Constant\+Node()}{createBooleanConstantNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_constant_node}{Constant\+Node}$\ast$ create\+Boolean\+Constant\+Node (\begin{DoxyParamCaption}\item[{int}]{data }\end{DoxyParamCaption})}
+
+Creates a boolean constant.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & The boolean constant value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a boolean constant which will be F\+A\+L\+SE if {\itshape data} is {\ttfamily 0} and T\+R\+UE otherwise.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a4b0f1be428d15feffe20b50334d409f5}\label{parser_8c_a4b0f1be428d15feffe20b50334d409f5}} 
+\index{parser.\+c@{parser.\+c}!create\+Integer\+Constant\+Node@{create\+Integer\+Constant\+Node}}
+\index{create\+Integer\+Constant\+Node@{create\+Integer\+Constant\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Integer\+Constant\+Node()}{createIntegerConstantNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_constant_node}{Constant\+Node}$\ast$ create\+Integer\+Constant\+Node (\begin{DoxyParamCaption}\item[{long long}]{data }\end{DoxyParamCaption})}
+
+Creates an integer constant.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & The integer constant value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to an integer constant whose value is {\itshape data}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a9cd100153967eac91900fe0d02c17d5e}\label{parser_8c_a9cd100153967eac91900fe0d02c17d5e}} 
+\index{parser.\+c@{parser.\+c}!create\+Float\+Constant\+Node@{create\+Float\+Constant\+Node}}
+\index{create\+Float\+Constant\+Node@{create\+Float\+Constant\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Float\+Constant\+Node()}{createFloatConstantNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_constant_node}{Constant\+Node}$\ast$ create\+Float\+Constant\+Node (\begin{DoxyParamCaption}\item[{float}]{data }\end{DoxyParamCaption})}
+
+Creates a float constant.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & The float constant value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a float constant whose value is {\itshape data}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a9eab00d42b70a4da965f646a4b8c0711}\label{parser_8c_a9eab00d42b70a4da965f646a4b8c0711}} 
+\index{parser.\+c@{parser.\+c}!create\+String\+Constant\+Node@{create\+String\+Constant\+Node}}
+\index{create\+String\+Constant\+Node@{create\+String\+Constant\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+String\+Constant\+Node()}{createStringConstantNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_constant_node}{Constant\+Node}$\ast$ create\+String\+Constant\+Node (\begin{DoxyParamCaption}\item[{char $\ast$}]{data }\end{DoxyParamCaption})}
+
+Creates a string constant.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & The string constant value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the string constant whose value is {\itshape data}.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_ab95d800ea8ea87ace54b9418c899c804}\label{parser_8c_ab95d800ea8ea87ace54b9418c899c804}} 
+\index{parser.\+c@{parser.\+c}!delete\+Constant\+Node@{delete\+Constant\+Node}}
+\index{delete\+Constant\+Node@{delete\+Constant\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Constant\+Node()}{deleteConstantNode()}}
+{\footnotesize\ttfamily void delete\+Constant\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_constant_node}{Constant\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Deletes a constant.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em node} & The constant to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape node} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_a79cfaca34405d2adf760280a5514e683}\label{parser_8c_a79cfaca34405d2adf760280a5514e683}} 
+\index{parser.\+c@{parser.\+c}!create\+Identifier\+Node@{create\+Identifier\+Node}}
+\index{create\+Identifier\+Node@{create\+Identifier\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Identifier\+Node()}{createIdentifierNode()}}
+{\footnotesize\ttfamily \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node}$\ast$ create\+Identifier\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{parser_8h_a7ddfda537ff35a65ab6f7b9e9b596b62}{Identifier\+Type}}]{type,  }\item[{void $\ast$}]{id,  }\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{slot,  }\item[{const char $\ast$}]{fname,  }\item[{unsigned int}]{line }\end{DoxyParamCaption})}
+
+Creates an indentifier.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em type} & The type of the identifier {\itshape id}.\\
+\hline
+\mbox{\tt in}  & {\em id} & The identifier data.\\
+\hline
+\mbox{\tt in}  & {\em slot} & An optional slot to index.\\
+\hline
+\mbox{\tt in}  & {\em fname} & The file containing the identifier.\\
+\hline
+\mbox{\tt in}  & {\em line} & The line the identifier occurred on.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the identifier with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a96f079b292f54897920d07e0e3f59b88}\label{parser_8c_a96f079b292f54897920d07e0e3f59b88}} 
+\index{parser.\+c@{parser.\+c}!delete\+Identifier\+Node@{delete\+Identifier\+Node}}
+\index{delete\+Identifier\+Node@{delete\+Identifier\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Identifier\+Node()}{deleteIdentifierNode()}}
+{\footnotesize\ttfamily void delete\+Identifier\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Deletes an identifier.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em node} & The identifier to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape node} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_a071185a9419aa55306ef21a2b51a6c0c}\label{parser_8c_a071185a9419aa55306ef21a2b51a6c0c}} 
+\index{parser.\+c@{parser.\+c}!create\+Identifier\+Node\+List@{create\+Identifier\+Node\+List}}
+\index{create\+Identifier\+Node\+List@{create\+Identifier\+Node\+List}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Identifier\+Node\+List()}{createIdentifierNodeList()}}
+{\footnotesize\ttfamily \hyperlink{struct_identifier_node_list}{Identifier\+Node\+List}$\ast$ create\+Identifier\+Node\+List (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Creates an identifier list.
+
+\begin{DoxyReturn}{Returns}
+A pointer to an identifier list.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a3458d90bcc5b6275ecfbabb6b25707a5}\label{parser_8c_a3458d90bcc5b6275ecfbabb6b25707a5}} 
+\index{parser.\+c@{parser.\+c}!add\+Identifier\+Node@{add\+Identifier\+Node}}
+\index{add\+Identifier\+Node@{add\+Identifier\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{add\+Identifier\+Node()}{addIdentifierNode()}}
+{\footnotesize\ttfamily int add\+Identifier\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_identifier_node_list}{Identifier\+Node\+List} $\ast$}]{list,  }\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Adds an identifier to a list.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em list} & The list of identifiers to add {\itshape node} to.\\
+\hline
+\mbox{\tt in}  & {\em node} & The identifier to add to {\itshape list}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape token} will be added to the end of {\itshape list} and the size of {\itshape list} will be updated.
+\end{DoxyPostcond}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Memory allocation failed.\\
+\hline
+{\em 1} & {\itshape node} was added to {\itshape list}. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a0981294f5b54e2daaa5b007cccdaab10}\label{parser_8c_a0981294f5b54e2daaa5b007cccdaab10}} 
+\index{parser.\+c@{parser.\+c}!delete\+Identifier\+Node\+List@{delete\+Identifier\+Node\+List}}
+\index{delete\+Identifier\+Node\+List@{delete\+Identifier\+Node\+List}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Identifier\+Node\+List()}{deleteIdentifierNodeList()}}
+{\footnotesize\ttfamily void delete\+Identifier\+Node\+List (\begin{DoxyParamCaption}\item[{\hyperlink{struct_identifier_node_list}{Identifier\+Node\+List} $\ast$}]{list }\end{DoxyParamCaption})}
+
+Deletes an identifier list.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em list} & The list of identifiers to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape list} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_a33cdfe250d86d923adf96777bd63a9ec}\label{parser_8c_a33cdfe250d86d923adf96777bd63a9ec}} 
+\index{parser.\+c@{parser.\+c}!create\+Type\+Node@{create\+Type\+Node}}
+\index{create\+Type\+Node@{create\+Type\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Type\+Node()}{createTypeNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_type_node}{Type\+Node}$\ast$ create\+Type\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{parser_8h_a455cdd942ce73c87e99cb3f9d6a01926}{Constant\+Type}}]{type }\end{DoxyParamCaption})}
+
+Creates a type.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em type} & The type to create.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a new type with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocatin failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a0cdee82cef1017fcd4d92bb7393eacb4}\label{parser_8c_a0cdee82cef1017fcd4d92bb7393eacb4}} 
+\index{parser.\+c@{parser.\+c}!delete\+Type\+Node@{delete\+Type\+Node}}
+\index{delete\+Type\+Node@{delete\+Type\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Type\+Node()}{deleteTypeNode()}}
+{\footnotesize\ttfamily void delete\+Type\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_type_node}{Type\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Deletes a type.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em node} & The type to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape node} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_a9f425cb8f8c892a4941673598deea1fe}\label{parser_8c_a9f425cb8f8c892a4941673598deea1fe}} 
+\index{parser.\+c@{parser.\+c}!create\+Stmt\+Node@{create\+Stmt\+Node}}
+\index{create\+Stmt\+Node@{create\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Stmt\+Node()}{createStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_stmt_node}{Stmt\+Node}$\ast$ create\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{parser_8h_a9c1bfaf3c0a28d12826afa7bd1b0a3db}{Stmt\+Type}}]{type,  }\item[{void $\ast$}]{stmt }\end{DoxyParamCaption})}
+
+Creates a statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em type} & The type of statement.\\
+\hline
+\mbox{\tt in}  & {\em stmt} & The statement data.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a statement with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & malloc was unable to allocate memory. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_aebbf8222e30b610b62cec46862e5232f}\label{parser_8c_aebbf8222e30b610b62cec46862e5232f}} 
+\index{parser.\+c@{parser.\+c}!delete\+Stmt\+Node@{delete\+Stmt\+Node}}
+\index{delete\+Stmt\+Node@{delete\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Stmt\+Node()}{deleteStmtNode()}}
+{\footnotesize\ttfamily void delete\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Deletes a statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em node} & The statement to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape node} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_a5387dc4eb63531315f26e6ad56edf0c6}\label{parser_8c_a5387dc4eb63531315f26e6ad56edf0c6}} 
+\index{parser.\+c@{parser.\+c}!create\+Stmt\+Node\+List@{create\+Stmt\+Node\+List}}
+\index{create\+Stmt\+Node\+List@{create\+Stmt\+Node\+List}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Stmt\+Node\+List()}{createStmtNodeList()}}
+{\footnotesize\ttfamily \hyperlink{struct_stmt_node_list}{Stmt\+Node\+List}$\ast$ create\+Stmt\+Node\+List (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Creates an empty statement list.
+
+\begin{DoxyReturn}{Returns}
+A pointer to an empty statement list.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a7575fde1c65625cd7f10cbdd01897125}\label{parser_8c_a7575fde1c65625cd7f10cbdd01897125}} 
+\index{parser.\+c@{parser.\+c}!add\+Stmt\+Node@{add\+Stmt\+Node}}
+\index{add\+Stmt\+Node@{add\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{add\+Stmt\+Node()}{addStmtNode()}}
+{\footnotesize\ttfamily int add\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_stmt_node_list}{Stmt\+Node\+List} $\ast$}]{list,  }\item[{\hyperlink{struct_stmt_node}{Stmt\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Adds a statement to a list.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em list} & The statement list to add {\itshape node} to.\\
+\hline
+\mbox{\tt in}  & {\em node} & The statement to add to {\itshape list}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape node} will be added to {\itshape list} and its size will be updated.
+\end{DoxyPostcond}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Memory allocation failed.\\
+\hline
+{\em 1} & {\itshape node} was added to {\itshape list}. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a8f05e322e85bb18963d784f364dc1829}\label{parser_8c_a8f05e322e85bb18963d784f364dc1829}} 
+\index{parser.\+c@{parser.\+c}!delete\+Stmt\+Node\+List@{delete\+Stmt\+Node\+List}}
+\index{delete\+Stmt\+Node\+List@{delete\+Stmt\+Node\+List}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Stmt\+Node\+List()}{deleteStmtNodeList()}}
+{\footnotesize\ttfamily void delete\+Stmt\+Node\+List (\begin{DoxyParamCaption}\item[{\hyperlink{struct_stmt_node_list}{Stmt\+Node\+List} $\ast$}]{list }\end{DoxyParamCaption})}
+
+Deletes a statement list.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em list} & The statement list to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape list} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_aac4756cdb1495bba9fc61848aabd9345}\label{parser_8c_aac4756cdb1495bba9fc61848aabd9345}} 
+\index{parser.\+c@{parser.\+c}!create\+Cast\+Stmt\+Node@{create\+Cast\+Stmt\+Node}}
+\index{create\+Cast\+Stmt\+Node@{create\+Cast\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Cast\+Stmt\+Node()}{createCastStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_cast_stmt_node}{Cast\+Stmt\+Node}$\ast$ create\+Cast\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{target,  }\item[{\hyperlink{struct_type_node}{Type\+Node} $\ast$}]{newtype }\end{DoxyParamCaption})}
+
+Creates a cast statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em target} & The variable to cast to {\itshape newtype}.\\
+\hline
+\mbox{\tt in}  & {\em newtype} & The type to cast {\itshape target} to.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a cast statement with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a4a0b6ba43c4ac5d73c0c1adaef696a4a}\label{parser_8c_a4a0b6ba43c4ac5d73c0c1adaef696a4a}} 
+\index{parser.\+c@{parser.\+c}!delete\+Cast\+Stmt\+Node@{delete\+Cast\+Stmt\+Node}}
+\index{delete\+Cast\+Stmt\+Node@{delete\+Cast\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Cast\+Stmt\+Node()}{deleteCastStmtNode()}}
+{\footnotesize\ttfamily void delete\+Cast\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_cast_stmt_node}{Cast\+Stmt\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Deletes a cast statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em node} & The cast statement to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape node} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_af275e517e8f93a38d73234305e66095c}\label{parser_8c_af275e517e8f93a38d73234305e66095c}} 
+\index{parser.\+c@{parser.\+c}!create\+Print\+Stmt\+Node@{create\+Print\+Stmt\+Node}}
+\index{create\+Print\+Stmt\+Node@{create\+Print\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Print\+Stmt\+Node()}{createPrintStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_print_stmt_node}{Print\+Stmt\+Node}$\ast$ create\+Print\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_expr_node_list}{Expr\+Node\+List} $\ast$}]{args,  }\item[{F\+I\+LE $\ast$}]{file,  }\item[{int}]{nonl }\end{DoxyParamCaption})}
+
+Creates a print statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em args} & The expressions to print.\\
+\hline
+\mbox{\tt in}  & {\em file} & Where to print ({\ttfamily stdout} or {\ttfamily stderr}).\\
+\hline
+\mbox{\tt in}  & {\em nonl} & Whether an ending newline should be surpressed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the print statement with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_af1d7b92a63e7a7b05963d8195286c54c}\label{parser_8c_af1d7b92a63e7a7b05963d8195286c54c}} 
+\index{parser.\+c@{parser.\+c}!delete\+Print\+Stmt\+Node@{delete\+Print\+Stmt\+Node}}
+\index{delete\+Print\+Stmt\+Node@{delete\+Print\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Print\+Stmt\+Node()}{deletePrintStmtNode()}}
+{\footnotesize\ttfamily void delete\+Print\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_print_stmt_node}{Print\+Stmt\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Deletes a print statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em node} & The print statement to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape node} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_a2396ffcbc70e7b5b2314dc6c16cc7a68}\label{parser_8c_a2396ffcbc70e7b5b2314dc6c16cc7a68}} 
+\index{parser.\+c@{parser.\+c}!create\+Input\+Stmt\+Node@{create\+Input\+Stmt\+Node}}
+\index{create\+Input\+Stmt\+Node@{create\+Input\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Input\+Stmt\+Node()}{createInputStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_input_stmt_node}{Input\+Stmt\+Node}$\ast$ create\+Input\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{target }\end{DoxyParamCaption})}
+
+Creates an input statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em target} & The variable to store input in.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to an input statement with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a9caac52b9a18a5e98126c4e9707c2918}\label{parser_8c_a9caac52b9a18a5e98126c4e9707c2918}} 
+\index{parser.\+c@{parser.\+c}!delete\+Input\+Stmt\+Node@{delete\+Input\+Stmt\+Node}}
+\index{delete\+Input\+Stmt\+Node@{delete\+Input\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Input\+Stmt\+Node()}{deleteInputStmtNode()}}
+{\footnotesize\ttfamily void delete\+Input\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_input_stmt_node}{Input\+Stmt\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Deletes an input statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em node} & The input statement to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape node} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_a359466584c0daa035e4f7277d44d8550}\label{parser_8c_a359466584c0daa035e4f7277d44d8550}} 
+\index{parser.\+c@{parser.\+c}!create\+Assignment\+Stmt\+Node@{create\+Assignment\+Stmt\+Node}}
+\index{create\+Assignment\+Stmt\+Node@{create\+Assignment\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Assignment\+Stmt\+Node()}{createAssignmentStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_assignment_stmt_node}{Assignment\+Stmt\+Node}$\ast$ create\+Assignment\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{target,  }\item[{\hyperlink{struct_expr_node}{Expr\+Node} $\ast$}]{expr }\end{DoxyParamCaption})}
+
+Creates an assignment statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em target} & The variable to store {\itshape expr} in.\\
+\hline
+\mbox{\tt in}  & {\em expr} & The expression to store in {\itshape target}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to an assignment statement with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a3a7f5dcbfc2015b2af2ffb94ff798578}\label{parser_8c_a3a7f5dcbfc2015b2af2ffb94ff798578}} 
+\index{parser.\+c@{parser.\+c}!delete\+Assignment\+Stmt\+Node@{delete\+Assignment\+Stmt\+Node}}
+\index{delete\+Assignment\+Stmt\+Node@{delete\+Assignment\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Assignment\+Stmt\+Node()}{deleteAssignmentStmtNode()}}
+{\footnotesize\ttfamily void delete\+Assignment\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_assignment_stmt_node}{Assignment\+Stmt\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Deletes an assignment statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em node} & The assignment statement to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape node} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_a5e8d037eac6083f9f32d9bf414b8afbd}\label{parser_8c_a5e8d037eac6083f9f32d9bf414b8afbd}} 
+\index{parser.\+c@{parser.\+c}!create\+Declaration\+Stmt\+Node@{create\+Declaration\+Stmt\+Node}}
+\index{create\+Declaration\+Stmt\+Node@{create\+Declaration\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Declaration\+Stmt\+Node()}{createDeclarationStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_declaration_stmt_node}{Declaration\+Stmt\+Node}$\ast$ create\+Declaration\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{scope,  }\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{target,  }\item[{\hyperlink{struct_expr_node}{Expr\+Node} $\ast$}]{expr,  }\item[{\hyperlink{struct_type_node}{Type\+Node} $\ast$}]{type,  }\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{parent }\end{DoxyParamCaption})}
+
+Creates a declaration statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em scope} & The scope to create the variable in.\\
+\hline
+\mbox{\tt in}  & {\em target} & The variable to create.\\
+\hline
+\mbox{\tt in}  & {\em expr} & An optional expression to initialize {\itshape target} to.\\
+\hline
+\mbox{\tt in}  & {\em type} & An optional type to initialize {\itshape target} to.\\
+\hline
+\mbox{\tt in}  & {\em parent} & The optional parent to inherit from.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a declaration statement with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_aac3232a5af64e872c317c62d11493f75}\label{parser_8c_aac3232a5af64e872c317c62d11493f75}} 
+\index{parser.\+c@{parser.\+c}!delete\+Declaration\+Stmt\+Node@{delete\+Declaration\+Stmt\+Node}}
+\index{delete\+Declaration\+Stmt\+Node@{delete\+Declaration\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Declaration\+Stmt\+Node()}{deleteDeclarationStmtNode()}}
+{\footnotesize\ttfamily void delete\+Declaration\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_declaration_stmt_node}{Declaration\+Stmt\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Deletes a declaration statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em node} & The declaration statement to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape node} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_a12f221df6b151291485323de52737fcc}\label{parser_8c_a12f221df6b151291485323de52737fcc}} 
+\index{parser.\+c@{parser.\+c}!create\+If\+Then\+Else\+Stmt\+Node@{create\+If\+Then\+Else\+Stmt\+Node}}
+\index{create\+If\+Then\+Else\+Stmt\+Node@{create\+If\+Then\+Else\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+If\+Then\+Else\+Stmt\+Node()}{createIfThenElseStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_if_then_else_stmt_node}{If\+Then\+Else\+Stmt\+Node}$\ast$ create\+If\+Then\+Else\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_block_node}{Block\+Node} $\ast$}]{yes,  }\item[{\hyperlink{struct_block_node}{Block\+Node} $\ast$}]{no,  }\item[{\hyperlink{struct_expr_node_list}{Expr\+Node\+List} $\ast$}]{guards,  }\item[{\hyperlink{struct_block_node_list}{Block\+Node\+List} $\ast$}]{blocks }\end{DoxyParamCaption})}
+
+Creates an if/then/else statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em yes} & The code block to execute if the \hyperlink{impvar}{implicit}variable" is {\ttfamily true}.\\
+\hline
+\mbox{\tt in}  & {\em no} & The code block to execute if the \hyperlink{impvar}{implicit}variable" is {\ttfamily false} and all {\itshape guards} are {\ttfamily false}.\\
+\hline
+\mbox{\tt in}  & {\em guards} & The expressions to test if the \hyperlink{impvar}{implicit}variable" is {\ttfamily false}.\\
+\hline
+\mbox{\tt in}  & {\em blocks} & The code blocks to execute if the respective guard is {\ttfamily true}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the if/then/else statement with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_acbd132c4c95ab2462015a804df4a89ed}\label{parser_8c_acbd132c4c95ab2462015a804df4a89ed}} 
+\index{parser.\+c@{parser.\+c}!delete\+If\+Then\+Else\+Stmt\+Node@{delete\+If\+Then\+Else\+Stmt\+Node}}
+\index{delete\+If\+Then\+Else\+Stmt\+Node@{delete\+If\+Then\+Else\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+If\+Then\+Else\+Stmt\+Node()}{deleteIfThenElseStmtNode()}}
+{\footnotesize\ttfamily void delete\+If\+Then\+Else\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_if_then_else_stmt_node}{If\+Then\+Else\+Stmt\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Deletes an if/then/else statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em node} & The if/then/else statement to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape node} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_a70a99b5a9938cc173f564064a0d4eaf5}\label{parser_8c_a70a99b5a9938cc173f564064a0d4eaf5}} 
+\index{parser.\+c@{parser.\+c}!create\+Switch\+Stmt\+Node@{create\+Switch\+Stmt\+Node}}
+\index{create\+Switch\+Stmt\+Node@{create\+Switch\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Switch\+Stmt\+Node()}{createSwitchStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_switch_stmt_node}{Switch\+Stmt\+Node}$\ast$ create\+Switch\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_expr_node_list}{Expr\+Node\+List} $\ast$}]{guards,  }\item[{\hyperlink{struct_block_node_list}{Block\+Node\+List} $\ast$}]{blocks,  }\item[{\hyperlink{struct_block_node}{Block\+Node} $\ast$}]{def }\end{DoxyParamCaption})}
+
+Creates a switch statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em guards} & The expressions to compare the the \hyperlink{impvar}{implicit}variable".\\
+\hline
+\mbox{\tt in}  & {\em blocks} & The code blocks to execute if a respective guard matches the \hyperlink{impvar}{implicit variable}.\\
+\hline
+\mbox{\tt in}  & {\em def} & The default code block to execute if none of the {\itshape guards} match the \hyperlink{impvar}{implicit variable}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a switch statement with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a2eaae2e2a53cd2635596e5ce8810aef2}\label{parser_8c_a2eaae2e2a53cd2635596e5ce8810aef2}} 
+\index{parser.\+c@{parser.\+c}!delete\+Switch\+Stmt\+Node@{delete\+Switch\+Stmt\+Node}}
+\index{delete\+Switch\+Stmt\+Node@{delete\+Switch\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Switch\+Stmt\+Node()}{deleteSwitchStmtNode()}}
+{\footnotesize\ttfamily void delete\+Switch\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_switch_stmt_node}{Switch\+Stmt\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Deletes a switch statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em node} & The switch statement to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape node} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_a1afd6ea39064c70835443ea4e29ce914}\label{parser_8c_a1afd6ea39064c70835443ea4e29ce914}} 
+\index{parser.\+c@{parser.\+c}!create\+Return\+Stmt\+Node@{create\+Return\+Stmt\+Node}}
+\index{create\+Return\+Stmt\+Node@{create\+Return\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Return\+Stmt\+Node()}{createReturnStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_return_stmt_node}{Return\+Stmt\+Node}$\ast$ create\+Return\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_expr_node}{Expr\+Node} $\ast$}]{value }\end{DoxyParamCaption})}
+
+Creates a return statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & The return value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a return statement of the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_af3190c617bce6238a272de3a3be58081}\label{parser_8c_af3190c617bce6238a272de3a3be58081}} 
+\index{parser.\+c@{parser.\+c}!delete\+Return\+Stmt\+Node@{delete\+Return\+Stmt\+Node}}
+\index{delete\+Return\+Stmt\+Node@{delete\+Return\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Return\+Stmt\+Node()}{deleteReturnStmtNode()}}
+{\footnotesize\ttfamily void delete\+Return\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_return_stmt_node}{Return\+Stmt\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Deletes a return statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em node} & The return statement to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape node} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_a70fb88da6e4c3c70ce7e2250ec3bba0a}\label{parser_8c_a70fb88da6e4c3c70ce7e2250ec3bba0a}} 
+\index{parser.\+c@{parser.\+c}!create\+Loop\+Stmt\+Node@{create\+Loop\+Stmt\+Node}}
+\index{create\+Loop\+Stmt\+Node@{create\+Loop\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Loop\+Stmt\+Node()}{createLoopStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_loop_stmt_node}{Loop\+Stmt\+Node}$\ast$ create\+Loop\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{name,  }\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{var,  }\item[{\hyperlink{struct_expr_node}{Expr\+Node} $\ast$}]{guard,  }\item[{\hyperlink{struct_expr_node}{Expr\+Node} $\ast$}]{update,  }\item[{\hyperlink{struct_block_node}{Block\+Node} $\ast$}]{body }\end{DoxyParamCaption})}
+
+Creates a loop statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & The name of the loop.\\
+\hline
+\mbox{\tt in}  & {\em var} & The induction variable.\\
+\hline
+\mbox{\tt in}  & {\em guard} & The expression to determine if the loop continues.\\
+\hline
+\mbox{\tt in}  & {\em update} & The expression to update {\itshape var} using.\\
+\hline
+\mbox{\tt in}  & {\em body} & The code block to execute with each loop iteration.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a loop statement with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_aecacd84d092fc3a16b0c6ab32b440219}\label{parser_8c_aecacd84d092fc3a16b0c6ab32b440219}} 
+\index{parser.\+c@{parser.\+c}!delete\+Loop\+Stmt\+Node@{delete\+Loop\+Stmt\+Node}}
+\index{delete\+Loop\+Stmt\+Node@{delete\+Loop\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Loop\+Stmt\+Node()}{deleteLoopStmtNode()}}
+{\footnotesize\ttfamily void delete\+Loop\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_loop_stmt_node}{Loop\+Stmt\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Deletes a loop statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em node} & The loop statement to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape node} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_ad788bf99f3bffeb050fab417af6c5909}\label{parser_8c_ad788bf99f3bffeb050fab417af6c5909}} 
+\index{parser.\+c@{parser.\+c}!create\+Deallocation\+Stmt\+Node@{create\+Deallocation\+Stmt\+Node}}
+\index{create\+Deallocation\+Stmt\+Node@{create\+Deallocation\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Deallocation\+Stmt\+Node()}{createDeallocationStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_deallocation_stmt_node}{Deallocation\+Stmt\+Node}$\ast$ create\+Deallocation\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{target }\end{DoxyParamCaption})}
+
+Creates a deallocation statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em target} & The variable to deallocate.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a deallocation statement with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_abef301f3727167f7a34c871010b2fd5d}\label{parser_8c_abef301f3727167f7a34c871010b2fd5d}} 
+\index{parser.\+c@{parser.\+c}!delete\+Deallocation\+Stmt\+Node@{delete\+Deallocation\+Stmt\+Node}}
+\index{delete\+Deallocation\+Stmt\+Node@{delete\+Deallocation\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Deallocation\+Stmt\+Node()}{deleteDeallocationStmtNode()}}
+{\footnotesize\ttfamily void delete\+Deallocation\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_deallocation_stmt_node}{Deallocation\+Stmt\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Deletes a deallocation statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em node} & The deallocation statement to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape node} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_a7f73e98a023071061c207bc57dcd0dee}\label{parser_8c_a7f73e98a023071061c207bc57dcd0dee}} 
+\index{parser.\+c@{parser.\+c}!create\+Func\+Def\+Stmt\+Node@{create\+Func\+Def\+Stmt\+Node}}
+\index{create\+Func\+Def\+Stmt\+Node@{create\+Func\+Def\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Func\+Def\+Stmt\+Node()}{createFuncDefStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_func_def_stmt_node}{Func\+Def\+Stmt\+Node}$\ast$ create\+Func\+Def\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{scope,  }\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{name,  }\item[{\hyperlink{struct_identifier_node_list}{Identifier\+Node\+List} $\ast$}]{args,  }\item[{\hyperlink{struct_block_node}{Block\+Node} $\ast$}]{body }\end{DoxyParamCaption})}
+
+Creates a function definition statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em scope} & The scope to define the function in.\\
+\hline
+\mbox{\tt in}  & {\em name} & The name of the function.\\
+\hline
+\mbox{\tt in}  & {\em args} & The function arguments names.\\
+\hline
+\mbox{\tt in}  & {\em body} & The function\textquotesingle{}s code block.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a function definition statement with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a337060b35ed8cf6f5c1e12e2e6d5e891}\label{parser_8c_a337060b35ed8cf6f5c1e12e2e6d5e891}} 
+\index{parser.\+c@{parser.\+c}!delete\+Func\+Def\+Stmt\+Node@{delete\+Func\+Def\+Stmt\+Node}}
+\index{delete\+Func\+Def\+Stmt\+Node@{delete\+Func\+Def\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Func\+Def\+Stmt\+Node()}{deleteFuncDefStmtNode()}}
+{\footnotesize\ttfamily void delete\+Func\+Def\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_func_def_stmt_node}{Func\+Def\+Stmt\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Deletes a function definition statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em node} & The function definition statement to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape node} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_a5fe1f55058ab9d3df03960d111b3f529}\label{parser_8c_a5fe1f55058ab9d3df03960d111b3f529}} 
+\index{parser.\+c@{parser.\+c}!create\+Alt\+Array\+Def\+Stmt\+Node@{create\+Alt\+Array\+Def\+Stmt\+Node}}
+\index{create\+Alt\+Array\+Def\+Stmt\+Node@{create\+Alt\+Array\+Def\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Alt\+Array\+Def\+Stmt\+Node()}{createAltArrayDefStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_alt_array_def_stmt_node}{Alt\+Array\+Def\+Stmt\+Node}$\ast$ create\+Alt\+Array\+Def\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{name,  }\item[{\hyperlink{struct_block_node}{Block\+Node} $\ast$}]{body,  }\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{parent }\end{DoxyParamCaption})}
+
+Creates an alternate array definition statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & The name of the array to define.\\
+\hline
+\mbox{\tt in}  & {\em body} & The body of the array to define.\\
+\hline
+\mbox{\tt in}  & {\em parent} & The optional parent to inherit from.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to an array definition statement with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a722771c18a47cfe05990674083d5eef8}\label{parser_8c_a722771c18a47cfe05990674083d5eef8}} 
+\index{parser.\+c@{parser.\+c}!delete\+Alt\+Array\+Def\+Stmt\+Node@{delete\+Alt\+Array\+Def\+Stmt\+Node}}
+\index{delete\+Alt\+Array\+Def\+Stmt\+Node@{delete\+Alt\+Array\+Def\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Alt\+Array\+Def\+Stmt\+Node()}{deleteAltArrayDefStmtNode()}}
+{\footnotesize\ttfamily void delete\+Alt\+Array\+Def\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_alt_array_def_stmt_node}{Alt\+Array\+Def\+Stmt\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Deletes an alternate array definition statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em node} & The alternate array definition statement to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape node} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_ab36f0b9e5b262b0dd97b0e46e96b24d5}\label{parser_8c_ab36f0b9e5b262b0dd97b0e46e96b24d5}} 
+\index{parser.\+c@{parser.\+c}!create\+Expr\+Node@{create\+Expr\+Node}}
+\index{create\+Expr\+Node@{create\+Expr\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Expr\+Node()}{createExprNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_expr_node}{Expr\+Node}$\ast$ create\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{parser_8h_a3e262b377dc15baba6e58438868decb7}{Expr\+Type}}]{type,  }\item[{void $\ast$}]{expr }\end{DoxyParamCaption})}
+
+Creates an expression.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em type} & The type of expression.\\
+\hline
+\mbox{\tt in}  & {\em expr} & The expression data.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to an expression with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a1610e071c2e138a812b05fd85d608ead}\label{parser_8c_a1610e071c2e138a812b05fd85d608ead}} 
+\index{parser.\+c@{parser.\+c}!delete\+Expr\+Node@{delete\+Expr\+Node}}
+\index{delete\+Expr\+Node@{delete\+Expr\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Expr\+Node()}{deleteExprNode()}}
+{\footnotesize\ttfamily void delete\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_expr_node}{Expr\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Deletes an expression.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em node} & The expression to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape node} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_a976d79408740dce7ba2723415f9180b0}\label{parser_8c_a976d79408740dce7ba2723415f9180b0}} 
+\index{parser.\+c@{parser.\+c}!create\+Expr\+Node\+List@{create\+Expr\+Node\+List}}
+\index{create\+Expr\+Node\+List@{create\+Expr\+Node\+List}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Expr\+Node\+List()}{createExprNodeList()}}
+{\footnotesize\ttfamily \hyperlink{struct_expr_node_list}{Expr\+Node\+List}$\ast$ create\+Expr\+Node\+List (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Creates an empty expression list.
+
+\begin{DoxyReturn}{Returns}
+A pointer to an empty expression list.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_ae3438edca28bed182f6c6be37a6be343}\label{parser_8c_ae3438edca28bed182f6c6be37a6be343}} 
+\index{parser.\+c@{parser.\+c}!add\+Expr\+Node@{add\+Expr\+Node}}
+\index{add\+Expr\+Node@{add\+Expr\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{add\+Expr\+Node()}{addExprNode()}}
+{\footnotesize\ttfamily int add\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_expr_node_list}{Expr\+Node\+List} $\ast$}]{list,  }\item[{\hyperlink{struct_expr_node}{Expr\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Adds an expression to a list.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em list} & The expression list to add {\itshape node} to.\\
+\hline
+\mbox{\tt in}  & {\em node} & The expression to add to {\itshape list}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape node} will be added to {\itshape list} and its size will be updated.
+\end{DoxyPostcond}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & Memory allocation failed.\\
+\hline
+{\em 1} & {\itshape node} was added to {\itshape list}. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a366d2606b5dc9e6b20fb1fd58621a27f}\label{parser_8c_a366d2606b5dc9e6b20fb1fd58621a27f}} 
+\index{parser.\+c@{parser.\+c}!delete\+Expr\+Node\+List@{delete\+Expr\+Node\+List}}
+\index{delete\+Expr\+Node\+List@{delete\+Expr\+Node\+List}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Expr\+Node\+List()}{deleteExprNodeList()}}
+{\footnotesize\ttfamily void delete\+Expr\+Node\+List (\begin{DoxyParamCaption}\item[{\hyperlink{struct_expr_node_list}{Expr\+Node\+List} $\ast$}]{list }\end{DoxyParamCaption})}
+
+Deletes an expression list.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em list} & The expression list to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape list} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_a9fa09e58fee51a326a92cab995420cc7}\label{parser_8c_a9fa09e58fee51a326a92cab995420cc7}} 
+\index{parser.\+c@{parser.\+c}!create\+Cast\+Expr\+Node@{create\+Cast\+Expr\+Node}}
+\index{create\+Cast\+Expr\+Node@{create\+Cast\+Expr\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Cast\+Expr\+Node()}{createCastExprNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_cast_expr_node}{Cast\+Expr\+Node}$\ast$ create\+Cast\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_expr_node}{Expr\+Node} $\ast$}]{target,  }\item[{\hyperlink{struct_type_node}{Type\+Node} $\ast$}]{newtype }\end{DoxyParamCaption})}
+
+Creates a cast expression.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em target} & The expression to cast.\\
+\hline
+\mbox{\tt in}  & {\em newtype} & The type to cast {\itshape target} to.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a cast expression with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_aa480c9bdc2b683a7060e20bb0a93e349}\label{parser_8c_aa480c9bdc2b683a7060e20bb0a93e349}} 
+\index{parser.\+c@{parser.\+c}!delete\+Cast\+Expr\+Node@{delete\+Cast\+Expr\+Node}}
+\index{delete\+Cast\+Expr\+Node@{delete\+Cast\+Expr\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Cast\+Expr\+Node()}{deleteCastExprNode()}}
+{\footnotesize\ttfamily void delete\+Cast\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_cast_expr_node}{Cast\+Expr\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Deletes a cast expression.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em node} & The cast expression to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape node} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_a2ffacceb0bb70c5fec4392750e86f3d5}\label{parser_8c_a2ffacceb0bb70c5fec4392750e86f3d5}} 
+\index{parser.\+c@{parser.\+c}!create\+Func\+Call\+Expr\+Node@{create\+Func\+Call\+Expr\+Node}}
+\index{create\+Func\+Call\+Expr\+Node@{create\+Func\+Call\+Expr\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Func\+Call\+Expr\+Node()}{createFuncCallExprNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_func_call_expr_node}{Func\+Call\+Expr\+Node}$\ast$ create\+Func\+Call\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{scope,  }\item[{\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$}]{name,  }\item[{\hyperlink{struct_expr_node_list}{Expr\+Node\+List} $\ast$}]{args }\end{DoxyParamCaption})}
+
+Creates a function call expression.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em scope} & The scope to lookup the function in.\\
+\hline
+\mbox{\tt in}  & {\em name} & The name of the function.\\
+\hline
+\mbox{\tt in}  & {\em args} & The arguments to supply the function.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a function call expression with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memory allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_ab140ee4f88cdb5d30b7e6f03f7071edf}\label{parser_8c_ab140ee4f88cdb5d30b7e6f03f7071edf}} 
+\index{parser.\+c@{parser.\+c}!delete\+Func\+Call\+Expr\+Node@{delete\+Func\+Call\+Expr\+Node}}
+\index{delete\+Func\+Call\+Expr\+Node@{delete\+Func\+Call\+Expr\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Func\+Call\+Expr\+Node()}{deleteFuncCallExprNode()}}
+{\footnotesize\ttfamily void delete\+Func\+Call\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_func_call_expr_node}{Func\+Call\+Expr\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Deletes a function call expression.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em node} & The function call expression to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape node} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_a250c5e71ecf3b4d096a12f37df2c3f01}\label{parser_8c_a250c5e71ecf3b4d096a12f37df2c3f01}} 
+\index{parser.\+c@{parser.\+c}!create\+Op\+Expr\+Node@{create\+Op\+Expr\+Node}}
+\index{create\+Op\+Expr\+Node@{create\+Op\+Expr\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{create\+Op\+Expr\+Node()}{createOpExprNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_op_expr_node}{Op\+Expr\+Node}$\ast$ create\+Op\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{parser_8h_aa1aa1c6a8f3bbed5b167bc2d4511b969}{Op\+Type}}]{type,  }\item[{\hyperlink{struct_expr_node_list}{Expr\+Node\+List} $\ast$}]{args }\end{DoxyParamCaption})}
+
+Creates an operation expression.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em type} & The type of operation to perform.\\
+\hline
+\mbox{\tt in}  & {\em args} & The operands.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to an operation expression with the desired properties.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Memroy allocation failed. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a0400c388330a025fb9f71e8bb8dfc752}\label{parser_8c_a0400c388330a025fb9f71e8bb8dfc752}} 
+\index{parser.\+c@{parser.\+c}!delete\+Op\+Expr\+Node@{delete\+Op\+Expr\+Node}}
+\index{delete\+Op\+Expr\+Node@{delete\+Op\+Expr\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{delete\+Op\+Expr\+Node()}{deleteOpExprNode()}}
+{\footnotesize\ttfamily void delete\+Op\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_op_expr_node}{Op\+Expr\+Node} $\ast$}]{node }\end{DoxyParamCaption})}
+
+Deletes an operation expression.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em node} & The operation expression to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The memory at {\itshape node} and all of its members will be freed. 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{parser_8c_ad42d9df31ba34d692cc89cc0406a09a5}\label{parser_8c_ad42d9df31ba34d692cc89cc0406a09a5}} 
+\index{parser.\+c@{parser.\+c}!accept\+Token@{accept\+Token}}
+\index{accept\+Token@{accept\+Token}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{accept\+Token()}{acceptToken()}}
+{\footnotesize\ttfamily int accept\+Token (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp,  }\item[{\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}]{token }\end{DoxyParamCaption})}
+
+Checks if a type of token is at a position in a token list, and if so, advances the position.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em tokenp} & The position in a token list to check.\\
+\hline
+\mbox{\tt in}  & {\em token} & The type of token to check for.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+If the type of {\itshape tokenp} is not {\itshape token}, {\itshape tokenp} will remain unchanged, else, it will point to the token after the one matched.
+\end{DoxyPostcond}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & The type of {\itshape tokenp} is {\itshape token}.\\
+\hline
+{\em 1} & The type of {\itshape tokenp} is not {\itshape token}. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_af9957220bd0480dcfa551246ba16d0d8}\label{parser_8c_af9957220bd0480dcfa551246ba16d0d8}} 
+\index{parser.\+c@{parser.\+c}!peek\+Token@{peek\+Token}}
+\index{peek\+Token@{peek\+Token}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{peek\+Token()}{peekToken()}}
+{\footnotesize\ttfamily int peek\+Token (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp,  }\item[{\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}]{token }\end{DoxyParamCaption})}
+
+Checks if a type of token is at a position in a token list.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to check.\\
+\hline
+\mbox{\tt in}  & {\em token} & The type of token to check for.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will remain unchanged.
+\end{DoxyPostcond}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & The type of {\itshape tokenp} is {\itshape token}.\\
+\hline
+{\em 1} & The type of {\itshape tokenp} is not {\itshape token}. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_aa10261047594f44b492647cfdf6f6f3d}\label{parser_8c_aa10261047594f44b492647cfdf6f6f3d}} 
+\index{parser.\+c@{parser.\+c}!next\+Token@{next\+Token}}
+\index{next\+Token@{next\+Token}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{next\+Token()}{nextToken()}}
+{\footnotesize\ttfamily int next\+Token (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp,  }\item[{\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}]{token }\end{DoxyParamCaption})}
+
+Checks if a type of token is after a position in a token list.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to check after.\\
+\hline
+\mbox{\tt in}  & {\em token} & The type of token to check for.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will remain unchanged.
+\end{DoxyPostcond}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & The type of the token after {\itshape tokenp} is {\itshape token}.\\
+\hline
+{\em 1} & The type of the token after {\itshape tokenp} is not {\itshape token}. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a22b4dc114481249cd0ac373602e6df24}\label{parser_8c_a22b4dc114481249cd0ac373602e6df24}} 
+\index{parser.\+c@{parser.\+c}!parser\+\_\+error@{parser\+\_\+error}}
+\index{parser\+\_\+error@{parser\+\_\+error}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parser\+\_\+error()}{parser\_error()}}
+{\footnotesize\ttfamily void parser\+\_\+error (\begin{DoxyParamCaption}\item[{\hyperlink{error_8h_ab0df38968e4f03a3f1f6d6df0f31f45a}{Error\+Type}}]{type,  }\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$}]{tokens }\end{DoxyParamCaption})}
+
+A simple wrapper around the global error printing function tailored to general parser errors.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em type} & The type of error.\\
+\hline
+\mbox{\tt in}  & {\em tokens} & The tokens being parsed when the error occurred. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{parser_8c_aa8d8bd3b527456714cf282b13471d264}\label{parser_8c_aa8d8bd3b527456714cf282b13471d264}} 
+\index{parser.\+c@{parser.\+c}!parser\+\_\+error\+\_\+expected\+\_\+token@{parser\+\_\+error\+\_\+expected\+\_\+token}}
+\index{parser\+\_\+error\+\_\+expected\+\_\+token@{parser\+\_\+error\+\_\+expected\+\_\+token}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parser\+\_\+error\+\_\+expected\+\_\+token()}{parser\_error\_expected\_token()}}
+{\footnotesize\ttfamily void parser\+\_\+error\+\_\+expected\+\_\+token (\begin{DoxyParamCaption}\item[{\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}]{token,  }\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$}]{tokens }\end{DoxyParamCaption})}
+
+A simple wrapper around the global error printing function tailored to expected token parser errors.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em token} & The expected token\textquotesingle{}s image.\\
+\hline
+\mbox{\tt in}  & {\em tokens} & The tokens being parsed when the error occurred. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{parser_8c_a69b07c7715f4582171962b4a3ea54f46}\label{parser_8c_a69b07c7715f4582171962b4a3ea54f46}} 
+\index{parser.\+c@{parser.\+c}!parser\+\_\+error\+\_\+expected\+\_\+either\+\_\+token@{parser\+\_\+error\+\_\+expected\+\_\+either\+\_\+token}}
+\index{parser\+\_\+error\+\_\+expected\+\_\+either\+\_\+token@{parser\+\_\+error\+\_\+expected\+\_\+either\+\_\+token}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parser\+\_\+error\+\_\+expected\+\_\+either\+\_\+token()}{parser\_error\_expected\_either\_token()}}
+{\footnotesize\ttfamily void parser\+\_\+error\+\_\+expected\+\_\+either\+\_\+token (\begin{DoxyParamCaption}\item[{\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}]{token1,  }\item[{\hyperlink{tokenizer_8h_aa520fbf142ba1e7e659590c07da31921}{Token\+Type}}]{token2,  }\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$}]{tokens }\end{DoxyParamCaption})}
+
+A simple wrapper around the global error printing function tailored to expected two token parser errors.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em token1} & The first expected token\textquotesingle{}s image.\\
+\hline
+\mbox{\tt in}  & {\em token2} & The second expected token\textquotesingle{}s image.\\
+\hline
+\mbox{\tt in}  & {\em tokens} & The tokens being parsed when the error occurred. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{parser_8c_a493791945f27cac200999fadcadd3276}\label{parser_8c_a493791945f27cac200999fadcadd3276}} 
+\index{parser.\+c@{parser.\+c}!parse\+Constant\+Node@{parse\+Constant\+Node}}
+\index{parse\+Constant\+Node@{parse\+Constant\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Constant\+Node()}{parseConstantNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_constant_node}{Constant\+Node}$\ast$ parse\+Constant\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into a constant.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to a constant.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a77b4f6cbfced83754ac9547742f14d94}\label{parser_8c_a77b4f6cbfced83754ac9547742f14d94}} 
+\index{parser.\+c@{parser.\+c}!parse\+Type\+Node@{parse\+Type\+Node}}
+\index{parse\+Type\+Node@{parse\+Type\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Type\+Node()}{parseTypeNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_type_node}{Type\+Node}$\ast$ parse\+Type\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into a type.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to a type.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_aad0f490bc610eef7c5cf371095882156}\label{parser_8c_aad0f490bc610eef7c5cf371095882156}} 
+\index{parser.\+c@{parser.\+c}!parse\+Identifier\+Node@{parse\+Identifier\+Node}}
+\index{parse\+Identifier\+Node@{parse\+Identifier\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Identifier\+Node()}{parseIdentifierNode()}}
+{\footnotesize\ttfamily \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node}$\ast$ parse\+Identifier\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into an identifier.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to an identifier.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a206bb992dd9e86508c2405dd6b1355ff}\label{parser_8c_a206bb992dd9e86508c2405dd6b1355ff}} 
+\index{parser.\+c@{parser.\+c}!parse\+Cast\+Expr\+Node@{parse\+Cast\+Expr\+Node}}
+\index{parse\+Cast\+Expr\+Node@{parse\+Cast\+Expr\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Cast\+Expr\+Node()}{parseCastExprNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_expr_node}{Expr\+Node}$\ast$ parse\+Cast\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into a cast expression.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to a cast expression.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_afa50845127cf6bef7095041b843c5914}\label{parser_8c_afa50845127cf6bef7095041b843c5914}} 
+\index{parser.\+c@{parser.\+c}!parse\+Constant\+Expr\+Node@{parse\+Constant\+Expr\+Node}}
+\index{parse\+Constant\+Expr\+Node@{parse\+Constant\+Expr\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Constant\+Expr\+Node()}{parseConstantExprNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_expr_node}{Expr\+Node}$\ast$ parse\+Constant\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into a constant expression.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to a constant expression.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a6c45211a0f43f419902391ccc6547077}\label{parser_8c_a6c45211a0f43f419902391ccc6547077}} 
+\index{parser.\+c@{parser.\+c}!parse\+Identifier\+Expr\+Node@{parse\+Identifier\+Expr\+Node}}
+\index{parse\+Identifier\+Expr\+Node@{parse\+Identifier\+Expr\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Identifier\+Expr\+Node()}{parseIdentifierExprNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_expr_node}{Expr\+Node}$\ast$ parse\+Identifier\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into an identifier expression.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to an identifier expression.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a2fb668ba00e802589c4d25fe0e158bad}\label{parser_8c_a2fb668ba00e802589c4d25fe0e158bad}} 
+\index{parser.\+c@{parser.\+c}!parse\+Func\+Call\+Expr\+Node@{parse\+Func\+Call\+Expr\+Node}}
+\index{parse\+Func\+Call\+Expr\+Node@{parse\+Func\+Call\+Expr\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Func\+Call\+Expr\+Node()}{parseFuncCallExprNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_expr_node}{Expr\+Node}$\ast$ parse\+Func\+Call\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into a function call expression.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape Tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to a function call expression.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a00fefc6a3a76bdc7bd4394a821de0a67}\label{parser_8c_a00fefc6a3a76bdc7bd4394a821de0a67}} 
+\index{parser.\+c@{parser.\+c}!parse\+Op\+Expr\+Node@{parse\+Op\+Expr\+Node}}
+\index{parse\+Op\+Expr\+Node@{parse\+Op\+Expr\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Op\+Expr\+Node()}{parseOpExprNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_expr_node}{Expr\+Node}$\ast$ parse\+Op\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into an operation expression.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to a operation expression.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a867bf4b8a31142aeb7321513799cea15}\label{parser_8c_a867bf4b8a31142aeb7321513799cea15}} 
+\index{parser.\+c@{parser.\+c}!parse\+Expr\+Node@{parse\+Expr\+Node}}
+\index{parse\+Expr\+Node@{parse\+Expr\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Expr\+Node()}{parseExprNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_expr_node}{Expr\+Node}$\ast$ parse\+Expr\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into an expression.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to an expression.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_ace8f9b52a2f261ce85c014ea56b9e4c0}\label{parser_8c_ace8f9b52a2f261ce85c014ea56b9e4c0}} 
+\index{parser.\+c@{parser.\+c}!parse\+Cast\+Stmt\+Node@{parse\+Cast\+Stmt\+Node}}
+\index{parse\+Cast\+Stmt\+Node@{parse\+Cast\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Cast\+Stmt\+Node()}{parseCastStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_stmt_node}{Stmt\+Node}$\ast$ parse\+Cast\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into a cast statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to a cast statement.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a2d8505d1ad8418a59d1e5053eea99cdc}\label{parser_8c_a2d8505d1ad8418a59d1e5053eea99cdc}} 
+\index{parser.\+c@{parser.\+c}!parse\+Print\+Stmt\+Node@{parse\+Print\+Stmt\+Node}}
+\index{parse\+Print\+Stmt\+Node@{parse\+Print\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Print\+Stmt\+Node()}{parsePrintStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_stmt_node}{Stmt\+Node}$\ast$ parse\+Print\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into a print statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to a print statement.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+Remove the print keyword from the token stream A \char`\"{}quad-\/bool\char`\"{} is used to indicate whether we succeeded or failed to accept either a {\ttfamily T\+T\+\_\+\+V\+I\+S\+I\+B\+LE} or {\ttfamily T\+T\+\_\+\+I\+N\+V\+I\+S\+I\+B\+LE} token.\mbox{\Hypertarget{parser_8c_a939fe9198dd6c3355520df78ae7a0157}\label{parser_8c_a939fe9198dd6c3355520df78ae7a0157}} 
+\index{parser.\+c@{parser.\+c}!parse\+Input\+Stmt\+Node@{parse\+Input\+Stmt\+Node}}
+\index{parse\+Input\+Stmt\+Node@{parse\+Input\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Input\+Stmt\+Node()}{parseInputStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_stmt_node}{Stmt\+Node}$\ast$ parse\+Input\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into an input statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to an input statement.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_ac46df05b0e33cdf8a16594ae391f1e6f}\label{parser_8c_ac46df05b0e33cdf8a16594ae391f1e6f}} 
+\index{parser.\+c@{parser.\+c}!parse\+Assignment\+Stmt\+Node@{parse\+Assignment\+Stmt\+Node}}
+\index{parse\+Assignment\+Stmt\+Node@{parse\+Assignment\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Assignment\+Stmt\+Node()}{parseAssignmentStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_stmt_node}{Stmt\+Node}$\ast$ parse\+Assignment\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into an assignment statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to an assignment statement.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a8b3a525f2f13fa6d94ab4da5b76739b9}\label{parser_8c_a8b3a525f2f13fa6d94ab4da5b76739b9}} 
+\index{parser.\+c@{parser.\+c}!parse\+Declaration\+Stmt\+Node@{parse\+Declaration\+Stmt\+Node}}
+\index{parse\+Declaration\+Stmt\+Node@{parse\+Declaration\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Declaration\+Stmt\+Node()}{parseDeclarationStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_stmt_node}{Stmt\+Node}$\ast$ parse\+Declaration\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into a declaration statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to a declaration statement.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a5d89f9ca150111f580a00524004b64de}\label{parser_8c_a5d89f9ca150111f580a00524004b64de}} 
+\index{parser.\+c@{parser.\+c}!parse\+If\+Then\+Else\+Stmt\+Node@{parse\+If\+Then\+Else\+Stmt\+Node}}
+\index{parse\+If\+Then\+Else\+Stmt\+Node@{parse\+If\+Then\+Else\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+If\+Then\+Else\+Stmt\+Node()}{parseIfThenElseStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_stmt_node}{Stmt\+Node}$\ast$ parse\+If\+Then\+Else\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into an if/then/else statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to an if/then/else statement.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_aee826135409280ba98ea55a44e4657b5}\label{parser_8c_aee826135409280ba98ea55a44e4657b5}} 
+\index{parser.\+c@{parser.\+c}!parse\+Switch\+Stmt\+Node@{parse\+Switch\+Stmt\+Node}}
+\index{parse\+Switch\+Stmt\+Node@{parse\+Switch\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Switch\+Stmt\+Node()}{parseSwitchStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_stmt_node}{Stmt\+Node}$\ast$ parse\+Switch\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into a switch statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to a switch statement.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+The 1.\+2 specification only allows constant values for O\+MG guards thus this function explicitly checks for them. 
+\end{DoxyNote}
+\mbox{\Hypertarget{parser_8c_a34eb6a8f5026a75cc01786ac9509cd6a}\label{parser_8c_a34eb6a8f5026a75cc01786ac9509cd6a}} 
+\index{parser.\+c@{parser.\+c}!parse\+Break\+Stmt\+Node@{parse\+Break\+Stmt\+Node}}
+\index{parse\+Break\+Stmt\+Node@{parse\+Break\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Break\+Stmt\+Node()}{parseBreakStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_stmt_node}{Stmt\+Node}$\ast$ parse\+Break\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into a break statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to a break statement.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a4418db149fa0f6fa85fb9ca7aa764dc0}\label{parser_8c_a4418db149fa0f6fa85fb9ca7aa764dc0}} 
+\index{parser.\+c@{parser.\+c}!parse\+Return\+Stmt\+Node@{parse\+Return\+Stmt\+Node}}
+\index{parse\+Return\+Stmt\+Node@{parse\+Return\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Return\+Stmt\+Node()}{parseReturnStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_stmt_node}{Stmt\+Node}$\ast$ parse\+Return\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into a return statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to a return statement.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a72bc60ab8d2b10232a1bd948e4efec9b}\label{parser_8c_a72bc60ab8d2b10232a1bd948e4efec9b}} 
+\index{parser.\+c@{parser.\+c}!parse\+Loop\+Stmt\+Node@{parse\+Loop\+Stmt\+Node}}
+\index{parse\+Loop\+Stmt\+Node@{parse\+Loop\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Loop\+Stmt\+Node()}{parseLoopStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_stmt_node}{Stmt\+Node}$\ast$ parse\+Loop\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into a loop statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to a loop statement.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a8d62cad8b64156216fcf3c2157a0eac8}\label{parser_8c_a8d62cad8b64156216fcf3c2157a0eac8}} 
+\index{parser.\+c@{parser.\+c}!parse\+Deallocation\+Stmt\+Node@{parse\+Deallocation\+Stmt\+Node}}
+\index{parse\+Deallocation\+Stmt\+Node@{parse\+Deallocation\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Deallocation\+Stmt\+Node()}{parseDeallocationStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_stmt_node}{Stmt\+Node}$\ast$ parse\+Deallocation\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into a deallocation statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to a deallocation statement.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_acf0d50367dfb8ca6371588cfca842e8f}\label{parser_8c_acf0d50367dfb8ca6371588cfca842e8f}} 
+\index{parser.\+c@{parser.\+c}!parse\+Func\+Def\+Stmt\+Node@{parse\+Func\+Def\+Stmt\+Node}}
+\index{parse\+Func\+Def\+Stmt\+Node@{parse\+Func\+Def\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Func\+Def\+Stmt\+Node()}{parseFuncDefStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_stmt_node}{Stmt\+Node}$\ast$ parse\+Func\+Def\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into a function definition statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to a function definition statement.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_ab1f922422eea030e1d2e80213eabf741}\label{parser_8c_ab1f922422eea030e1d2e80213eabf741}} 
+\index{parser.\+c@{parser.\+c}!parse\+Alt\+Array\+Def\+Stmt\+Node@{parse\+Alt\+Array\+Def\+Stmt\+Node}}
+\index{parse\+Alt\+Array\+Def\+Stmt\+Node@{parse\+Alt\+Array\+Def\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Alt\+Array\+Def\+Stmt\+Node()}{parseAltArrayDefStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_stmt_node}{Stmt\+Node}$\ast$ parse\+Alt\+Array\+Def\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into an alternate array definition statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to an alternate array definition statement.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a1ce5eebd4ffdb91c0db261a26331b728}\label{parser_8c_a1ce5eebd4ffdb91c0db261a26331b728}} 
+\index{parser.\+c@{parser.\+c}!parse\+Stmt\+Node@{parse\+Stmt\+Node}}
+\index{parse\+Stmt\+Node@{parse\+Stmt\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Stmt\+Node()}{parseStmtNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_stmt_node}{Stmt\+Node}$\ast$ parse\+Stmt\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into a statement.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to a statement.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_a31fc3ee59737d23b2168bd45fa4fcc75}\label{parser_8c_a31fc3ee59737d23b2168bd45fa4fcc75}} 
+\index{parser.\+c@{parser.\+c}!parse\+Block\+Node@{parse\+Block\+Node}}
+\index{parse\+Block\+Node@{parse\+Block\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Block\+Node()}{parseBlockNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_block_node}{Block\+Node}$\ast$ parse\+Block\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$$\ast$}]{tokenp }\end{DoxyParamCaption})}
+
+Parses tokens into a code block.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokenp} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to a code block.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{parser_8c_ab459fe6aeb124199fd237030f8582f6b}\label{parser_8c_ab459fe6aeb124199fd237030f8582f6b}} 
+\index{parser.\+c@{parser.\+c}!parse\+Main\+Node@{parse\+Main\+Node}}
+\index{parse\+Main\+Node@{parse\+Main\+Node}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Main\+Node()}{parseMainNode()}}
+{\footnotesize\ttfamily \hyperlink{struct_main_node}{Main\+Node}$\ast$ parse\+Main\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{struct_token}{Token} $\ast$$\ast$}]{tokens }\end{DoxyParamCaption})}
+
+Parses tokens into a main code block.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tokens} & The position in a token list to start parsing at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+{\itshape tokenp} will point to the next unparsed token.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+A pointer to a main node block.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em N\+U\+LL} & Unable to parse. \\
+\hline
+\end{DoxyRetVals}

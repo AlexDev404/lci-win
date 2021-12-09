@@ -108,7 +108,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <getopt.h>
+#include "getopt.h"
+#include <getopt.c>
 
 #include "lexer.h"
 #include "tokenizer.h"

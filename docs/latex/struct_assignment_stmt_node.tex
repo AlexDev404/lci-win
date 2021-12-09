@@ -1,0 +1,36 @@
+\hypertarget{struct_assignment_stmt_node}{}\section{Assignment\+Stmt\+Node Struct Reference}
+\label{struct_assignment_stmt_node}\index{Assignment\+Stmt\+Node@{Assignment\+Stmt\+Node}}
+
+
+{\ttfamily \#include $<$parser.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$ \hyperlink{struct_assignment_stmt_node_a6bdcf7c297f54d4269849cb96c8161a6}{target}
+\item 
+\hyperlink{struct_expr_node}{Expr\+Node} $\ast$ \hyperlink{struct_assignment_stmt_node_af25b11d4ed4159da853c540641f0db24}{expr}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Stores an assignment statement. This statement stores an evaluated expression in a variable. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{struct_assignment_stmt_node_a6bdcf7c297f54d4269849cb96c8161a6}\label{struct_assignment_stmt_node_a6bdcf7c297f54d4269849cb96c8161a6}} 
+\index{Assignment\+Stmt\+Node@{Assignment\+Stmt\+Node}!target@{target}}
+\index{target@{target}!Assignment\+Stmt\+Node@{Assignment\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node}$\ast$ Assignment\+Stmt\+Node\+::target}
+
+The variable to store {\itshape expr} in. \mbox{\Hypertarget{struct_assignment_stmt_node_af25b11d4ed4159da853c540641f0db24}\label{struct_assignment_stmt_node_af25b11d4ed4159da853c540641f0db24}} 
+\index{Assignment\+Stmt\+Node@{Assignment\+Stmt\+Node}!expr@{expr}}
+\index{expr@{expr}!Assignment\+Stmt\+Node@{Assignment\+Stmt\+Node}}
+\subsubsection{\texorpdfstring{expr}{expr}}
+{\footnotesize\ttfamily \hyperlink{struct_expr_node}{Expr\+Node}$\ast$ Assignment\+Stmt\+Node\+::expr}
+
+The expression to store. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{parser_8h}{parser.\+h}\end{DoxyCompactItemize}

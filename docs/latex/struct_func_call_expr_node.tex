@@ -1,0 +1,44 @@
+\hypertarget{struct_func_call_expr_node}{}\section{Func\+Call\+Expr\+Node Struct Reference}
+\label{struct_func_call_expr_node}\index{Func\+Call\+Expr\+Node@{Func\+Call\+Expr\+Node}}
+
+
+{\ttfamily \#include $<$parser.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$ \hyperlink{struct_func_call_expr_node_ad7e2b32f5fff34ad20936846fa1049b5}{scope}
+\item 
+\hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node} $\ast$ \hyperlink{struct_func_call_expr_node_a2cee7d403ec240f220b3b428bba629ce}{name}
+\item 
+\hyperlink{struct_expr_node_list}{Expr\+Node\+List} $\ast$ \hyperlink{struct_func_call_expr_node_a559b2108d83b11b46584b85f6fd1b12b}{args}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Stores a function call expression. This expression calls a named function and evaluates to the return value of that function. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{struct_func_call_expr_node_ad7e2b32f5fff34ad20936846fa1049b5}\label{struct_func_call_expr_node_ad7e2b32f5fff34ad20936846fa1049b5}} 
+\index{Func\+Call\+Expr\+Node@{Func\+Call\+Expr\+Node}!scope@{scope}}
+\index{scope@{scope}!Func\+Call\+Expr\+Node@{Func\+Call\+Expr\+Node}}
+\subsubsection{\texorpdfstring{scope}{scope}}
+{\footnotesize\ttfamily \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node}$\ast$ Func\+Call\+Expr\+Node\+::scope}
+
+The scope to call the function in. \mbox{\Hypertarget{struct_func_call_expr_node_a2cee7d403ec240f220b3b428bba629ce}\label{struct_func_call_expr_node_a2cee7d403ec240f220b3b428bba629ce}} 
+\index{Func\+Call\+Expr\+Node@{Func\+Call\+Expr\+Node}!name@{name}}
+\index{name@{name}!Func\+Call\+Expr\+Node@{Func\+Call\+Expr\+Node}}
+\subsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily \hyperlink{parser_8h_a930727769b8a8eb0d24d474f3aa12a43}{Identifier\+Node}$\ast$ Func\+Call\+Expr\+Node\+::name}
+
+The name of the function to call. \mbox{\Hypertarget{struct_func_call_expr_node_a559b2108d83b11b46584b85f6fd1b12b}\label{struct_func_call_expr_node_a559b2108d83b11b46584b85f6fd1b12b}} 
+\index{Func\+Call\+Expr\+Node@{Func\+Call\+Expr\+Node}!args@{args}}
+\index{args@{args}!Func\+Call\+Expr\+Node@{Func\+Call\+Expr\+Node}}
+\subsubsection{\texorpdfstring{args}{args}}
+{\footnotesize\ttfamily \hyperlink{struct_expr_node_list}{Expr\+Node\+List}$\ast$ Func\+Call\+Expr\+Node\+::args}
+
+The arguments to supply the function. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{parser_8h}{parser.\+h}\end{DoxyCompactItemize}

@@ -54,6 +54,7 @@ typedef enum {
 	TT_ITZA,        /**< Variable type initialization. */
 	TT_ITZ,         /**< Variable value initialization. */
 	TT_RNOOB,       /**< Deallocation. */
+//	TT_STEY,	/**< Constant Variable */
 	TT_R,           /**< Assignment. */
 	TT_ANYR,        /**< User-defined function argument separator. */
 	TT_AN,          /**< Built-in function argument separator. */
@@ -184,6 +185,7 @@ static const char *keywords[] = {
 	"'Z",          /* TT_APOSTROPHEZ */
 	"O HAI IM",    /* TT_OHAIIM */
 	"IM LIEK",     /* TT_IMLIEK */
+//	"STEY",        /* TT_STEY */
 	"KTHX",        /* TT_KTHX */
 	""             /* TT_ENDOFTOKENS */
 };
